@@ -1,0 +1,17 @@
+@import "/wxParse/wxParse.wxss";
+/* 列表 */
+.notice_list{border-top: solid 1rpx #ddd;}
+
+.msg_box{background: white; padding: 34rpx 0 0 32rpx;}
+.msg_box image{width: 104rpx; height: 104rpx; float: left; margin-right: 16rpx;}
+.msg_box .dot{width: 16rpx; height: 16rpx; border-radius: 100%; background: #17b7d0; display: inline-block; margin:0 12rpx 0 6rpx;}
+.msg_box .div_right{padding: 0 32rpx 36rpx 0; margin-left: 114rpx; border-bottom: solid 1rpx #e2e2e2; overflow:hidden;}
+.msg_box .div_right .info_1{margin-top: -6rpx; margin-bottom: 10rpx;}
+.msg_box .div_right .info_1 .title{font-size: 32rpx;font-weight: 500; color: #333;}
+.msg_box .div_right .info_2 .txt{font-size: 28rpx; line-height: 38rpx; max-height:76rpx; color: #666; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2;}
+.msg_box .div_right .info_2 .txt image{width:100%!important;}
+.msg_box .div_right .info_2 .txt>view{margin-bottom:20rpx!important;}
+.msg_box .div_right .info_2 .txt view{font-size:34rpx!important; line-height:50rpx!important; color:#333;}
+.msg_box .div_right .info_2 .txt text{font-size:34rpx!important;line-height:50rpx!important;color:#333;}
+.msg_box .div_right .time{font-size: 24rpx;color: #9d9d9d;float: right; margin-top: 10rpx;}
+

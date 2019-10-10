@@ -1,0 +1,20 @@
+
+<import src="/wxParse/wxParse.wxml"/>
+
+<!-- 标题 -->
+<view class='news_title_box clearfix'>
+    <view class='news_title'>{{noticeData.title}}</view>
+    <view class='ico_txt time'>
+        <image src='{{domainUrl}}/images/icon/ico_clock.png'></image>
+        {{noticeData.publishTime}}
+    </view>
+    <view class='ico_txt visitor'>
+        <image src='{{domainUrl}}/images/icon/ico_eye.png'></image>
+        {{noticeData.readNum}}
+    </view>
+</view>
+
+<!-- 详情 -->
+<view class='details_ctn clearfix'>
+   <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+</view>

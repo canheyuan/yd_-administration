@@ -1,0 +1,48 @@
+<!-- 数据未加载时显示的默认列表 -->
+<default-list wx:if="{{!listInfo.isFinish}}"></default-list>
+
+<block wx:if="{{listInfo.isFinish}}">
+<view class="repair_list" wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <navigator 
+        class='li clearfix' 
+        wx:for="{{listInfo.list}}" wx:key="repair{{index}}"
+        url='/pages/repair/repair-detail/repair-detail?id={{item.repairId}}'
+    >
+        <view class="top">
+            <view  class='status {{item.statusClass}}' >{{item.statusName}}</view>
+            <view class='yd_title01'>{{item.entName}}</view>
+        </view>
+
+        <view class='main clearfix'>
+            <view class='room'>{{item.roomName}}</view>
+            <view class="dl_info">
+                <text class='dt'>{{langData.repairType[lang]}}：
+                {{langData.repairPerson[lang]}}：</text>
+                <text class='dd'>{{item.typeName}}
+                {{item.contact}}、{{item.phone}}</text>
+            </view>
+            
+            <view class='time_msg'>
+                <view class='ico_txt'>
+                    <icon class="icons ico_time"></icon>
+                    <text>{{item.createTime}}</text>
+                </view>
+                <view class='dtime' wx:if="{{false}}">{{item.finishTime}}</view>
+                <!-- <view class='blue_bd_btn btn' wx:if="{{item.status==1}}">我要跟进</view>
+                <view class='blue_bd_btn btn' wx:if="{{item.status==2}}">处理好了</view> -->
+            </view>
+        </view>
+    </navigator>
+
+    <!-- 底部提示文字 -->
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+        <view class='txt'>{{listInfo.tipTxt}}</view>
+    </view>  
+</view>
+
+<!-- 暂无状态 -->
+<list-nothing 
+    c-name="repair" 
+    wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
+></list-nothing>
+</block>

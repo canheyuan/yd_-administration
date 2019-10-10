@@ -1,0 +1,99 @@
+
+<!-- 选项卡切换 -->
+<view class='tag_box tag_fixed'>
+    <view class='tag_list'>
+        <view 
+            class='tag_item {{tagIndex==index?"act":""}}' 
+            wx:for="{{selectTag[selectTagIndex].tagList}}" wx:key="{{index}}"
+            bindtap="tagChangeFn" data-index="{{index}}" data-type='{{item.type}}'
+        >{{item.name}}</view>
+
+        <view class='select_mdl'>
+            <view class='value' bindtap='selectHideFn'>{{selectTag[selectTagIndex].value}}</view>
+            <view class='pop box_shadow' hidden="{{selectHide}}">
+                <view 
+                    class='item' hover-class='hover' 
+                    wx:for="{{selectTag}}" wx:key="{{index}}"
+                    bindtap='selectChangeFn' data-index="{{index}}"
+                >{{item.value}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+<!-- 条件筛选 -->
+<view class="screen_mdl {{tagIndex==0?'one':''}}" hidden="{{selectTagIndex!=0}}">
+
+    <picker 
+        class="screen_item" mode="multiSelector" 
+        range='{{buildFloorList}}'
+        value='{{buildFloorIndex}}'
+        bindchange='getBuildFloorValFn'
+        bindcolumnchange='getBuildFloorColumnFn'
+    >
+        <icon class="icons ico_floor"></icon>
+        <text class="text">{{selectTag[0].tagList[tagIndex].buildFloorName}}</text>
+    </picker>
+
+    <picker 
+        class="screen_item" mode="date" 
+        value="{{selectTag[0].tagList[1].dateMonth}}" 
+        fields="month" end="{{nowMonth}}"  
+        bindchange="changeMonthFn"
+    >
+        <icon class="icons ico_month"></icon>
+        <text class="text">{{!selectTag[0].tagList[1].dateMonth?langData.chooseMonth[lang]:selectTag[0].tagList[1].dateMonth}}</text>
+    </picker>
+</view>
+
+<!-- 企业-未录入 -->
+<view hidden="{{tagIndex!=0 || selectTagIndex!=0}}">
+    <degrees-list 
+        degrees-type="1" list-type="company" 
+        date-month='' 
+        building-id='{{selectTag[0].tagList[0].buildingId}}'
+        floor-id='{{selectTag[0].tagList[0].floorId}}'
+        reach-data="{{selectTag[0].tagList[0].reach}}"
+    ></degrees-list>
+</view>
+
+<!-- 企业-已录入 -->
+<view hidden="{{tagIndex!=1 || selectTagIndex!=0}}">
+    <degrees-list 
+        degrees-type="2" list-type="company" 
+        date-month='{{selectTag[0].tagList[1].dateMonth}}' 
+        building-id='{{selectTag[0].tagList[1].buildingId}}'
+        floor-id='{{selectTag[0].tagList[1].floorId}}'
+        reach-data="{{selectTag[0].tagList[1].reach}}"
+    ></degrees-list>
+</view>
+
+<!-- 公摊-未录入 -->
+<view hidden="{{tagIndex!=0 || selectTagIndex!=1}}" style="margin-top:-70rpx;">
+    <degrees-list 
+        degrees-type="N" list-type="share" 
+        date-month='' 
+        reach-data="{{selectTag[1].tagList[0].reach}}"
+    ></degrees-list>
+</view>
+
+<!-- 公摊-已录入 -->
+<view hidden="{{tagIndex!=1 || selectTagIndex!=1}}">
+    <!-- 条件筛选 -->
+    <view class="screen_mdl one">
+        <picker 
+            class="screen_item" mode="date" 
+            value="{{selectTag[1].tagList[1].dateMonth}}" 
+            fields="month" end="{{nowMonth}}"  bindchange="changeMonthFn"
+        >
+            <icon class="icons ico_month"></icon>
+            <text class="text">{{!selectTag[1].tagList[1].dateMonth?langData.public.all[lang]:selectTag[1].tagList[1].dateMonth}}</text>
+        </picker>
+    </view>
+    <degrees-list 
+        degrees-type="Y" list-type="share" 
+        date-month='{{selectTag[1].tagList[1].dateMonth}}' 
+        reach-data="{{selectTag[1].tagList[1].reach}}"
+    ></degrees-list>
+</view>

@@ -1,0 +1,151 @@
+<!-- 合同编号 -->
+<view class='repair_list clearfix'>
+    <view class='hdr_line'>
+        <view class='title_box'>
+            <icon></icon>
+            <view class='title'><text>{{langData.contractNo[lang]}}：</text>{{detailsData.contractNo}}</view>
+        </view>
+        <text class='status {{detailsData.statusClass}}'>{{detailsData.statusText}}</text>
+    </view>
+
+    <view class='form_mdl contract_info w260 clearfix'>
+        <!-- 企业名称 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.public.companyName[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.entName}}</text></view>
+        </view>
+        <!-- 法人/联系人 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.contacts[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.entContact}}</text></view>
+        </view>
+        <!-- 手机号码 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.public.phone[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.entPhone}}</text></view>
+        </view>
+        <!-- 经手人 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.handling[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.handlerName}}</text></view>
+        </view>
+        <!-- 楼栋单元 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.tower[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.roomsName}}</text></view>
+        </view>
+        <!-- 签约日期 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.contractDate[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.contractStart}}</text></view>
+        </view>
+        <!-- 面积 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.area[lang]}}（m²）</view>
+            <view class='dd'><text class='txt'>{{detailsData.rentArea}}</text></view>
+        </view>
+    </view>
+</view>
+
+<!-- 租金 -->
+<view class='repair_list clearfix'>
+    <view class='hdr_line'>
+        <view class='yd_title01'>{{langData.rentTitle[lang]}}</view>
+    </view>
+    <view class='form_mdl contract_info w260 clearfix'>
+        <!-- 单价 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.yuanUnit[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.rent.price}}</text></view>
+        </view>
+        <!-- 月租金 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.monthRentPrice[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.rent.price}}</text></view>
+        </view>
+        <!-- 合同总金额 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.sumPrice[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.rentAmount}}</text></view>
+        </view>
+    </view>
+</view>
+
+<!-- 服务收入 -->
+<view class='repair_list clearfix' wx:if="{{false}}">
+    <view class='hdr_line'>
+        <view class='yd_title01'>服务收入</view>
+    </view>
+    <view class='form_mdl contract_info w260 clearfix'>
+        <view class='dl'>
+            <view class='dt'>单价（元）</view>
+            <view class='dd'><text class='txt'></text></view>
+        </view>
+        <view class='dl'>
+            <view class='dt'>月服务费（元）</view>
+            <view class='dd'><text class='txt'></text></view>
+        </view>
+        <view class='dl'>
+            <view class='dt'>合同总金额（元）</view>
+            <view class='dd'><text class='txt'></text></view>
+        </view>
+    </view>
+  
+</view>
+
+<!-- 合同期限 -->
+<view class='repair_list clearfix'>
+    <view class='hdr_line'>
+        <view class='yd_title01'>{{langData.contractPeriod[lang]}}</view>
+    </view>
+    <view class='form_mdl contract_info w260 clearfix'>
+        <!-- 合同开始日期 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.periodTime1[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.contractStart}}</text></view>
+        </view>
+        <!-- 合同结束日期 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.periodTime2[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.contractEnd}}</text></view>
+        </view>
+        <!-- 租赁月份 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.rentMonth[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.contractMonths}}</text></view>
+        </view>
+    </view>
+</view>
+
+<!-- 免租期 -->
+<view class='repair_list clearfix' wx:if="{{false}}">
+    <view class='hdr_line'>
+        <view class='yd_title01'>{{langData.freeRent[lang]}}</view>
+    </view>
+    <view class='form_mdl contract_info clearfix'>
+        <view class='dl'>
+            <view class='dt'>{{langData.freeRentTime1[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.freeStart}}</text></view>
+        </view>
+        <view class='dl'>
+            <view class='dt'>{{langData.freeRentTime2[lang]}}</view>
+            <view class='dd'><text class='txt'>{{detailsData.freeEnd}}</text></view>
+        </view>
+        <view class='dl'>
+            <view class='dt'>{{langData.freeMonth[lang]}}</view>
+            <view class='dd'><text class='txt'></text></view>
+        </view>
+    </view>
+</view>
+
+<!-- 特别条款 -->
+<view class='repair_list clearfix' wx:if="{{detailsData.specialClause}}">
+    <view class='hdr_line'>
+        <view class='yd_title01'>{{langData.specialClause[lang]}}</view>
+    </view>
+    <view class='repair_ctn clearfix'>
+        <view class='repair_txt f_30'>{{detailsData.specialClause}}</view>
+    </view>
+</view>
+
+<view class='yd_title02'><view class='txt'>{{langData.public.noMoreText[lang]}}</view></view>

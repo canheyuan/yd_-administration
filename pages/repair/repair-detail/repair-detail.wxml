@@ -1,0 +1,157 @@
+
+<!-- 报修详情 -->
+<view class='repair_list clearfix'>
+  <view class='hdr_line'>
+    <view class='yd_title01'>{{detailsData.entName}}</view>
+    <view class='status {{detailsData.statusClass}}'>{{detailsData.statusName}}</view>
+  </view>
+  <view class='repair_ctn clearfix'>
+    <view class='dl'>
+      <view class='dt'>{{langData.repairType[lang]}}</view>
+      <view class='dd'>{{detailsData.typeName}}</view>
+    </view>
+    <view class='repair_txt f_30'>{{detailsData.description?detailsData.description:langData.public.noDesTip[lang]}}</view>
+    <view class='dl'>
+      <view class='dt'>{{langData.repairAddress[lang]}}</view>
+      <view class='dd'>{{detailsData.roomName}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.public.contact[lang]}}</view>
+      <view class='dd'>{{detailsData.contact}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
+      <view class='dd'>{{detailsData.phone}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.public.imgAccessory[lang]}}</view>
+      <view class='dd' wx:if="{{detailsData.imageList.length==0}}">{{langData.noImg[lang]}}</view>
+      <view class='dd' wx:if="{{detailsData.imageList.length>0}}">
+        <view class='pic' wx:for="{{detailsData.imageList}}" wx:key="{{index}}">
+          <image 
+            src='{{item}}' bindtap="bigImgFn" 
+            data-big_img='{{item?item:domainUrl+"/images/default/img_200_200.jpg"}}'
+          ></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='ylb_txt' bindtap="popFn"><icon class="icons"></icon>{{langData.severPopBtn[lang]}}</view>
+
+<!-- 维修人员 -->
+<!-- 已接单后才有此模块 -->
+<view wx:if="{{detailsData.status==2||detailsData.status==3||detailsData.status==4}}" class='repair_person clearfix'>
+  <view class='head'><image src='{{detailsData.handlerAvatar?detailsData.handlerAvatar:domainUrl+"/images/default/df_userhead.png"}}' class='img' mode='widthFix'></image></view>
+  <view class='lable'>{{langData.handlerName[lang]}}</view>
+  <view class='content'>{{detailsData.handlerName}}</view>
+</view>
+
+<!-- 价格评分 -->
+<!-- 已完成后才有此模块 -->
+<view wx:if="{{detailsData.status==4}}" class='repair_price clearfix'>
+  <view class='dl'>
+    <view class='dt'>{{langData.collectMoney[lang]}}</view>
+    <view class='dd fw500 f_32 f_orange'><text>¥</text>{{detailsData.repairMoney}}</view>
+  </view>
+  <view class='dl'>
+    <view class='dt'>{{langData.customerScoring[lang]}}</view>
+    <view class='dd'>
+      <view class='star_list'>
+      <view class='icons {{detailsData.star>starItem?"cur":""}}' 
+        wx:for="{{[0,1,2,3,4]}}"  wx:key="{{index}}" wx:for-item="starItem"
+      ></view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 订单号时间 -->
+<view class='order_time clearfix'>
+  <!-- <view class='ico_txt' wx:if="{{false}}"><image src='{{domainUrl}}/images/icon/ico_order_num.png'></image>单号：</view> -->
+
+  <view class='ico_txt'>
+    <image src='{{domainUrl}}/images/icon/ico_clock.png'></image>
+    {{langData.repairTime[lang]}}：{{detailsData.createTime}}
+  </view>
+  <!-- 已接单后才有此时间 -->
+  <!-- <view wx:if="{{detailsData.status!=1}}"class='ico_txt noicon'>派单时间：</view> -->
+  <!-- 已完成后才有此时间 -->
+  <view wx:if="{{detailsData.status==3||detailsData.status==4}}" class='ico_txt'>
+    <image src='{{domainUrl}}/images/icon/ico_clock.png'></image>
+    {{langData.finishTime[lang]}}：{{detailsData.finishTime}}
+  </view>
+</view>
+
+<!-- 底部按钮 -->
+<!-- 已完成状态 -->
+<view class='yd_title02' style='{{(detailsData.status==1||detailsData.status==2)?"margin-bottom:130rpx;":""}}'>
+<view class='txt'>{{langData.public.noMoreText[lang]}}</view>
+</view> 
+<!-- 未接单状态 -->
+<view wx:if="{{detailsData.status==1 && loginInfo.userInfo.parkMaintainer}}" class='blue_btn_btm' bindtap='setFollow'>{{langData.followBtn[lang]}}</view>
+<!-- 已接单状态 -->
+<view wx:if="{{detailsData.status==2 && detailsData.isMyself}}" class='blue_btn_btm' bindtap="servePopFn">{{langData.disposeBtn[lang]}}</view>
+
+<!-- 园区管家分配 -->
+<!-- <view wx:if="{{loginInfo.userInfo.parkKeeper && detailsData.status==1}}" class='blue_btn_btm' bindtap="maintainerPopShow">分派跟进</view> -->
+
+<picker 
+  wx:if="{{loginInfo.userInfo.parkKeeper && detailsData.status==1}}"
+  class='blue_btn_btm' bindchange="chooseMaintainersFn" name="" 
+  value="" range="{{detailsData.maintainers}}" range-key="title"
+>
+  {{langData.assignBtn[lang]}}
+</picker>
+
+<!-- 有偿服务价格一览表弹窗 -->
+<view hidden="{{popIsShow}}">
+<serve-price-pop bindclosepop="popFn"></serve-price-pop>
+</view>
+
+<!-- 服务完成弹窗 -->
+<view class='mask_bg pop_show' wx:if="{{servePop}}">
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{langData.popTitle[lang]}}</view>
+            <view class='p'>{{langData.popDes1[lang]}}</view>
+            <view class='p'>{{langData.popDes2[lang]}}</view>
+            <input type="digit" class='price_input' placeholder="{{langData.pricePl[lang]}}"  bindinput="changeInput" type="digit"/>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap="servePopFn">{{langData.public.callOffBtn[lang]}}</view>
+                <view class='btn' bindtap='setComplete'>{{langData.public.confirmBtn[lang]}}</view>
+            </view>
+            <view class='close_btn icons'  bindtap="servePopFn"></view>
+        </view>
+    </view>
+</view>
+
+<!-- 选择维修人员弹窗 -->
+<!-- <view class='mask_bg pop_show' hidden="{{!maintainerPop}}">
+  <view class='mask_bg_ctn' style=''>
+    <view class='garden_mdl'>
+      <view class='allpark_title'>指派维修人员</view>
+      <view class='garden_list'>
+      
+        <block wx:for="{{detailsData.maintainers}}" wx:key="{{index}}" wx:for-item="maintainersList">
+          <view class='company_li' 
+            bindtap='chooseMaintainersFn' data-info="{{maintainersList}}"
+          >
+            {{maintainersList.userName}}（手机：{{maintainersList.phonenumber}}）
+          </view>
+        </block>
+
+      </view>
+      <view class='close_btn icons' bindtap="maintainerPopShow"></view>
+    </view>
+  </view>
+</view> -->
+
+<!-- 图片放大弹窗 -->
+<view class='mask_bg pop_show' hidden='{{imgPopHide}}' bindtap='closeImgPop'>
+  <view class='mask_bg_ctn'>
+    <image 
+      src='{{popImgUrl?popImgUrl:domainUrl+"/images/default/img_200_200.jpg"}}'  style='width:100%;' mode='widthFix'
+    ></image>
+  </view>
+</view>

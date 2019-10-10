@@ -1,0 +1,44 @@
+page{background-color:#f7f7f7; padding-bottom: 110rpx;}
+
+/* 顶部企业信息 */
+.cost_details_top{height:230rpx; box-sizing: border-box; padding:34rpx 40rpx 0 50rpx; color:#fff;  background:url(https://www.5iparks.com/static/wuye/images/fee-check/top_bg.jpg) #1b9cd4 no-repeat top center; background-size:100%;}
+.cost_details_top .h3{font-size:48rpx; font-weight: 600; margin-bottom:10rpx;}
+.cost_details_top .month{font-size:40rpx; margin-top: 4rpx; float: right;}
+.cost_details_top .p{font-size:32rpx; line-height:46rpx;}
+.cost_details_top .p.per{color: #f7dcc5;}
+.cost_details_top .p icon{width:32rpx; height:32rpx; margin-right:10rpx;}
+.cost_details_top .p .ico_fz{background:url(https://www.5iparks.com/static/wuye/images/icon/ico_building.png) no-repeat top center; background-size:32rpx 32rpx;}
+.cost_details_top .p .ico_per{background:url(https://www.5iparks.com/static/wuye/images/icon/ico_loc.png) no-repeat top center; background-size:32rpx 32rpx;}
+
+/* 应缴费用 */
+.fee_table{}
+.fee_table .info{padding:24rpx 32rpx 20rpx; float:right;}
+.fee_table .yingjiao{font-size:30rpx; color:#888; padding-right:10rpx;}
+.fee_table .qian{color:#ff6000; font-size:48rpx; line-height: 50rpx; font-weight: 500;}
+.fee_table .qian.done{color:#333; font-size:34rpx; font-weight: 500;}
+.fee_table .fuhao{font-size: 60%;}
+
+/* 上月读数 */
+.repair_list{margin-top: 32rpx; background: #fff; position: relative;}
+.repair_list .hdr_line{height: 58rpx; padding: 22rpx 32rpx 0 16rpx; border-bottom: 1rpx solid #e2e2e2;}
+.repair_list .yd_title01{float: left;}
+.repair_list .status{color: #f28d09; font-size: 28rpx; float: right;}
+.repair_list .status.overdue{color: #d63a31;}
+.repair_list .status.done{color: #a5a5a5; width: 126rpx; height: 126rpx; position: absolute; top: -10rpx; right: 6rpx; background:url(https://www.5iparks.com/static/wuye/images/stamp_done.png) no-repeat top left; background-size: 126rpx;}
+.repair_list .repair_ctn{padding: 20rpx 32rpx; }
+.repair_ctn .electricity{width: 50%; border-right: 1rpx solid #e2e2e2; float: left;}
+.repair_ctn .water{width: 45%; float: right;}
+.repair_ctn .dl{font-size: 30rpx; line-height: 70rpx; clear: both;}
+.repair_ctn .dl:after {visibility:hidden; display:block; font-size:0; content: " "; clear:both; height:0;}
+.repair_ctn .dl .dt{color: #888; width: 120rpx; float: left;}
+.repair_ctn .dl .dd{padding-left: 40rpx; overflow:hidden;}
+/* .repair_ctn .dl .dd text{font-size: 70%;} */
+.repair_ctn .dl .f_udl{float: right;}
+
+/* 订单号时间 */
+.order_time{margin-top: 32rpx; padding: 26rpx 32rpx; background: #fff;}
+.order_time .ico_txt{float: left; clear: both;}
+
+/* 底部按钮 */
+.yd_title02{margin-top: 32rpx;}
+.blue_btn_btm{width: 100%; position: fixed; bottom: 0;}

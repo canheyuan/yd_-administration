@@ -1,0 +1,37 @@
+
+<!-- 数据未加载时显示的默认列表 -->
+<default-list wx:if="{{!listInfo.isFinish}}"></default-list>
+
+<block wx:if="{{listInfo.isFinish}}">
+<view class='fee_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <navigator 
+        wx:for="{{listInfo.list}}" wx:key="fee{{index}}"
+        class='li clearfix' url="/pages/fee-check/fee-detail/fee-detail?id={{item.billId}}"
+    >
+        <view class="right">
+            <view class='status {{item.statusClass}}'>{{item.statusName}}</view>
+            <view class='price_box'>
+                <view class='money'><text>￥</text>{{item.totalAmount}} </view>
+            </view>
+        </view>
+        <veiw class="left">
+            <view class='yd_title01'>{{item.entName}}</view>
+            <view class='title'>
+                <icon class='icon_jbc'></icon><text class='month'>{{item.month}}{{langData.monthText[lang]}}</text>
+            </view>
+        </veiw>
+    </navigator>
+
+    <!-- 底部提示文字 -->
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+        <view class='txt'>{{listInfo.tipTxt}}</view>
+    </view>  
+
+</view>
+
+<!-- 暂无状态 -->
+<list-nothing 
+  c-name="fee" 
+  wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
+></list-nothing>
+</block>

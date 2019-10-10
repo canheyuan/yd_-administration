@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "待缴查询",
+    "usingComponents": {
+        "list-nothing": "/components/result-nothing/result-nothing",
+        "fee-list": "/components/fee-list/fee-list"
+    }
+}

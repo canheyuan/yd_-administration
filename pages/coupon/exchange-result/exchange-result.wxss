@@ -1,0 +1,8 @@
+
+
+/* 结果组件页面 */
+.coupon_result{text-align: center; padding:100rpx 0 0;}
+.coupon_result .img{width:210rpx;height:210rpx; margin-bottom:50rpx;}
+.coupon_result .h3{display:block; font-size:40rpx; color:#333; margin-bottom:40rpx;}
+.coupon_result .p{display:block; font-size:28rpx; color:#666; background:#f5f5f5; margin:0 30rpx; padding:20rpx 30rpx; text-align: left; line-height:50rpx; border-radius:10rpx;}
+.coupon_result .btm_btn{  width:480rpx; position:fixed; bottom:100rpx; left:50%; margin-left:-240rpx;}

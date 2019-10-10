@@ -1,0 +1,372 @@
+<!-- 顶部企业信息 -->
+<view class='cost_details_top'>
+  <view class='month'>{{detailsData.feePeriod}}{{langData.monthText[lang]}}</view>
+  <view class='h3'>{{detailsData.feeNames}}{{langData.entering[lang]}}</view>
+  <view class='p'><icon class='icons ico_fz'></icon>{{detailsData.entName}}</view>
+  <view class='p per'><icon class='icons ico_per'></icon>{{detailsData.unitName}}</view>
+</view>
+
+
+<view class='transcribe_box'>
+
+  <!------------------------ 电费 ------------------------->
+  <view class='degrees_box'>
+    <view class='degrees_item' wx:for="{{ammeterList}}" wx:key="{{index}}" wx:for-item="ammeterList">
+      <!-- 电表，可操作 -->
+      <view class='clearfix reading_box' wx:if="{{ammeterList.month.isCharged!=1}}">
+        <view class='reading'>
+          <view class='title'><text>{{ammeterList.month.meterName}}</text>{{langData.monthAmmeter[lang]}}</view>
+          <view class='updata_ctn'>
+
+            <icon class='lable_ico'></icon>
+            <icon 
+              class='icons ico_reset' hidden="{{!ammeterList.month.currentReading}}" 
+              bindtap="clearInputFn" data-obj="ammeterList[{{index}}].month.currentReading"
+            ></icon>
+            <input 
+              class='input' type='digit' placeholder='{{langData.writePl[lang]}}' placeholder-class='placeholder'  
+              bindinput="inputChangeFn" data-obj="ammeterList[{{index}}].month.currentReading" data-obj2="ammeterList[{{index}}].month.count" 
+              data-type='currentReading' data-parent='{{ammeterList}}'
+              value='{{ammeterList.month.currentReading}}' 
+            />
+
+          </view>
+        </view>
+        <view class='pic'>
+
+          <view 
+            class='add_btn' wx:if="{{!ammeterList.month.meterPicture}}" 
+            bindtap="fileImageFn" data-obj="ammeterList[{{index}}].month.meterPicture"
+          >
+            <icon class='ico_add'></icon><text>{{langData.fileImg[lang]}}</text>
+          </view>
+          <block wx:if="{{ammeterList.month.meterPicture}}">
+            <image
+              class="img" src='{{ammeterList.month.meterPicture?ammeterList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'  
+              binderror='errorImgFn' data-obj="ammeterList[{{index}}].month.meterPicture" data-img="{{domainUrl}}/images/default/img_200_200.jpg"
+              bindtap="bigImgFn" data-big_img='{{ammeterList.month.meterPicture?ammeterList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'
+            ></image>
+            <icon class='icons close_btn'  bindtap="removeImageFn" data-obj="ammeterList[{{index}}].month.meterPicture"></icon>
+          </block>
+
+        </view>
+      </view>
+
+       <!-- 电表，不可操作 -->
+      <view class='clearfix reading_box' wx:if="{{ammeterList.month.isCharged==1}}">
+        <view class='reading'>
+          <view class='title'><text>{{ammeterList.month.meterName}}</text>{{langData.monthAmmeter[lang]}}</view>
+          <view class='updata_ctn'>
+              <icon class='lable_ico'></icon><view class='input'>{{ammeterList.month.currentReading}}</view>
+          </view>
+        </view>
+        <view class='pic'>
+            <image 
+              class="img" src='{{ammeterList.month.meterPicture?ammeterList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'  
+              binderror='errorImgFn' data-obj="ammeterList[{{index}}].month.meterPicture" data-img="{{domainUrl}}/images/default/img_200_200.jpg"
+              bindtap="bigImgFn" data-big_img='{{ammeterList.month.meterPicture?ammeterList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'
+            ></image>
+        </view>
+      </view>
+
+      <view class='btm_box'>
+        <view 
+          class='more_btn {{ammeterList.isPopHide?"y_btn":""}}'
+          bindtap="moreBtnFn" data-index="{{index}}" data-obj='ammeterList[{{index}}].isPopHide' data-type="ammeter"
+        ><icon class='icons ico_down'></icon>{{langData.public.more[lang]}}</view>
+        <view class='txt'>{{langData.ammeterMultiple[lang]}}：{{ammeterList.month.multiplier}}{{langData.multipleText[lang]}}</view>
+      </view>
+
+      <view class='degrees_pop' hidden="{{ammeterList.isPopHide}}">
+        <!-- 读取上次抄表数据异常时才有此模块 -->
+        <view class='abnormal' wx:if="{{ammeterList.month.isCharged!=1}}">
+          <view class='ylb_txt alert'><icon class="icons"></icon>{{langData.countTitle[lang]}}</view>
+          <view class='additional'>
+            <input 
+              type="digit" class='input' placeholder-class='placeholder' placeholder="{{langData.countPl[lang]}}"
+              bindinput="inputChangeFn" data-obj="ammeterList[{{index}}].month.count" data-obj2="ammeterList[{{index}}].month.currentReading" 
+              data-type="count" data-parent='ammeterList'
+              value='{{ammeterList.month.count?ammeterList.month.count:""}}' 
+            />
+          </view>
+        </view>
+
+        <!-- 备注 -->
+        <view class='remark'>
+          <view class='remark_tit'>{{langData.remark[lang]}}</view>
+          <textarea 
+            wx:if="{{ammeterList.month.isCharged!=1}}"
+            class='textarea' placeholder='{{langData.remarkPl[lang]}}' placeholder-class='pl_textarea' 
+            bindinput="textareaFn" data-obj="ammeterList[{{index}}].month.remark" value="{{ammeterList.month.remark?ammeterList.month.remark:''}}"
+          ></textarea>
+          <view wx:if="{{ammeterList.month.isCharged==1}}" class='remark_txt'>{{ammeterList.month.remark?ammeterList.month.remark:langData.noRemarkTip[lang]}}</view>
+        </view>
+
+        <!-- 上月数据 -->
+        <view class='prev_month_data'>
+          <view class='li'><text>{{langData.prevAmmeter[lang]}}</text>{{ammeterList.prevMonth.feePeriod?ammeterList.prevMonth.feePeriod:'--'}}</view>
+          <view class='li'><text>{{langData.prevCount[lang]}}</text>{{ammeterList.prevMonth.count?ammeterList.prevMonth.count+langData.duText[lang]:'--'}}</view>
+          <view class='li'><text>{{langData.prevReading[lang]}}</text>{{ammeterList.prevMonth.currentReading?ammeterList.prevMonth.currentReading+langData.duText[lang]:'--'}}</view>
+          <view class='li'><text>{{langData.readingImg[lang]}}</text>
+            <view 
+                wx:if="{{ammeterList.prevMonth.meterPicture}}" class='picBtn' 
+                data-big_img="{{ammeterList.prevMonth.meterPicture}}" bindtap="bigImgFn"
+            >{{langData.checkBtn[lang]}}</view>
+            <view  wx:if="{{!ammeterList.prevMonth.meterPicture}}" style="display:inline-block;">{{langData.noImg[lang]}}</view>
+          </view>
+        </view>
+
+        <!-- 提交时间 -->
+        <view class='submit_time' wx-if="{{ammeterList.prevMonth.currentTime}}">
+            <icon class='icons ico_time'></icon>
+            {{langData.submitTime[lang]}}：{{ammeterList.prevMonth.currentTime}}
+        </view>
+
+      </view>
+
+    </view>
+  </view>
+
+  <!------------------------- 水费 ------------------------->
+  <view class='degrees_box'>
+    <view class='degrees_item water' wx:for="{{waterList}}" wx:key="{{index}}" wx:for-item="waterList">
+      <!-- 水表，可操作 -->
+      <view class='clearfix reading_box' wx:if="{{waterList.month.isCharged!=1}}">
+        <view class='reading'>
+          <view class='title'><text>{{waterList.month.meterName}}</text>{{langData.monthWater[lang]}}</view>
+          <view class='updata_ctn'>
+
+            <icon class='lable_ico'></icon>
+            <icon 
+              class='icons ico_reset' hidden="{{!waterList.month.currentReading}}" 
+              bindtap="clearInputFn" data-obj="waterList[{{index}}].month.currentReading"
+            ></icon>
+            <input 
+              class='input' type='digit' placeholder='{{langData.writePl[lang]}}' placeholder-class='placeholder' 
+              bindinput="inputChangeFn" data-obj="waterList[{{index}}].month.currentReading" data-obj2="waterList[{{index}}].month.count" 
+              data-type='currentReading' data-parent='{{waterList}}'
+              value='{{waterList.month.currentReading}}' 
+            />
+
+          </view>
+        </view>
+        <view class='pic'>
+
+          <view 
+            class='add_btn' wx:if="{{!waterList.month.meterPicture}}" 
+            bindtap="fileImageFn" data-obj="waterList[{{index}}].month.meterPicture"
+          >
+            <icon class='ico_add'></icon><text>{{langData.fileImg[lang]}}</text>
+          </view>
+          <block wx:if="{{waterList.month.meterPicture}}">
+            <image
+              class="img" src='{{waterList.month.meterPicture?waterList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'  
+              binderror='errorImgFn' data-obj="waterList[{{index}}].month.meterPicture" data-img="{{domainUrl}}/images/default/img_200_200.jpg"
+              bindtap="bigImgFn" data-big_img='{{waterList.month.meterPicture?waterList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'
+            ></image>
+            <icon class='icons close_btn'  bindtap="removeImageFn" data-obj="waterList[{{index}}].month.meterPicture"></icon>
+          </block>
+
+        </view>
+      </view>
+
+       <!-- 水表，不可操作 -->
+      <view class='clearfix reading_box' wx:if="{{waterList.month.isCharged==1}}">
+        <view class='reading'>
+          <view class='title'><text>{{waterList.month.meterName}}</text>{{langData.monthWater[lang]}}</view>
+          <view class='updata_ctn'>
+              <icon class='lable_ico'></icon><view class='input'>{{waterList.month.currentReading}}</view>
+          </view>
+        </view>
+        <view class='pic'>
+            <image 
+              class="img" src='{{waterList.month.meterPicture?waterList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'  
+              binderror='errorImgFn' data-obj="waterList[{{index}}].month.meterPicture" data-img="{{domainUrl}}/images/default/img_200_200.jpg"
+              bindtap="bigImgFn" data-big_img='{{waterList.month.meterPicture?waterList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'
+            ></image>
+        </view>
+      </view>
+
+      <view class='btm_box'>
+        <view 
+          class='more_btn {{waterList.isPopHide?"y_btn":""}}'
+          bindtap="moreBtnFn" data-index="{{index}}" data-obj='waterList[{{index}}].isPopHide' data-type="water"
+        ><icon class='icons ico_down'></icon>{{langData.public.more[lang]}}</view>
+        <view class='txt'>{{langData.waterMultiple[lang]}}：{{waterList.month.multiplier}}{{langData.multipleText[lang]}}</view>
+      </view>
+
+      <view class='degrees_pop' hidden="{{waterList.isPopHide}}">
+        <!-- 读取上次抄表数据异常时才有此模块 -->
+        <view class='abnormal' wx:if="{{waterList.month.isCharged!=1}}">
+            <view class='ylb_txt alert'><icon class="icons"></icon>{{langData.countTitle[lang]}}</view>
+            <view class='additional'>
+                <input 
+                    type="digit" class='input' placeholder-class='placeholder' placeholder="{{langData.countPl[lang]}}"
+                    bindinput="inputChangeFn" data-obj="waterList[{{index}}].month.count"  data-obj2="waterList[{{index}}].month.currentReading" 
+                    data-type='count' data-parent="{{waterList}}"
+                    value='{{waterList.month.count?waterList.month.count:""}}' 
+                />
+            </view>
+        </view>
+
+        <!-- 备注 -->
+        <view class='remark'>
+          <view class='remark_tit'>{{langData.remark[lang]}}</view>
+          <textarea
+            wx:if="{{waterList.month.isCharged!=1}}" 
+            class='textarea' placeholder='{{langData.remarkPl[lang]}}' placeholder-class='pl_textarea' 
+            bindinput="textareaFn" data-obj="waterList[{{index}}].month.remark" value="{{waterList.month.remark?waterList.month.remark:''}}"
+          ></textarea>
+          <view wx:if="{{waterList.month.isCharged==1}}" class='remark_txt'>{{waterList.month.remark?waterList.month.remark:langData.noRemarkTip[lang]}}</view>
+        </view>
+        
+
+        <!-- 上月数据 -->
+        <view class='prev_month_data'>
+          <view class='li'><text>{{langData.prevAmmeter[lang]}}</text>{{waterList.prevMonth.feePeriod?waterList.prevMonth.feePeriod:'--'}}</view>
+          <view class='li'><text>{{langData.prevCount[lang]}}</text>{{waterList.prevMonth.count?waterList.prevMonth.count+langData.dunText[lang]:'--'}}</view>
+          <view class='li'><text>{{langData.prevReading[lang]}}</text>{{waterList.prevMonth.currentReading?waterList.prevMonth.currentReading+langData.dunText[lang]:'--'}}</view>
+          <view class='li'><text>{{langData.readingImg[lang]}}</text>
+            <view  wx:if="{{waterList.prevMonth.meterPicture}}" class='picBtn' data-big_img="{{waterList.prevMonth.meterPicture}}" bindtap="bigImgFn">{{langData.checkBtn[lang]}}</view>
+            <view  wx:if="{{!waterList.prevMonth.meterPicture}}" style="display:inline-block;">{{langData.noImg[lang]}}</view>
+          </view>
+        </view>
+
+        <!-- 提交时间 -->
+        <view class='submit_time' wx-if="{{waterList.prevMonth.currentTime}}"><icon class='icons ico_time'></icon>{{langData.submitTime[lang]}}：{{waterList.prevMonth.currentTime}}</view>
+
+      </view>
+
+    </view>
+  </view>
+
+  <!------------------------- 其他 ------------------------->
+  <view class='degrees_box'>
+    <view class='degrees_item other' wx:for="{{gasList}}" wx:key="{{index}}" wx:for-item="gasList">
+      <!-- 煤气费，可操作 -->
+      <view class='clearfix reading_box' wx:if="{{gasList.month.isCharged!=1}}">
+        <view class='reading'>
+          <view class='title'><text>{{gasList.month.meterName}}</text>{{langData.monthGas[lang]}}</view>
+          <view class='updata_ctn'>
+
+            <icon class='lable_ico'></icon>
+            <icon 
+              class='icons ico_reset' hidden="{{!gasList.month.currentReading}}" 
+              bindtap="clearInputFn" data-obj="gasList[{{index}}].month.currentReading"
+            ></icon>
+            <input 
+              class='input' type='digit' placeholder='{{langData.writePl[lang]}}' placeholder-class='placeholder' 
+              bindinput="inputChangeFn" data-obj="gasList[{{index}}].month.currentReading"  data-obj2="gasList[{{index}}].month.count" 
+              data-type='currentReading' data-parent='{{gasList}}'
+              value='{{gasList.month.currentReading}}' 
+            />
+
+          </view>
+        </view>
+        <view class='pic'>
+
+          <view 
+            class='add_btn' wx:if="{{!gasList.month.meterPicture}}" 
+            bindtap="fileImageFn" data-obj="gasList[{{index}}].month.meterPicture"
+          >
+            <icon class='ico_add'></icon><text>{{langData.fileImg[lang]}}</text>
+          </view>
+          <block wx:if="{{gasList.month.meterPicture}}">
+            <image
+              class="img" src='{{gasList.month.meterPicture?gasList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'  
+              binderror='errorImgFn' data-obj="gasList[{{index}}].month.meterPicture" data-img="{{domainUrl}}/images/default/img_200_200.jpg"
+              bindtap="bigImgFn" data-big_img='{{gasList.month.meterPicture?gasList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'
+            ></image>
+            <icon class='icons close_btn'  bindtap="removeImageFn" data-obj="gasList[{{index}}].month.meterPicture"></icon>
+          </block>
+
+        </view>
+      </view>
+
+       <!-- 煤气表，不可操作 -->
+      <view class='clearfix reading_box' wx:if="{{gasList.month.isCharged==1}}">
+        <view class='reading'>
+          <view class='title'><text>{{gasList.month.meterName}}</text>{{langData.monthGas[lang]}}</view>
+          <view class='updata_ctn'>
+              <icon class='lable_ico'></icon><view class='input'>{{gasList.month.currentReading}}</view>
+          </view>
+        </view>
+        <view class='pic'>
+            <image 
+              class="img" src='{{gasList.month.meterPicture?gasList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'  
+              binderror='errorImgFn' data-obj="gasList[{{index}}].month.meterPicture" data-img="{{domainUrl}}/images/default/img_200_200.jpg"
+              bindtap="bigImgFn" data-big_img='{{gasList.month.meterPicture?gasList.month.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'
+            ></image>
+        </view>
+      </view>
+
+      <view class='btm_box'>
+        <view 
+          class='more_btn {{gasList.isPopHide?"y_btn":""}}'
+          bindtap="moreBtnFn" data-index="{{index}}" data-obj='gasList[{{index}}].isPopHide' data-type="other"
+        ><icon class='icons ico_down'></icon>{{langData.public.more[lang]}}</view>
+        <view class='txt'>{{langData.gasMultiple[lang]}}：{{gasList.month.multiplier}}{{langData.multipleText[lang]}}</view>
+      </view>
+
+      <view class='degrees_pop' hidden="{{gasList.isPopHide}}">
+        <!-- 读取上次抄表数据异常时才有此模块 -->
+        <view class='abnormal' wx:if="{{gasList.month.isCharged!=1}}">
+            <view class='ylb_txt alert'><icon class="icons"></icon>{{langData.countTitle[lang]}}</view>
+            <view class='additional'>
+                <input 
+                    type="digit" class='input' placeholder-class='placeholder' placeholder="{{langData.countPl[lang]}}"
+                    bindinput="inputChangeFn" data-obj="gasList[{{index}}].month.count" data-obj2="gasList[{{index}}].month.currentReading" 
+                    data-type='count' data-parent="{{gasList}}"
+                    value='{{gasList.month.count?gasList.month.count:""}}' 
+                />
+            </view>
+        </view>
+
+        <!-- 备注 -->
+        <view class='remark'>
+            <view class='remark_tit'>{{langData.remark[lang]}}</view>
+            <textarea 
+                wx:if="{{gasList.month.isCharged!=1}}"
+                class='textarea' placeholder='{{langData.remarkPl[lang]}}' placeholder-class='pl_textarea' 
+                bindinput="textareaFn" data-obj="gasList[{{index}}].month.remark" value="{{gasList.month.remark?gasList.month.remark:''}}"
+            ></textarea>
+            <view wx:if="{{gasList.month.isCharged==1}}" class='remark_txt'>{{gasList.month.remark?gasList.month.remark:langData.noRemarkTip[lang]}}</view>
+        </view>
+        
+
+        <!-- 上月数据 -->
+        <view class='prev_month_data'>
+          <view class='li'><text>{{langData.prevAmmeter[lang]}}</text>{{gasList.prevMonth.feePeriod?gasList.prevMonth.feePeriod:'--'}}</view>
+          <view class='li'><text>{{langData.prevCount[lang]}}</text>{{gasList.prevMonth.count?gasList.prevMonth.count+langData.fangText[lang]:'--'}}</view>
+          <view class='li'><text>{{langData.prevReading[lang]}}</text>{{gasList.prevMonth.currentReading?gasList.prevMonth.currentReading+langData.fangText[lang]:'--'}}</view>
+          <view class='li'><text>{{langData.readingImg[lang]}}</text>
+            <view  wx:if="{{gasList.prevMonth.meterPicture}}" class='picBtn' data-big_img="{{gasList.prevMonth.meterPicture}}" bindtap="bigImgFn">{{langData.checkBtn[lang]}}</view>
+            <view  wx:if="{{!gasList.prevMonth.meterPicture}}" style="display:inline-block;">{{langData.noImg[lang]}}</view>
+          </view>
+        </view>
+
+        <!-- 提交时间 -->
+        <view class='submit_time'><icon class='icons ico_time'></icon>{{langData.submitTime[lang]}}：{{gasList.prevMonth.currentTime}}</view>
+
+      </view>
+
+    </view>
+  </view>
+</view>
+
+<!-- 提交前，或提交后点修改时才有此按钮 -->
+<view class='btn_box_btm'  hidden="{{ detailsData.isCharged }}">
+  <view class='light_blue_btn_btm' bindtap='submitFn' data-name="{{langData.public.saveBtn[lang]}}">{{langData.public.saveBtn[lang]}}</view>
+  <view class='blue_btn_btm' bindtap='submitFn' data-name="{{langData.public.submitBtn2[lang]}}">{{langData.public.submitBtn2[lang]}}</view>
+</view>
+
+
+<!-- 图片放大弹窗 -->
+<view class='mask_bg pop_show' hidden='{{imgPopHide}}' bindtap='closeImgPop'>
+    <view class='mask_bg_ctn'>
+        <image 
+            src='{{popImgUrl?popImgUrl:domainUrl+"/images/default/img_200_200.jpg"}}'  
+            style='width:100%;' mode='widthFix'
+        ></image>
+    </view>
+</view>

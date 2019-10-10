@@ -1,0 +1,87 @@
+<!-- 顶部企业信息 -->
+<view class='cost_details_top'>
+    <view class='month'>{{detailsData.month + langData.month[lang]}}</view>
+    <view class='h3'>{{detailsData.status>2?langData.costCompany[lang]:langData.noCostCompany[lang]}}</view>
+    <view class='p'><icon class='icons ico_fz'></icon>{{detailsData.entName}}</view>
+    <view class='p per'><icon class='icons ico_per'></icon>{{detailsData.entRoom}}</view>
+</view>
+
+<!--应缴费用-->
+<view class='fee_table clearfix'>
+    <view class='info'>
+        <text class='yingjiao'>{{langData.feeCost[lang]}}:</text>
+        <text class='qian {{detailsData.status == 2?"":"done"}}'><text class='fuhao'>￥</text>{{detailsData.totalAmount}}</text>
+    </view>
+</view>
+
+<!-- 上月读数 -->
+<view class='repair_list clearfix' style='margin-top:0;'>
+    <view class='hdr_line'>
+        <view class='yd_title01'>{{langData.costDetail[lang]}}</view>
+        <view class='status'wx:if='{{detailsData.status == 2}}'>{{langData.statusName1[lang]}}</view>
+        <view class='status done' wx:if='{{detailsData.status > 2}}'></view><!-- 已完成状态 -->
+        <!-- <view class='status overdue' wx:if='{{false}}'>已逾期10天</view> --><!-- 已逾期状态 -->
+    </view>
+    <view class='repair_ctn clearfix'>
+        <view class='dl'>
+            <view class='dt'>{{langData.costMonth[lang]}}</view>
+            <view class='dd f_black'>{{detailsData.month + langData.month2[lang]}}</view>
+        </view>
+        <view class='dl'>
+            <view class='dt'>{{langData.costProject[lang]}}</view>
+            <view class='dd'>
+                <view class='jfxm_list'>
+
+                    <view class='li' wx:for="{{detailsData.fees}}" wx:key="{{index}}">
+                        <navigator  url='/pages/fee-check/project-detail/project-detail?id={{item.feeId}}' class='d_btn'>{{langData.detailBtn[lang]}}</navigator>
+                        <view class='info'>
+                            <view class='h3'>{{item.unitName}}{{item.feeName}}</view>
+                            <view class='price'>{{langData.money[lang]}}：  <text>￥{{item.totalAmount}}</text></view>
+                        </view>
+                    </view>
+                
+                </view>
+            </view>
+        </view>
+        <!-- <view class='dl'>
+        <view class='dt'>截止时间</view>
+        <view class='dd f_black'>2018-07-05</view>
+        </view> -->
+        <!-- <view class='dl' wx:for="{{detailsData.fees}}">
+        <view class='dt'>{{item.feeName}}</view>
+        <view class='dd f_orange'><text>¥</text>{{item.totalAmount}}</view>
+        <navigator wx:if="{{item.feeType!='rent'}}" class='f_28 f_cyan f_udl' url='/pages/fee-check/project-detail/project-detail?id={{item.feeId}}'>查看详情 >></navigator>
+        </view> -->
+        
+    </view>
+</view>
+
+<!--企业联系人-->
+<view class='repair_list clearfix'>
+    <view class='hdr_line'>
+        <view class='yd_title01'>{{langData.companyContact[lang]}}</view>
+    </view>
+    <view class='repair_ctn clearfix'>
+        <view class='dl'>
+            <view class='dt'>{{langData.public.contact[lang]}}</view>
+            <view class='dd f_black'>{{detailsData.entContract}}</view>
+        </view>
+        <view class='dl'>
+            <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
+            <view class='dd f_black'>{{detailsData.entPhone}}</view>
+        </view>
+    </view>
+</view>
+
+<!-- 订单号时间 -->
+<!-- 已完成状态才有此模块 -->
+<view class='order_time clearfix' wx:if="{{detailsData.status > 2}}">
+    <view class='ico_txt'>
+        <image src='{{domainUrl}}/images/icon/ico_clock.png'></image>{{langData.costTime[lang]}}：{{detailsData.payTime}}
+    </view>
+</view>
+
+<!-- 底部按钮 -->
+<!-- <view class='yd_title02'><view class='txt'>没有更多了</view></view> -->
+<!-- 已完成状态“无需”此模块 -->
+<!-- <view class='blue_btn_btm'>提醒缴费</view> -->

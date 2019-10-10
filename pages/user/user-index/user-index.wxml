@@ -1,0 +1,130 @@
+
+<!-- 下拉刷新动画 -->
+<reach-load></reach-load>
+
+<view class='user_info'>
+    <!-- 头像园区 -->
+    <view class='form_mdl' >
+        <view class='dl per_dl'>
+            <view class='dd' bindtap="changeHeadImgFn">
+                <view class='icons ico_arrow'></view>
+                <image class='per_img' src='{{userInfo.headImgs?userInfo.headImgs:domainUrl+"/images/default/df_userhead.png"}}'></image>
+            </view>
+        </view>
+        <view class='dl clearfix' style='padding-top:0;'>
+            <text class='dt'>{{langData.park[lang]}}</text>
+            <view class='dd'>
+                <text class='txt'>{{userInfo.parkInfo.parkName}}</text>
+            </view>
+        </view>
+    </view>
+
+   
+    <view class='form_mdl' style='margin-top:30rpx;'>
+         <!--真实姓名 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.name[lang]}}</text>
+            <view class='dd' data-type="name" data-value="{{userInfo.name?userInfo.name:''}}">
+                <text  class='txt'>{{userInfo.name?userInfo.name:langData.realName[lang]}}</text>
+            </view>
+        </view>
+         <!--性别 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.sex[lang]}}</text>
+            <view class='dd'>
+                <view class='icons ico_arrow'></view>
+                <picker bindchange="sexChange" value="{{sexIndex}}" range="{{sexList}}" >
+                    <view class='txt'>{{sexList[sexIndex]}}</view>
+                </picker>
+            </view>
+        </view>
+    </view>
+
+
+    <view class='form_mdl' style='margin-top:30rpx;'>
+         <!--手机号 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.phone[lang]}}</text>
+            <view class='dd' bindtap="gotoChange" data-type="cellphone" data-value="{{userInfo.cellphone?userInfo.cellphone:''}}">
+                <view class='icons ico_arrow'></view>
+                <text  class='txt'>{{userInfo.cellphone?userInfo.cellphone:langData.bindPhone[lang]}}</text>
+            </view>
+        </view>
+         <!--邮箱地址 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.email[lang]}}</text>
+            <view class='dd' bindtap="gotoChange" data-type="email" data-value="{{userInfo.email?userInfo.email:''}}">
+                <view class='icons ico_arrow'></view>
+                <text  class='txt'>{{userInfo.email?userInfo.email:langData.bindEmail[lang]}}</text>
+            </view>
+        </view>
+
+    </view>
+
+    <!-- 核销记录 -->
+    <view class='form_mdl' wx:if="{{moduleSwitch.coupon}}">
+        <navigator class='dl clearfix' url='/pages/coupon/exchange-list/exchange-list'>
+            <view class='dt' style='width:60rpx;'>
+                <image src='{{domainUrl}}/images/icon/ico_coupon.png' class='img' mode='widthFix'></image>
+            </view>
+            <view class='dd'>
+                <view class='icons ico_arrow'></view>
+                <text class='txt'>{{langData.verifyRecord[lang]}}</text>
+            </view>
+        </navigator>
+    </view>
+
+    
+    <view class='form_mdl'>
+        <!-- 切换园区 -->
+        <navigator class='dl clearfix' url='/pages/user/change-garden/change-garden'>
+            <view class='dt' style='width:60rpx;'>
+                <image src='{{domainUrl}}/images/icon/ico_switch_yq.png' class='img' mode='widthFix'></image>
+            </view>
+            <view class='dd'>
+                <view class='icons ico_arrow'></view>
+                <text class='txt'>{{langData.changeGardenBtn[lang]}}</text>
+            </view>
+        </navigator>
+
+        <!-- 切换语言按钮 -->
+        <picker 
+            bindchange="changeLangFn" range="{{pickerLang.list}}" wx:if="{{moduleSwitch.lang}}"
+            class='dl' hover-class='hover' value="{{pickerLang.index}}"
+        >   
+            <view class='dt' style='width:60rpx;'>
+                <image src='{{domainUrl}}/images/icon/ico_switch_yq.png' class='img' mode='widthFix'></image>
+            </view>
+            <view class='dd'>
+                <view class='icons ico_arrow'></view>
+                <text class='txt'>{{langData.changeLangBtn[lang]}}({{pickerLang.list[pickerLang.index]}})</text>
+            </view>
+        </picker>
+    </view>
+
+  <view class='exit_btn_box f_30 f_red' bindtap="outPopFn">{{langData.outLogin[lang]}}</view>
+
+</view>
+
+<!-- 退出登录弹窗 -->
+<view class='mask_bg pop_show' wx:if='{{outPop}}'>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{langData.outLogin[lang]}}</view>
+            <text class='alert'>{{langData.outTipAlert[lang]}}</text>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap="outPopFn">{{langData.public.callOffBtn[lang]}}</view>
+                <view class='btn' bindtap='outLoginFn'>{{langData.public.confirmBtn[lang]}}</view>
+            </view>
+            <view class='close_btn icons' bindtap="outPopFn" ></view>
+        </view>
+    </view>
+</view>
+
+<view class='yd_title02 versions_txt'><text class='txt'>{{langData.versions[lang]}}：{{appVersion}}</text></view>
+
+
+<!------------------ tab栏菜单 ------------------>
+<view wx:if="{{lang=='en'}}" class="tab_box">
+    <tab index='2' msg-num="{{tabMsgNum}}" lang-change='{{lang}}'></tab>
+</view>

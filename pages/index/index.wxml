@@ -1,0 +1,133 @@
+<!-- 下拉刷新动画 -->
+<reach-load></reach-load>
+
+<!-- 头部模块 -->
+<view class='index_mdl01'>
+    <!-- 顶部 -->
+    <view class='index_top'>
+        <navigator url='' class='logo_yd'></navigator>
+        <navigator class='address' url='/pages/user/change-garden/change-garden' hover-class="none">
+            <icon class='icons ico_dz'></icon>
+            <text class='txt'>{{topParkName}}</text>
+        </navigator>
+    </view>
+
+    <!-- 首页信息 -->
+    <view class='persn_box'>
+        <view class='clearfix'>
+            <view class='persn_data'>
+                <view class='head'>
+                    <image 
+                        src='{{loginInfo.userInfo.headImgs?loginInfo.userInfo.headImgs:domainUrl+"/images/default/df_userhead.png"}}' 
+                        class="img" mode='widthFix'
+                    ></image>
+                </view>
+                <view class='person'>
+                    <view class='name fw500'>{{loginInfo.userInfo.name}}</view>
+                    <view class='phone'>
+                        <icon></icon>
+                        <view class='phone_num'>{{loginInfo.userInfo.cellphone}}</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 编辑按钮 -->
+            <navigator class='btn_edit' url='/pages/user/user-index/user-index' open-type="switchTab" >
+                <icon class='icons ico_edit'></icon>
+                <text>{{langData.editBtn[lang]}}</text>
+            </navigator>
+        </view>
+
+        <view class='ul'>
+            <view class='li' bindtap="scrollToDoFn">
+                <view class='lable'>{{langData.backlogTitle[lang]}}</view>
+                <view class='number yellow'>{{indexData.backlogCt?indexData.backlogCt:0}}</view>
+            </view>
+            <navigator class='li' url='/pages/wechat/chat-list/chat-list' open-type='switchTab' hover-class='none'>
+                <view class='lable'>{{langData.unreadTitle[lang]}}</view>
+                <view class='number red'>{{indexData.msgNum?indexData.msgNum:0}}</view>
+            </navigator>
+            <navigator class='li' url="/pages/fee-check/fee-list/fee-list" hover-class='none'>
+                <view class='lable'>{{langData.feeTitle[lang]}}</view>
+                <view class='number cyan'>{{indexData.financeBillCt?indexData.financeBillCt:0}}</view>
+            </navigator>
+        </view>
+    </view>
+
+</view>
+
+<view class='index_mdl02'>
+    <!-- 通知公告 -->
+    <view class='notice_mdl' wx:if="{{noticeData}}">
+        <image class='notice_img' src='{{domainUrl}}/images/index/notice_tit.png'></image>
+        <view class='notice_ctn'>
+            <view class='notice_slide'>
+                <view class='label l_orange'>{{langData.newText[lang]}}</view>
+                <navigator 
+                    class='a' url="/pages/message/notice-details/notice-details?id={{noticeData.newest.noticeId}}"
+                >{{noticeData.newest.title}}</navigator>
+            </view>
+            
+            <swiper 
+                class='notice_slide' autoplay="true" 
+                interval="3000" duration="500" vertical="true" 
+                circular="true" display-multiple-items="1" 
+            >
+                <swiper-item wx:for="{{noticeData.list}}" wx:key="{{index}}">
+                    <view class='label l_blue'>{{langData.recentText[lang]}}</view>
+                    <navigator 
+                        class='a' 
+                        url="/pages/message/notice-details/notice-details?id={{item.noticeId}}"
+                    >{{item.title}}</navigator>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+
+    <!-- 菜单栏-未加载完数据时显示 -->
+    <view class="menu_list_df" wx:if="{{!menuData}}">
+        <view class="li" wx:for="{{[0,1,2,3,4,5]}}" wx:key="{{index}}">
+            <view class="img"></view><view class="title"></view>
+        </view>
+    </view>
+    <!-- 菜单栏 -->
+    <view class="menu_list" wx:if="{{menuData}}">
+         <block wx:for="{{menuData}}" wx:key="menuData{{index}}">
+            <navigator class='a' url='{{item.url}}' wx:if="{{item.code!='coupon'}}">
+                <image class="menu_icons" src="{{item.icon}}"></image>
+                <text class="title">{{item.title}}</text>
+            </navigator>
+            <!-- 扫码核销(和其他的按钮不一致) -->
+            <view class='a' wx:if="{{item.code=='coupon'}}" bindtap="scanCodeFn">
+                <image class="menu_icons" src="{{item.icon}}"></image>
+                <text class="title">{{item.title}}</text>
+            </view>
+        </block>
+    </view>
+</view>
+
+
+<!-- 待办事项 -->
+<view class='index_mdl03' id="todo_mdl">
+    <view class='repair_list clearfix'>
+        <view class='hdr_line'>
+            <view class='yd_title01'>{{langData.backlogTitle[lang]}}</view>
+        </view>
+        <!-- 待办列表 -->
+        <backlog-list lang="{{lang}}" reach-data="{{backlogReach}}"></backlog-list>
+    </view>
+</view>
+
+<!-- 返回顶部 -->
+<view class='back_top box_shadow' bindtap="backTopFn"  wx:if="{{backTopShow}}">
+    <icon class='icons ico_top'></icon>
+</view>
+
+<!-- 登录提示 -->
+<view hidden="{{hasUserInfo}}">
+<login-tip binduserInfo="getUserInfoFn"></login-tip>
+</view>
+
+<!------------------ tab栏菜单(英文版本才出现) ------------------>
+<view wx:if="{{lang=='en'}}" class="tab_box">
+    <tab index='0' msg-num="{{tabMsgNum}}" lang-change='{{lang}}'></tab>
+</view>

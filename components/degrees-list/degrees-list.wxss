@@ -1,0 +1,17 @@
+@import "/app.wxss";
+
+/* 内容列表 */
+.repair_list .li{padding: 26rpx 30rpx 30rpx 20rpx; margin-bottom: 30rpx; background: #fff;}
+.repair_list .li_r{float:right; margin-left:30rpx; text-align: right;}
+.repair_list .li_r .floor{color:#888888; font-size:24rpx; margin-bottom:26rpx; line-height:40rpx;}
+.repair_list .li_r .status{color: #f28d09; font-size: 28rpx; margin-bottom:20rpx;}
+.repair_list .li_r .status.done{color: #2f9cac;}
+.repair_list .li_r .price_box{font-size: 24rpx; line-height: 40rpx; color:#555;  }
+.repair_list .li_r .price_box .money{font-weight: 500;  font-size:32rpx; line-height:40rpx; display:inline-block; vertical-align: middle;}
+.repair_list .li_l{overflow:hidden;}
+.repair_list .li_l .yd_title01{display: block; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.repair_list .li_l .title{color: #333; font-size: 32rpx; font-weight: 500; padding: 26rpx 0 10rpx;}
+.repair_list .li_l .title .icon_jbc{width: 36rpx; height: 36rpx; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_degrees.png) no-repeat 0 2rpx; background-size: 36rpx auto; float: left; padding-top: 8rpx; margin-right: 8rpx;}
+.repair_list .li_l .title .month{font-weight: 500;}
+.repair_list .li_l .title .expired{color: #9d9d9d; font-size: 28rpx; line-height: 36rpx; font-weight: normal;}
+.repair_list .li_l .ico_clock{width:30rpx; height:30rpx; background-position: -120rpx -120rpx;}

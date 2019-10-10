@@ -1,0 +1,32 @@
+
+<!-- 自定义Tab Bar -->
+<view class='tab_bar'>
+    <view class='ul'>
+        <navigator wx:for="{{tagList}}" wx:key="{{index}}" class='li {{index==tagIndex?"act":""}}' url='{{item.link}}' open-type='switchTab'>
+            <icon class='{{item.icoClass}}'></icon><text>{{item.title}}</text>
+            <text class='number' wx-if="{{msgNum!=0 && index==1}}">{{msgNum}}</text>
+        </navigator>
+    </view>
+</view>
+
+
+<!-- 自定义Tab Bar -->
+<!-- <view class='tab_bar'>
+  <view class='ul'>
+    <navigator  class='li btn1 {{active==0?"act":""}}'  url='{{active==0?"":"/pages/index/index"}}' open-type="switchTab" hover-class='none'>首页</navigator>
+    <navigator 
+      class='li btn2 {{active==1?"act":""}}' 
+      url='{{active==1?"":"/pages/message/message-index/message-index"}}'
+      open-type="switchTab"
+      hover-class='none'
+    >
+      <text class='number' wx-if="{{msgNum!=0}}">{{msgNum}}</text>消息
+    </navigator>
+    <navigator 
+      class='li btn3 {{active==2?"act":""}}' 
+      url='{{active==2?"":"/pages/user/user-index/user-index"}}' 
+      open-type="switchTab"
+      hover-class='none'
+    >我的</navigator>
+  </view>
+</view> -->

@@ -1,0 +1,21 @@
+@import "/app.wxss";
+
+/* 内容列表 */
+.fee_list .li{padding: 26rpx 0 32rpx; margin-top: 32rpx; background: #fff;}
+.fee_list .li .right{float:right;}
+.fee_list .li .right .status{color: #f28d09; font-size: 28rpx; margin-right: 32rpx; float: right;}
+.fee_list .li .right .status.epd{color: #d63a31;}
+.fee_list .li .right .status.done{color: #2f9cac;}
+.fee_list .li .right .price_box{font-size:32rpx; color:#555; padding: 4rpx 0 0 10rpx; margin-right: 32rpx; text-align: right; float: right; clear: right;}
+.fee_list .li .right .price_box .money{color: #ff6000; font-weight: 500;}
+.fee_list .li .right .price_box .money text{font-size: 70%;}
+.fee_list .li .right .price_box .overdue{color:#888 ;font-size: 24rpx; padding-top: 4rpx;}
+
+.fee_list .li .left{overflow:hidden;}
+.fee_list .li .left .yd_title01{margin-left: 16rpx; display: block; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.fee_list .li .left .title{color: #333; font-size: 32rpx; font-weight: 500; padding: 26rpx 0 10rpx 30rpx;}
+.fee_list .li .left .title .icon_jbc{width: 36rpx; height: 36rpx; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_fee.png) no-repeat 0 2rpx; background-size: 36rpx auto; float: left; padding-top: 8rpx; margin-right: 8rpx;}
+.fee_list .li .left .title .month{font-weight: 500;}
+.fee_list .li .left .title .expired{color: #9d9d9d; font-size: 28rpx; line-height: 36rpx; font-weight: normal;}
+.fee_list .li .left .text{color: #777; font-size: 28rpx; line-height: 36rpx; float: left;}
+.fee_list .li .left .ico_txt{float: left;}

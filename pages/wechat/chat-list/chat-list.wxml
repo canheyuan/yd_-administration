@@ -1,0 +1,52 @@
+
+<!-- 消息列表 -->
+<view class='msg_mdl box_shadow'>
+    <navigator class='msg_item' url='/pages/message/notice-list/notice-list' hover-class='none'>
+        <image class='img' src='{{domainUrl}}/images/msg/msg_ico01.png'></image>
+        <view class='info'>
+            <view class='title'>{{langData.systemNotice[lang]}}</view>
+            <view class='p'>{{langData.systemDes[lang]}}</view>
+            <view class='num' wx:if="{{msgData.systemMsg > 0}}">{{msgData.systemMsg}}</view>
+        </view>
+    </navigator>
+
+    <navigator class='msg_item' url='/pages/message/message-list/message-list' hover-class='none'>
+        <image class='img' src='{{domainUrl}}/images/msg/msg_ico02.png'></image>
+        <view class='info'>
+            <view class='title'>{{langData.message[lang]}}</view>
+            <view class='p'>{{langData.mesDes[lang]}}</view>
+            <view class='num' wx:if="{{msgData.noticeMsg > 0}}">{{msgData.noticeMsg}}</view>
+        </view>
+    </navigator>
+</view>
+
+<!-- 用户 -->
+<view class='usermsg_box'>
+    <view 
+        wx:for="{{contactList}}" wx:key="contactList{{index}}" class='msg_box clearfix'
+        data-userId="{{item.To_Account}}" bindtap="gotoChat" data-item="{{item}}"
+    >
+        <view class='user_head'>
+            <image src='{{item.C2cImage?item.C2cImage:domainUrl+"/images/default/df_userhead.png"}}'></image>
+        </view>    
+        <view class='div_top'>
+            <view class='info_1'>
+                <text class='title'>{{item.C2cNick}}</text>
+                <text class='time'>{{item.MsgTimeStamp}}</text>
+            </view>
+            <view class='info_2'>
+                <view class='red' wx:if="{{item.unread}}">{{item.unread}}</view>
+                <text class='txt'>{{item.MsgShow}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 底部导航栏 -->
+<!-- <view wx:if="{{msgNum!=0}}">
+<tab active="1" msg-num="{{msgNum}}"></tab>
+</view> -->
+<!------------------ tab栏菜单 ------------------>
+<view wx:if="{{lang=='en'}}" class="tab_box">
+    <tab index='1' msg-num="{{tabMsgNum}}" lang-change='{{lang}}'></tab>
+</view>

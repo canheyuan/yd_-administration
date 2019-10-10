@@ -1,0 +1,54 @@
+@import "/app.wxss";
+/*主体*/
+.body_main{
+  background: #fff;
+  line-height: 0;
+  font-size: 28rpx;
+  padding: 38rpx 32rpx 42rpx;
+  margin-top: 32rpx;
+}
+.main_com{
+  color: #333;
+  font-size: 34rpx;
+  font-weight: 500;
+}
+.main_time{
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  color: #bdbdbd;
+}
+.main_num{
+  margin-top: 24rpx;
+  font-size: 28rpx;
+  color: #bdbdbd;
+}
+.body_main image{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+}
+.main_time>image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.main_num>image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.main_time_data,.main_num_data{
+  color: rgb(10, 4, 4);
+}
+.status{
+  float: right;
+  font-size: 28rpx;
+  font-weight: normal;
+  color: #2f9cac;
+  margin-top: 20rpx;
+}
+.status.warn{
+  color: #d63a31;
+}
+.status.epd{
+  color: #a5a5a5;
+}

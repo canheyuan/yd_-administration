@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "合同查看",
+  "usingComponents": {
+    "contract-list": "/components/contract-list/contract-list"
+  }
+}

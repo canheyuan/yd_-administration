@@ -1,0 +1,42 @@
+
+<!-- 数据未加载时显示的默认列表 -->
+<default-list wx:if="{{!listInfo.isFinish}}"></default-list>
+
+<block wx:if="{{listInfo.isFinish}}">
+<!--列表-->
+<view class='notice_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <view 
+        wx:for="{{listInfo.list}}" wx:key="noticeList{{index}}" class='msg_box' 
+        bindtap="gotoDetailFn" data-item="{{item}}" data-index="{{index}}"
+    >
+        <image src='{{domainUrl}}/images/msg/ico_notice_l.png'></image>
+        <view class='div_right'>
+            <view class='info_1'>
+                <view class='dot' wx:if="{{item.isUnread == 'Y'}}"></view>
+                <text class='title'>{{item.title}}</text>
+            </view>
+            <view class='info_2'>
+                <view class='txt'>{{item.contentStr}}</view>
+            </view>
+            <view class='time'>{{item.publishTime}}</view>
+        </view>
+    </view>
+</view> 
+<!-- 底部提示文字 -->
+<view class='more_tip' wx:if="{{listInfo.list.length>0 && listInfo.list && listInfo.tipTxt}}">
+    <view class='txt'>{{listInfo.tipTxt}}</view>
+</view>  
+<!-- 暂无状态 -->
+<list-nothing c-name="notice" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>
+</block>
+
+
+
+
+
+
+
+
+
+
+

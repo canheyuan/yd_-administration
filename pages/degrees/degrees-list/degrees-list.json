@@ -1,0 +1,7 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "水电度数",
+    "usingComponents": {
+        "degrees-list": "/components/degrees-list/degrees-list"
+    }
+}

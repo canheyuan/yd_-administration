@@ -1,0 +1,73 @@
+
+/* -------- index 顶部 ------- */
+.index_mdl01{position:relative; overflow: hidden; background:url(https://www.5iparks.com/static/wuye/images/index/top_bg.png) no-repeat center top; background-size:100% auto;}
+/* 顶部 */
+.index_top{position:relative; z-index: 9; padding: 26rpx;}
+.index_top .logo_yd{float:right;width:52rpx; height:52rpx; background:url(https://www.5iparks.com/static/wuye/images/index/logo_yd.png) no-repeat center top; background-size:100% auto; }
+.index_top .address{color:#fff; overflow: hidden; font-size:24rpx;}
+.index_top .address .ico_dz{ width:50rpx; height:50rpx; vertical-align: middle; position:relative; top:-3rpx; background-position:-100rpx -60rpx;}
+.index_top .address .txt{ font-size:36rpx; line-height:50rpx; font-weight: 500;}
+
+/* 幻灯片 */
+/* .index_slide_box{position:relative; z-index: 9;}
+.index_slide{height:352rpx; }
+.index_slide_item{height: 320rpx; margin: 0 10rpx; border-radius:20rpx; box-shadow: 0 5rpx 30rpx rgba(0,0,0,.22);}
+.index_slide_item .slide_img{width:100%; border-radius:20rpx;} */
+
+/* 个人信息 */
+.persn_box{box-sizing: border-box; width: 730rpx; height: 320rpx; padding-top: 38rpx; margin: 0 auto 32rpx; border-radius: 20rpx; overflow: hidden; background:url(https://www.5iparks.com/static/wuye/images/index/bg-card.jpg) no-repeat center top; background-size:100% auto; box-shadow: 0 5rpx 34rpx rgba(0,0,0,.22);}
+.persn_data{margin-left: 32rpx; float: left;}
+.persn_data .head{width: 102rpx; height: 102rpx; font-size: 0; line-height: 0; margin-right: 18rpx; border: 4rpx solid #a9ecea; border-radius: 50%; overflow: hidden; float: left;}
+.persn_data .head .img{width: 100%; height: 100%;}
+.persn_data .person{float: left;}
+.persn_data .person .name{color: #333; font-size: 40rpx; float: left;}
+.persn_data .person .post{color: #9d9d9d; font-size: 30rpx; padding-left: 18rpx; margin: 12rpx 0 0 18rpx; float: left; position: relative;}
+.persn_data .person .post::before{content:''; display:inline-block; width:2rpx; height:26rpx; background:#cfcfcf; position: absolute; top: 8rpx; left: 0;}
+.persn_data .phone{margin-top: 10rpx; float: left; clear: left;}
+.persn_data .phone icon{width: 30rpx; height: 30rpx; margin: 4rpx 4rpx 0 0; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_iphone.png) no-repeat center top; background-size:100% auto; float: left;}
+.persn_data .phone .phone_num{color: #555; font-size: 30rpx; line-height: 38rpx; float: left;}
+.btn_edit{ height: 64rpx; font-size: 0; line-height: 0; margin-top: 22rpx; float: right; background:#fad54d; border-top-left-radius: 32rpx; border-bottom-left-radius: 32rpx; padding:0 20rpx 0 30rpx;}
+.btn_edit text{color:#fff; font-size:26rpx; line-height:64rpx;}
+.btn_edit .img{width: 100%; height: auto;}
+
+.persn_box .ul{display: flex; flex-flow: row wrap; justify-content: space-between; margin-top: 32rpx; clear: both; }
+.persn_box .ul .li{box-sizing: border-box; flex: 0 0 33.33333%; font-size: 26rpx; line-height: 28rpx; text-align: center; border-right: 2rpx solid #e8e8e8;}
+.persn_box .ul .li:last-child{border-right: none;}
+.persn_box .ul .li .lable{color: #8d8d8d;}
+.persn_box .ul .li .number{color: #8d8d8d; font-size: 56rpx; font-weight: 500; line-height: 60rpx; margin-top: 16rpx;}
+.persn_box .ul .li .number.yellow{color: #ffba00;}
+.persn_box .ul .li .number.red{color: #fe645c;}
+.persn_box .ul .li .number.cyan{color: #15b7ce;}
+
+
+.index_mdl02{background:#fff; box-shadow:0 0 24rpx 5rpx #eeeeee; border-radius:30rpx; border-bottom-left-radius: 0; border-bottom-right-radius: 0; padding-top:30rpx;}
+/* ------------- 通知公告 ------------- */
+.notice_mdl{padding:20rpx; margin: 0 24rpx; background:#f5f5f5; overflow: hidden; border-radius:15rpx;}
+.notice_mdl .notice_img{float:left; width:96rpx; height:80rpx; margin-right:20rpx;}
+.notice_mdl .notice_ctn{padding-top: 6rpx; overflow: hidden;}
+.notice_slide{height:40rpx;}
+.notice_slide .label{ width:70rpx;text-align: center; height:28rpx; line-height:28rpx; font-size:20rpx; background:#fa7947; border-radius:6rpx;  color:#fff; float:left; margin-right:20rpx; margin-top:5rpx;}
+.notice_slide .l_orange{background:#fa7947;}
+.notice_slide .l_blue{background:#6592fe;}
+.notice_slide .a{display:block; overflow: hidden; font-size:26rpx; white-space:nowrap; text-overflow:ellipsis; color:#555555; line-height:40rpx;}
+/* 菜单 */
+.menu_list {padding:20rpx 0; overflow: hidden;}
+.menu_list .a{display:block; width:33.33%; text-align: center; float:left; padding:10rpx 0; box-sizing: border-box; line-height:0;}
+.menu_list .a .menu_icons{display:inline-block; width:140rpx; height:140rpx; background-size:1400rpx 140rpx;}
+.menu_list .a .ico01{background-position: 0 0;}
+.menu_list .a .ico02{background-position: -140rpx 0;}
+.menu_list .a .ico03{background-position: -280rpx 0;}
+.menu_list .a .ico04{background-position: -420rpx 0;}
+.menu_list .a .ico05{background-position: -560rpx 0;}
+.menu_list .a .ico06{background-position: -700rpx 0;}
+.menu_list .a .title{font-size:26rpx; color:#333333; display: block; line-height:30rpx;}
+.menu_list_df{padding:20rpx 0; overflow: hidden;}
+.menu_list_df .li{display:block; width:33.33%; text-align: center; float:left; padding:10rpx 0; box-sizing: border-box; line-height:0;}
+.menu_list_df .li .img{display:inline-block; width:120rpx; height:120rpx; background:#eee; border-radius:100%; margin:10rpx 0;}
+.menu_list_df .li .title{ display: inline-block; width:60%; height:30rpx; line-height:30rpx; background:#eee;}
+
+
+/* 待办事项 */
+.index_mdl03{padding-top: 32rpx; background: #f7f7f7;}
+.repair_list{ background: #fff;}
+.repair_list .hdr_line{height: 58rpx; padding: 22rpx 32rpx 0 16rpx; border-bottom: 1rpx solid #e2e2e2;}

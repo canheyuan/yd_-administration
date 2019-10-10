@@ -1,0 +1,22 @@
+page{background-color: #f7f7f7;}
+
+/* 电费明细 */
+.repair_list{margin-top: 32rpx; background: #fff; position: relative;}
+.repair_list .hdr_line{height: 58rpx; padding: 22rpx 32rpx 0 16rpx; border-bottom: 1rpx solid #e2e2e2;}
+.repair_list .yd_title01{float: left;}
+.repair_list .price_box{float:right; line-height: 34rpx;}
+.repair_list .lable{font-size:30rpx;color:#888;}
+.repair_list .money{font-size:34rpx;color:#ff6000;font-weight:500;}
+.repair_list .money text{font-size: 70%;}
+.repair_list .repair_ctn{padding: 20rpx 32rpx; }
+.repair_ctn .electricity{width: 50%; border-right: 1rpx solid #e2e2e2; float: left;}
+.repair_ctn .water{width: 45%; float: right;}
+.repair_ctn .dl{font-size: 30rpx; line-height: 70rpx; clear: both;}
+.repair_ctn .dl:after {visibility:hidden; display:block; font-size:0; content: " "; clear:both; height:0;}
+.repair_ctn .dl .dt{color: #888; width: 120rpx; float: left;}
+.repair_ctn .dl .dd{padding-left: 40rpx; overflow:hidden;}
+/* .repair_ctn .dl .dd text{font-size: 70%;} */
+.repair_ctn .dl .f_udl{float: right;}
+
+/* 没有更多了 */
+.yd_title02{margin-top: 32rpx;}

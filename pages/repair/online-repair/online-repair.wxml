@@ -1,0 +1,82 @@
+
+<form  bindsubmit="formSubmit">
+<view class='repair_mdl'>
+  <view class='repair_title'>报修内容</view>
+  <view class='repair_ctn'>
+    <!-- 报修类型 -->
+    <view class='form_mdl' style='box-shadow:none;'>
+      <view class='dl clearfix'>
+        <text class='dt'>报修类型：</text>
+        <view class='dd'>
+          <picker class='picker' bindchange="bxTypeListFn" name="typeId"
+          value="{{bxTypeList[bxTypeIndex].code}}" range="{{bxTypeList}}" range-key="label">
+            <view style="color:{{bxTypeList?'#333333':'#c2c2c2'}}">
+              {{bxTypeIndex?bxTypeList[bxTypeIndex].label:'请选择'}}
+            </view>
+          </picker>
+          <icon class='icons ico_arrow'></icon>
+        </view>
+      </view>
+    </view>
+    <textarea class='textarea' placeholder="请简短描述问题，限30字" placeholder-style="color:#c2c2c2;" name="description" maxlength='30'  />
+    <view class='file_imgs clearfix'>
+      <!-- 循环预览图 -->
+      <view class='li' wx:for="{{fileImgs}}" wx:key="{{index}}">
+        <image class='img' src='{{item}}'></image>
+        <icon class='icons close_btn' bindtap='removeImageFn' data-index="{{index}}"></icon>
+      </view>
+      <view class='li' wx:if="{{fileImgsNum!=0}}">
+        <view class='add_btn' bindtap="fileImageFn">
+          <icon class='icons ico_add'></icon>
+          <text>添加附件</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='ylb_txt' bindtap="popFn"><icon class="icons"></icon>有偿服务价格一览表 >></view>
+</view>
+
+<!-- 报修地点/联系人 -->
+<view class='repair_mdl'>
+  <view class='repair_title'>报修地点/联系人</view>
+
+    <view class='form_mdl'>
+      <view class='dl'>
+        <text class='dt'>选择房间</text>
+        <view class='dd'>
+          <picker class='picker' bindchange="roomListFn" name="unitId"
+          value="{{roomList[roomIndex].id}}" range="{{roomList}}" range-key="name">
+            <view style="color:{{roomIndex?'#333333':'#c2c2c2'}}">{{roomIndex?roomList[roomIndex].name:'请选择'}}</view>
+          </picker>
+          <icon class='icons ico_arrow'></icon>
+        </view>
+      </view>
+      
+      <view class='dl'>
+        <text class='dt'>联系人</text>
+        <view class='dd'>
+          <input class='input' type='text' placeholder='请填写联系人姓名' placeholder-class='pl_input' name="contact" value='{{contactsName}}' />
+        </view>
+      </view>
+      <view class='dl'>
+        <text class='dt'>联系电话</text>
+        <view class='dd'>
+          <input class='input' type='text' placeholder='请填写手机号码' name="phone" placeholder-class='pl_input' value='{{contactsPhone}}' />
+        </view>
+      </view>
+     </view>
+
+</view>
+
+<view class='ljtj_btn'>
+  <button class='blue_btn' form-type='submit'>立即报修</button>
+</view>
+</form>
+
+<!-- 有偿服务价格一览表弹窗 -->
+<view hidden="{{popIsShow}}">
+<serve-price-pop bindclosepop="popFn"></serve-price-pop>
+</view>
+
+
+

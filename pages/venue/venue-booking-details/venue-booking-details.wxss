@@ -1,0 +1,65 @@
+@import "/wxParse/wxParse.wxss";
+page{background:#f7f7f7; padding-bottom:100rpx;}
+
+/* 幻灯片 */
+.venue_slide_box{position:relative; z-index: 9; height:360rpx;}
+.venue_slide_box .venue_slide{width:100%; height:360rpx; overflow: hidden;  }
+.venue_slide_box .slide_img{width:100%;height:360rpx;}
+
+/* 详细信息 */
+.venue_details_box{background:#fff;  border-radius:20rpx;  background:#fff;padding:20rpx; margin:-90rpx 20rpx 0; position:relative; z-index: 10;}
+
+.venue_details_box .title{font-size:34rpx;  color:#333333; }
+.venue_details_box .ico_txt .ico_dz{background-position: -330rpx -120rpx}
+.venue_details_box .ico_txt .ico_per{background-position: -360rpx -120rpx}
+.venue_details_box .label_list{overflow:hidden; height:34rpx; font-size:0; margin-top:15rpx;}
+.venue_details_box .label_list text{display:inline-block; height:34rpx; line-height:32rpx; border:1rpx solid #e5e5e5; border-radius:8rpx; background:#fff; box-sizing: border-box; font-size:22rpx; color:#aeaeae; padding:0 10rpx; margin-right:10rpx;}
+
+.venue_details_box .des{background:#f5f5f5; padding:20rpx; border-radius:15rpx; margin-top:20rpx; font-size:28rpx; color:#555555; line-height:48rpx;}
+.venue_details_box .des .text{display: -webkit-box; -webkit-box-orient: vertical; line-height:48rpx;}
+.venue_details_box .des.row5 .text{overflow: hidden; -webkit-line-clamp: 5; height:240rpx;}
+.venue_details_box .more_btn{display:block; text-align: center; font-size:24rpx; color:#9d9d9d; height:50rpx; line-height:50rpx; padding:10rpx 0 0rpx;}
+
+.venue_details_box .more_btn icon{width:30rpx; height:30rpx; background-position: -150rpx -120rpx; vertical-align: middle; margin-left:10rpx; position:relative; top:-2rpx;}
+.venue_details_box .more_btn.up icon{transform:rotate(180deg);}
+
+/* 日期选择 */
+.picker_group {font-size:28rpx; line-height:50rpx;}
+.picker_group .date_txt{float:left; line-height:60rpx; color:#333;}
+.picker_group picker {color: #999;display: inline-block;width:135rpx;text-align: center;
+line-height:60rpx;}
+
+.repair_ctn .textarea{border:1rpx solid #e5e5e5; border-radius:15rpx; padding:15rpx; width:100%; box-sizing:border-box; background:#fafafa; font-size:30rpx; line-height:44rpx; height:150rpx; margin-top:20rpx;}
+
+/* 订单号时间 */
+.order_time{margin-top: 32rpx; padding: 18rpx 32rpx; background: #fff; margin-bottom:20rpx;}
+.order_time .ico_txt{float: left; clear: both; margin-top:10rpx;}
+.order_time .ico_txt.order_num{padding-left: 8rpx; float: left; clear: none;}
+.order_time .ico_txt.noicon{margin-left: 36rpx;}
+/* 内容列表 */
+.repair_list{margin-top: 32rpx; background: #fff; position: relative;}
+.repair_list .hdr_line{height: 58rpx; padding: 22rpx 32rpx 0 16rpx; border-bottom: 1rpx solid #e2e2e2;}
+.repair_list .yd_title01{float: left;}
+.repair_list .status{color: #f28d09; font-size: 28rpx; float: right;}
+.repair_list .status.follow{color: #2f9cac;}
+.repair_list .status.done{color: #a5a5a5; width: 126rpx; height: 126rpx; position: absolute; top: -10rpx; right: 6rpx; background:url(https://www.5iparks.com/static/wuye/images/stamp_done.png) no-repeat top left; background-size: 126rpx;}
+.repair_list .repair_ctn{padding: 10rpx 32rpx 32rpx; }
+.repair_ctn .dl{font-size: 30rpx; line-height: 81rpx; clear: both;}
+.repair_ctn .dl:after {visibility:hidden; display:block; font-size:0; content: " "; clear:both; height:0;}
+.repair_ctn .dl .dt{color: #888; width: 120rpx; float: left;}
+.repair_ctn .dl .dd{color: #333; padding-left: 40rpx; float: left;}
+.repair_ctn .dl .dd .pic{width: 160rpx; height: 160rpx; margin: 20rpx 0 0 20rpx; float: left;}
+.repair_ctn .dl .dd .pic:first-child{margin-left: 0;}
+.repair_ctn .dl .dd .pic image{width: 100%; height: 100%; background:#eee; }
+.repair_ctn .repair_txt{color: #555; line-height: 42rpx; min-height: 100rpx; padding: 20rpx 26rpx; margin: 6rpx 0; border-radius: 8rpx; background: #f5f5f5; clear: both;}
+.ylb_txt{font-size:26rpx; color:#2f9cac; text-decoration: underline; padding:16rpx 30rpx; line-height:40rpx;}
+.ylb_txt icon{width:40rpx; height:40rpx; background-position:0 -160rpx; margin-right:10rpx; vertical-align: top;}
+
+
+
+/* 底部按钮 */
+.yd_title02{margin-top: 32rpx;}
+.btn_box_btm{width: 100%; box-shadow: 0 -7rpx 24rpx rgba(0,0,0,.1); position: fixed; bottom: 0; z-index: 999;}
+.light_blue_btn_btm{width: 50%; box-shadow: none; float: left;}
+.blue_btn_btm{width: 50%; box-shadow: none; float: right;}
+

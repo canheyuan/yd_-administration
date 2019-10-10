@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/coupon/exchange-list/exchange-list",
+    "pages/coupon/exchange-result/exchange-result",
+    "pages/coupon/coupon-detail/coupon-detail",
+    "pages/degrees/degrees-details2/degrees-details2",
+    "pages/degrees/degrees-list/degrees-list",
+    "pages/complaint/complaint-detail/complaint-detail",
+    "pages/venue/venue-booking-details/venue-booking-details",
+    "pages/message/message-list/message-list",
+    "pages/supplies/supplies-detail/supplies-detail",
+    "pages/common/login/login",
+    "pages/common/find-password/find-password",
+    "pages/fee-check/project-detail/project-detail",
+    "pages/fee-check/fee-detail/fee-detail",
+    "pages/fee-check/fee-list/fee-list",
+    "pages/contract/contract-detail/contract-detail",
+    "pages/contract/contract-list/contract-list",
+    "pages/degrees/degrees-details/degrees-details",
+    "pages/repair/repair-index/repair-index",
+    "pages/repair/repair-detail/repair-detail",
+    "pages/message/notice-list/notice-list",
+    "pages/search/search",
+    "pages/message/notice-details/notice-details",
+    "pages/user/change-garden/change-garden",
+    "pages/user/user-index/user-index",
+    "pages/user/update-info/update-info",
+    "pages/repair/online-repair/online-repair",
+    "pages/common/result/result",
+    "pages/wechat/chat-list/chat-list",
+    "pages/wechat/chat/chat",
+    "pages/coupon/scan-error/scan-error",
+    "pages/analysis/data-analysis/data-analysis",
+    "pages/analysis/income-profile/income-profile"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "园叮智慧园区",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#606060",
+    "selectedColor": "#066f89",
+    "backgroundColor": "#f9f9f9",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/nav_ico/btn1.png",
+        "selectedIconPath": "images/nav_ico/btn1_act.png"
+      },
+      {
+        "pagePath": "pages/wechat/chat-list/chat-list",
+        "text": "消息",
+        "iconPath": "images/nav_ico/btn2.png",
+        "selectedIconPath": "images/nav_ico/btn2_act.png"
+      },
+      {
+        "pagePath": "pages/user/user-index/user-index",
+        "text": "我的",
+        "iconPath": "images/nav_ico/btn3.png",
+        "selectedIconPath": "images/nav_ico/btn3_act.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

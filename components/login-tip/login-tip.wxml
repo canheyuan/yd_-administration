@@ -1,0 +1,16 @@
+<!-- 登录提示弹窗 -->
+<view class='mask_bg pop_show'>
+    <view class='mask_bg_ctn'>
+        <view 
+            class='login_tip_mdl'
+            style="background:url(https://www.5iparks.com/static/yuanding/images/login_tip_bg.jpg) #fff no-repeat center top; background-size:100% auto;"
+        >
+            <view class='close_btn icons' bindtap="closePopFn" wx:if="{{closeBtnShow}}"></view>
+            <text class='txt'>{{langData.tipText1[lang]}}</text>
+            <button 
+                open-type='getUserInfo' bindgetuserinfo='getUserInfoFn' data-page="login"
+                class='orange_btn' hover-class="none"
+            >{{langData.loginBtn[lang]}}</button>
+        </view>
+    </view>
+</view>

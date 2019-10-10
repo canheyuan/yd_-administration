@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "repair-list": "/components/repair-list/repair-list"
+  }
+}

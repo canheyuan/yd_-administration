@@ -1,0 +1,20 @@
+@import "/app.wxss";
+
+/* 内容列表 */
+.repair_list .li{padding: 26rpx 0 32rpx; margin-top: 32rpx; background: #fff;}
+.repair_list .li .top .yd_title01{margin-left: 16rpx; display: block; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.repair_list .li .top .status{color: #f28d09; font-size: 28rpx; margin:0 32rpx 20rpx; float: right;}
+.repair_list .li .top .status.follow{color: #2f9cac;}
+.repair_list .li .top .status.discuss{color: #066f89;}
+.repair_list .li .top .status.done{color: #a5a5a5;}
+
+.repair_list .li .main{padding: 0 32rpx; clear: left; position: relative;}
+.repair_list .li .main .room{color: #333; font-size: 32rpx; font-weight: 500; padding: 26rpx 0 10rpx;}
+.repair_list .li .main .dl_info{overflow:hidden;}
+.repair_list .li .main .dl_info .dt{color: #9d9d9d; font-size: 28rpx; line-height: 44rpx; float: left;}
+.repair_list .li .main .dl_info .dd{color: #777777; font-size: 28rpx; line-height: 44rpx; display: block; overflow: hidden;}
+.repair_list .li .main .time_msg{font-size:24rpx; color:#9d9d9d; padding-top: 16rpx; clear: both;}
+.repair_list .li .main .ico_txt{float: left;}
+.repair_list .li .main .ico_txt .ico_time{display:inline-block; width:30rpx; height:30rpx; background-position:-120rpx -120rpx;}
+.repair_list .li .main .dtime{float: right;}
+.repair_list .li .main .btn{width: 22%; position: absolute; right: 32rpx; bottom: 0;}

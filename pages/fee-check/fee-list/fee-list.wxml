@@ -1,0 +1,29 @@
+<!-- 选项卡切换 -->
+<view class='tag_box tag_fixed'>
+  <view class='tag_list'>
+    <view 
+      class='tag_item {{tagIndex==index?"act":""}}' 
+      wx:for="{{tagList}}" wx:key="{{index}}"
+      bindtap="tagChangeFn" data-index="{{index}}"
+    >{{item.name}}</view>
+  </view>
+  <!-- <view class='tab_search'><image class='icon' mode='widthFix' src='{{domainUrl}}/images/icon/ico_search.png'></image></view> -->
+</view>
+
+<!-- 未缴费 -->
+<view hidden="{{tagIndex!=0}}">
+  <fee-list order-type="1" reach-data="{{reach[0]}}"></fee-list>
+</view>
+
+<!-- 已缴费 -->
+<view hidden="{{tagIndex!=1}}">
+  <!-- <view class='order_month_top'>
+    <view class='month_btn'><icon class='icons ico_month'></icon></view>
+    <view class='info'>
+      <text class='tit'>本月</text>
+    </view>
+  </view> -->
+  <fee-list order-type="2" reach-data="{{reach[1]}}"></fee-list>
+
+</view>
+

@@ -1,0 +1,64 @@
+
+<!-- 物资共享详情 -->
+<view class='repair_list clearfix'>
+  <view class='hdr_line'>
+    <view class='yd_title01'>{{detailsData.entName}}</view>
+
+    <view class='status {{detailData.statusClass}}'>{{detailData.statusName}}</view>
+  </view>
+  <view class='repair_ctn clearfix'>
+    <view class='dl'>
+      <view class='dt'>{{langData.borrowGoods[lang]}}</view>
+      <view class='dd'>{{detailsData.goodsName}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.borrowNum[lang]}}</view>
+      <view class='dd'>{{detailsData.rentCount}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.public.contact[lang]}}</view>
+      <view class='dd'>{{detailsData.contact}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
+      <view class='dd'>{{detailsData.contactPhone}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.public.applyTime[lang]}}</view>
+      <view class='dd'>{{detailsData.applyTime}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 未接单状态 -->
+<view class='btn_box_btm' wx:if="{{detailsData.status==1}}">
+  <view 
+    class='blue_btn_btm' 
+    bindtap='openPop' data-type='2' data-operation="agree" data-tip="{{langData.popTip1[lang]}}"
+  >{{langData.public.agreeBtn[lang]}}</view>
+  <view 
+    class='light_blue_btn_btm' 
+    bindtap='openPop' data-type='5' data-operation="reject" data-tip="{{langData.popTip2[lang]}}"
+  >{{langData.public.rejectBtn[lang]}}</view>
+</view>
+
+<!-- 已接单状态 -->
+<view class='btn_box_btm' wx:if="{{detailsData.status==2}}">
+  <view 
+    class='blue_btn_btm' 
+    bindtap='openPop' data-operation="giveback" style='width:100%;' data-tip="{{langData.popTip3[lang]}}"
+  >{{langData.verifyBtn[lang]}}</view>
+</view>
+
+<!-- 确认弹窗 -->
+<view class='mask_bg pop_show' hidden='{{isPopHide}}'>
+  <view class='mask_bg_ctn'>
+    <view class='pop_mdl'>
+      <view class='alert' style="padding:50rpx 0;">{{popTipTitle}}</view>
+      <view class='btm_btn clearfix'>
+        <view class='btn' bindtap="cancelFn">{{langData.public.callOffBtn[lang]}}</view>
+        <view class='btn' bindtap='affirmFn'>{{langData.public.confirmBtn[lang]}}</view>
+      </view>
+    </view>
+  </view>
+</view>

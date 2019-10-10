@@ -1,0 +1,22 @@
+page{ background:#f7f7f7;}
+
+.user_info .per_img{width:140rpx; height:140rpx; border-radius:100%;}
+.user_info .per_dl{border-bottom:none; padding-bottom:0;}
+.user_info .form_mdl{border-radius:0; padding:0 0 0 24rpx; margin-top: 32rpx; box-shadow: none;}
+.user_info .form_mdl .dl{padding:24rpx 0;}
+.user_info .form_mdl .dl:last-child{border-bottom: none;}
+.user_info .form_mdl .dt{padding-left: 4rpx; font-size: 30rpx;}
+.user_info .form_mdl .dt .img{width: 40rpx; height: 40rpx; margin-top: 4rpx;}
+.user_info .form_mdl .dd .txt{font-size: 30rpx; display: block;}
+.user_info .form_mdl .dd .ico_arrow{right:20rpx;}
+
+.exit_btn_box{line-height: 40rpx; text-align: center; padding:28rpx 0; margin-top: 32rpx; background: #fff;}
+
+/* 退出登录弹窗 */
+.pop_mdl .alert{line-height:50rpx; font-size:32rpx; color:#555; padding: 10rpx 0 20rpx;}
+.versions_txt .txt{font-size:20rpx; color:#bbb;}
+.yd_title02 .txt::before{content:'——'; color:#ddd; display:inline-block; font-size:20rpx; line-height:40rpx; margin-right:20rpx;}
+.yd_title02 .txt::after{content:'——'; color:#ddd; display:inline-block; font-size:20rpx; line-height:40rpx; margin-left:20rpx; vertical-align: middle;}
+
+
+

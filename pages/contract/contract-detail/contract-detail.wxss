@@ -1,0 +1,28 @@
+page{background-color: #f7f7f7; padding-bottom: 20rpx;}
+
+/* 上月读数 */
+.repair_list{margin-top: 32rpx; background: #fff; position: relative;}
+.repair_list .hdr_line{height: 58rpx; padding: 22rpx 32rpx 0 16rpx; border-bottom: 1rpx solid #e2e2e2;}
+.repair_list .yd_title01{float: left;}
+.repair_list .title_box{color: #333; font-size: 28rpx; line-height: 40rpx; font-weight: 500; float: left;}
+.repair_list .title_box .title{float: left;}
+.repair_list .title_box .title text{color: #888;}
+.repair_list .title_box icon{width: 40rpx; height: 40rpx; margin-right: 2rpx; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_ctrt.png) no-repeat top left; background-size: 40rpx 40rpx; float: left;}
+.repair_list .status{color: #2f9cac; font-size: 28rpx; float: right;}
+.repair_list .status.warn{color: #d63a31;}
+.repair_list .status.epd{color: #a5a5a5;}
+.repair_list .repair_ctn{font-size: 30rpx; line-height: 70rpx; padding: 20rpx 32rpx; }
+.repair_ctn .lable_box{color: #888; float: left;}
+.repair_ctn .data_box{color: #333; margin-left: 40rpx; float: left;}
+.repair_ctn .repair_txt{color: #555; line-height: 42rpx; min-height: 100rpx; padding: 20rpx 26rpx; margin: 6rpx 0; border-radius: 8rpx; background: #f5f5f5; clear: both;}
+
+.contract_info{padding:20rpx 0;}
+.contract_info .dl{border:none; line-height:42rpx; padding:20rpx; overflow: hidden;}
+.contract_info .dl .dt{line-height:42rpx; font-size:30rpx; color:#888; width:160rpx;}
+.contract_info .dl .dd{line-height:42rpx;}
+
+.contract_info.w200 .dt{width:200rpx;}
+.contract_info.w260 .dt{width:260rpx;}
+
+/* 没有更多了 */
+.yd_title02{margin-top: 32rpx;}

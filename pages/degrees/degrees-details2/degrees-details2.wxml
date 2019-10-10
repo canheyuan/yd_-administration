@@ -1,0 +1,142 @@
+<!-- 顶部企业信息 -->
+<view class='cost_details_top'>
+  <view class='month'>{{detailsData.feePeriod}}{{langData.monthText[lang]}}</view>
+  <view class='h3'>{{detailsData.feeTypeName}}{{langData.entering[lang]}}</view>
+  <view class='p'><icon class='icons ico_fz'></icon>{{detailsData.meterName}}</view>
+  <!-- <view class='p per'><icon class='icons ico_per'></icon>{{detailsData.unitName}}</view> -->
+</view>
+
+
+<view class='transcribe_box'>
+
+  <!------------------------  ------------------------->
+  <view class='degrees_box'>
+    <view class='degrees_item {{datas.feeType}}'>
+      <!-- 可操作 -->
+      <view class='clearfix reading_box' wx:if="{{detailsData.isMetered=='N'}}">
+        <view class='reading'>
+          <view class='title'><text>{{detailsData.meterName}}</text>{{langData.monthAmmeter[lang]}}</view>
+          <view class='updata_ctn'>
+
+            <icon class='lable_ico'></icon>
+            <icon 
+              class='icons ico_reset' hidden="{{!detailsData.currentReading}}" 
+              bindtap="clearInputFn" data-obj="detailsData.currentReading"
+            ></icon>
+            <input 
+              class='input' type='digit' placeholder='{{langData.writePl[lang]}}' placeholder-class='placeholder' 
+              bindinput="inputChangeFn" data-obj="detailsData.currentReading" data-obj2="detailsData.count" 
+              data-type='currentReading' data-parent='{{detailsData}}'
+              value='{{detailsData.currentReading}}' 
+            />
+
+          </view>
+        </view>
+        <view class='pic'>
+
+          <view 
+            class='add_btn' wx:if="{{!detailsData.meterPicture}}" 
+            bindtap="fileImageFn" data-obj="detailsData.meterPicture"
+          >
+            <icon class='ico_add'></icon><text>{{langData.fileImg[lang]}}</text>
+          </view>
+          <block wx:if="{{detailsData.meterPicture}}">
+            <image
+              class="img" src='{{detailsData.meterPicture?detailsData.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'  
+              binderror='errorImgFn' data-obj="detailsData.meterPicture" data-img="{{domainUrl}}/images/default/img_200_200.jpg"
+              bindtap="bigImgFn" data-big_img='{{detailsData.meterPicture?detailsData.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'
+            ></image>
+            <icon class='icons close_btn'  bindtap="removeImageFn" data-obj="wdetailsData.meterPicture"></icon>
+          </block>
+
+        </view>
+      </view>
+
+       <!-- 不可操作 -->
+      <view class='clearfix reading_box' wx:if="{{detailsData.isMetered=='Y'}}">
+        <view class='reading'>
+          <view class='title'><text>{{detailsData.meterName}}</text>{{langData.monthAmmeter[lang]}}</view>
+          <view class='updata_ctn'>
+              <icon class='lable_ico'></icon><view class='input'>{{detailsData.currentReading}}</view>
+          </view>
+        </view>
+        <view class='pic'>
+            <image 
+              class="img" src='{{detailsData.meterPicture?detailsData.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'  
+              binderror='errorImgFn' data-obj="detailsData.meterPicture" data-img="{{domainUrl}}/images/default/img_200_200.jpg"
+              bindtap="bigImgFn" data-big_img='{{detailsData.meterPicture?detailsData.meterPicture:domainUrl+"/images/default/img_200_200.jpg"}}'
+            ></image>
+        </view>
+      </view>
+
+      <view class='btm_box'>
+        <!-- <view 
+          class='more_btn {{detailsData.isPopHide?"y_btn":""}}'
+          bindtap="moreBtnFn" data-index="{{index}}" data-obj='detailsData.isPopHide'
+        ><icon class='icons ico_down'></icon>更多</view> -->
+        <view class='txt'>{{langData.ammeterMultiple[lang]}}：{{detailsData.multiplier}}{{langData.multipleText[lang]}}</view>
+      </view>
+
+      <view class='degrees_pop'>
+        <!-- 读取上次抄表数据异常时才有此模块 -->
+        <view class='abnormal' wx:if="{{detailsData.isMetered=='N'}}">
+          <view class='ylb_txt alert'><icon class="icons"></icon>{{langData.countTitle[lang]}}</view>
+          <view class='additional'>
+            <input 
+              type="digit" class='input' placeholder-class='placeholder' placeholder="{{langData.countPl[lang]}}"
+              bindinput="inputChangeFn" data-obj="detailsData.count"  data-obj2="detailsData.currentReading" 
+              data-type='count' data-parent="{{detailsData}}"
+              value='{{detailsData.count?detailsData.count:""}}' 
+            />
+          </view>
+        </view>
+
+        <!-- 备注 -->
+        <view class='remark'>
+          <view class='remark_tit'>{{langData.remark[lang]}}</view>
+          <textarea
+            wx:if="{{detailsData.isMetered=='N'}}"
+            class='textarea' placeholder='{{langData.remarkPl[lang]}}' placeholder-class='pl_textarea' 
+            bindinput="textareaFn" data-obj="detailsData.remark" value="{{detailsData.remark?detailsData.remark:''}}"
+          ></textarea>
+          <view wx:if="{{detailsData.isMetered=='Y'}}" class='remark_txt'>{{detailsData.remark?detailsData.remark:langData.noRemarkTip[lang]}}</view>
+        </view>
+        
+
+        <!-- 上月数据 -->
+        <view class='prev_month_data'>
+          <view class='li'><text>{{langData.prevAmmeter[lang]}}</text>{{detailsData.previousTime?detailsData.previousTime:'--'}}</view>
+          <view class='li'><text>{{langData.prevCount[lang]}}</text>{{detailsData.previousReading?detailsData.previousReading+langData.dunText[lang]:'--'}}</view>
+          <!-- <view class='li'><text>上次用量</text>{{detailsData.previousCount?detailsData.previousCount+'吨':'--'}}</view>
+          <view class='li'><text>读数照片</text>
+            <view  wx:if="{{detailsData.meterPicture}}" class='picBtn' data-big_img="{{detailsData.meterPicture}}" bindtap="bigImgFn">查看>></view>
+            <view  wx:if="{{!detailsData.meterPicture}}" style="display:inline-block;">暂无照片</view>
+          </view> -->
+        </view>
+
+        <!-- 提交时间 -->
+        <view class='submit_time' wx:if="{{detailsData.currentTime}}"><icon class='icons ico_time'></icon>{{langData.submitTime[lang]}}：{{detailsData.currentTime}}</view>
+
+      </view>
+
+    </view>
+  </view>
+
+ 
+</view>
+
+<!-- 提交前，或提交后点修改时才有此按钮 -->
+<view class='btn_box_btm'  hidden="{{ detailsData.isMetered=='Y' }}">
+  <view class='light_blue_btn_btm' bindtap='submitFn' data-name="{{langData.public.saveBtn[lang]}}">{{langData.public.saveBtn[lang]}}</view>
+  <view class='blue_btn_btm' bindtap='submitFn' data-name="{{langData.public.submitBtn2[lang]}}">{{langData.public.submitBtn2[lang]}}</view>
+</view>
+
+
+<!-- 图片放大弹窗 -->
+<!-- <view class='mask_bg pop_show' hidden='{{imgPopHide}}' bindtap='closeImgPop'>
+  <view class='mask_bg_ctn'>
+    <image 
+      src='{{popImgUrl?popImgUrl:domainUrl+"/images/default/img_200_200.jpg"}}'  style='width:100%;' mode='widthFix'
+    ></image>
+  </view>
+</view> -->

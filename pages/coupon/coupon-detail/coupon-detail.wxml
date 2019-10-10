@@ -1,0 +1,50 @@
+<!-- 优惠券详情 -->
+<view class='coupon_list'>
+    <view
+        class="li"
+        style="background:url({{domainUrl}}/images/coupon/coupon_bg2.png) no-repeat; background-size:100% 100%;"
+    >
+        <view class='tit'>{{detailData.couponName}}</view>
+        <view class='get_time'>{{langData.issueTime[lang]}}：{{detailData.issueTime}}</view>
+        <view class='mf_txt' wx:if="{{detailData.couponType == 3}}">{{langData.free[lang]}}</view>
+        <view class='yh_txt' wx:if="{{detailData.couponType != 3}}">
+            <view class='num'>{{detailData.discountPrice}}</view>
+            <view class='tip'>{{detailData.discountSumPrice}}</view>
+        </view>
+        <view class='use_time'>
+            <icon class='icons ico_time'></icon>
+            {{langData.validTime[lang]}}：{{detailData.useStart}}  {{langData.public.toText[lang]}}  {{detailData.useEnd}}
+        </view>
+        <view class='coupon_code'><icon class='icons ico_code'></icon>{{detailData.couponCode}}</view>
+    </view>
+</view>
+
+<view class='coupon_detail'>
+    <view class='yd_title01'>{{langData.detailInfo[lang]}}</view>
+    <view class='coupon_ctn'>
+        <view class='dl'>
+            <view class='dt'>{{langData.issueTime[lang]}}</view>
+            <view class='dd'>{{detailData.issueTime}}</view>
+        </view>
+        <view class='dl'>
+            <view class='dt'>{{langData.validTime[lang]}}</view>
+            <view class='dd'>{{detailData.useStart}}  {{langData.public.toText[lang]}}  {{detailData.useEnd}}</view>
+        </view>
+        <view class='dl'>
+            <view class='dt'>{{langData.couponCode[lang]}}</view>
+            <view class='dd'>{{detailData.couponCode}}</view>
+        </view>
+        <view class='dl' wx:if="{{detailData.status==1}}">
+            <view class='dt'>{{langData.verifyTime[lang]}}</view>
+            <view class='dd'>{{detailData.useTime}}</view>
+        </view>
+    </view>
+    <view 
+        class='blue_btn {{detailData.status==0?"":"disabled"}}' 
+        bindtap='{{detailData.status==0?"verifyExchangeFn":""}}'
+    >{{detailData.btnName}}</view>
+</view>
+<view class='coupon_tip'>
+    <text>{{langData.public.useExplain[lang]}}：
+    {{detailData.couponIntro}}</text>
+</view>

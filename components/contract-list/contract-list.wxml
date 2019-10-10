@@ -1,0 +1,158 @@
+
+<!-- 数据未加载时显示的默认列表 -->
+<default-list wx:if="{{!listInfo.isFinish}}"></default-list>
+
+<block wx:if="{{listInfo.isFinish}}">
+<view class='contract_list'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <navigator 
+        class='body_main' wx:for="{{listInfo.list}}" wx:key="contract{{index}}"
+        url='/pages/contract/contract-detail/contract-detail?id={{item.contractId}}'
+    >
+        <view class='main_com'>
+            <image src='{{domainUrl}}/images/icon/ico_building_c.png'></image>
+            <text class='main_com_txt'>{{item.entName}}</text>
+            <text class='status {{item.statusClass}}'>{{item.statusText}}</text>
+        </view>
+        <view class='main_time'>
+            <image src='{{domainUrl}}/images/icon/ico_clock_b.png'></image>
+            <text class='main_time_txt'>{{langData.contractTime[lang]}}：</text>
+            <text class='main_time_data'>{{item.contractStart + langData.public.toText[lang] + item.contractEnd}}</text>
+        </view>
+        <view class='main_num'>
+            <image src='{{domainUrl}}/images/icon/ico_doc.png'></image>
+            <text class='main_num_txt'>{{langData.contractNo[lang]}}：</text>
+            <text class='main_num_data'>{{item.contractNo}}</text>
+        </view>
+    </navigator>
+
+<!-- 底部提示文字 -->
+  <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+    <view class='txt'>{{listInfo.tipTxt}}</view>
+  </view>  
+
+</view>
+
+<!-- 暂无状态 -->
+<list-nothing 
+  c-name="repair" 
+  wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
+></list-nothing>
+</block>
+
+
+
+
+<view  wx:if="{{false}}">
+
+<!-- 主体部分 -->
+
+<view class='body_main'>
+  <view class='main_com'>
+    <image src='{{domainUrl}}/images/icon/ico_building_c.png'></image>
+    <text class='main_com_txt'>广州滴滴科技有限公司</text>
+    <text class='status warn'>7天后到期</text>
+  </view>
+  <view class='main_time'>
+    <image src='{{domainUrl}}/images/icon/ico_clock_b.png'></image>
+    <text class='main_time_txt'>合同时间：</text>
+    <text class='main_time_data'>2018-07-19 至 2019-07-18</text>
+  </view>
+  <view class='main_num'>
+    <image src='{{domainUrl}}/images/icon/ico_doc.png'></image>
+    <text class='main_num_txt'>合同编号：</text>
+    <text class='main_num_data'>GY20180709-003</text>
+  </view>
+</view>
+<view class='body_main'>
+  <view class='main_com'>
+    <image src='{{domainUrl}}/images/icon/ico_building_c.png'></image>
+    <text class='main_com_txt'>广州滴滴科技有限公司</text>
+    <text class='status warn'>4天后到期</text>
+  </view>
+  <view class='main_time'>
+    <image src='{{domainUrl}}/images/icon/ico_clock_b.png'></image>
+    <text class='main_time_txt'>合同时间：</text>
+    <text class='main_time_data'>2018-07-19 至 2019-07-18</text>
+  </view>
+  <view class='main_num'>
+    <image src='{{domainUrl}}/images/icon/ico_doc.png'></image>
+    <text class='main_num_txt'>合同编号：</text>
+    <text class='main_num_data'>GY20180709-003</text>
+  </view>
+</view>
+<view class='body_main'>
+  <view class='main_com'>
+    <image src='{{domainUrl}}/images/icon/ico_building_c.png'></image>
+    <text class='main_com_txt'>广州滴滴科技有限公司</text>
+    <text class='status'>正常</text>
+  </view>
+  <view class='main_time'>
+    <image src='{{domainUrl}}/images/icon/ico_clock_b.png'></image>
+    <text class='main_time_txt'>合同时间：</text>
+    <text class='main_time_data'>2018-07-19 至 2019-07-18</text>
+  </view>
+  <view class='main_num'>
+    <image src='{{domainUrl}}/images/icon/ico_doc.png'></image>
+    <text class='main_num_txt'>合同编号：</text>
+    <text class='main_num_data'>GY20180709-003</text>
+  </view>
+</view>
+<view class='body_main'>
+  <view class='main_com'>
+    <image src='{{domainUrl}}/images/icon/ico_building_c.png'></image>
+    <text class='main_com_txt'>广州滴滴科技有限公司</text>
+    <text class='status'>正常</text>
+  </view>
+  <view class='main_time'>
+    <image src='{{domainUrl}}/images/icon/ico_clock_b.png'></image>
+    <text class='main_time_txt'>合同时间：</text>
+    <text class='main_time_data'>2018-07-19 至 2019-07-18</text>
+  </view>
+  <view class='main_num'>
+    <image src='{{domainUrl}}/images/icon/ico_doc.png'></image>
+    <text class='main_num_txt'>合同编号：</text>
+    <text class='main_num_data'>GY20180709-003</text>
+  </view>
+</view>
+
+
+<view style='margin-top:32rpx;'>
+  <view class='yd_title02'><view class='txt'>Tab2 历史合同样式</view></view>
+</view>
+
+<!-- 历史合同样式 -->
+<view class='body_main'>
+  <view class='main_com'>
+    <image src='{{domainUrl}}/images/icon/ico_building_c.png'></image>
+    <text class='main_com_txt'>广州滴滴科技有限公司</text>
+    <text class='status epd'>已到期</text>
+  </view>
+  <view class='main_time'>
+    <image src='{{domainUrl}}/images/icon/ico_clock_b.png'></image>
+    <text class='main_time_txt'>合同时间：</text>
+    <text class='main_time_data'>2018-07-19 至 2019-07-18</text>
+  </view>
+  <view class='main_num'>
+    <image src='{{domainUrl}}/images/icon/ico_doc.png'></image>
+    <text class='main_num_txt'>合同编号：</text>
+    <text class='main_num_data'>GY20180709-003</text>
+  </view>
+</view>
+<view class='body_main'>
+  <view class='main_com'>
+    <image src='{{domainUrl}}/images/icon/ico_building_c.png'></image>
+    <text class='main_com_txt'>广州滴滴科技有限公司</text>
+    <text class='status epd'>已到期</text>
+  </view>
+  <view class='main_time'>
+    <image src='{{domainUrl}}/images/icon/ico_clock_b.png'></image>
+    <text class='main_time_txt'>合同时间：</text>
+    <text class='main_time_data'>2018-07-19 至 2019-07-18</text>
+  </view>
+  <view class='main_num'>
+    <image src='{{domainUrl}}/images/icon/ico_doc.png'></image>
+    <text class='main_num_txt'>合同编号：</text>
+    <text class='main_num_data'>GY20180709-003</text>
+  </view>
+</view>
+</view>

@@ -1,0 +1,31 @@
+
+<!-- 数据未加载时显示的默认列表 -->
+<default-list wx:if="{{!listInfo.isFinish}}"></default-list>
+
+<!-- 优惠券列表 -->
+<block wx:if="{{listInfo.isFinish}}">
+<view class='coupon_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <view
+        wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}" class="li"
+        style="background:url({{domainUrl}}/images/coupon/coupon_bg2.png) no-repeat; background-size:100% 100%;"
+    >
+        <view  class='click_area' bindtap='gotoDetailFn' data-id="{{item.couponCode}}"></view>
+
+        <view class='tit'>{{item.couponName}}</view>
+        <view class='get_time'>{{langData.couponCode[lang]}}：{{item.couponCode}}</view>
+        <view class='mf_txt' wx:if="{{item.couponType == 3}}">{{langData.free[lang]}}</view>
+        <view class='yh_txt' wx:if="{{item.couponType != 3}}">
+            <view class='num'>{{item.discountPrice}}</view>
+            <view class='tip'>{{item.discountSumPrice}}</view>
+        </view>
+        <view class='use_time'><icon class='icons ico_time'></icon>{{langData.verifyTime[lang]}}：{{item.useTime}} </view>
+        <view class='name'><icon class='icons ico_per'></icon>{{item.userName}}</view>
+    </view>
+
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>  
+</view>
+
+
+<!-- 暂无状态 -->
+<list-nothing c-name="coupon_list" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>
+</block>

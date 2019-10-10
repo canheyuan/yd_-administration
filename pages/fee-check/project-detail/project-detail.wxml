@@ -1,0 +1,80 @@
+<!-- 电费明细 -->
+<view class='repair_list clearfix'>
+  <view class='hdr_line'>
+    <view class='yd_title01'>{{detailsData.fee.feeName + langData.particulars[lang]}}</view>
+    <view class='price_box'>
+      <text class='lable'>{{langData.cost[lang]}}：</text>
+      <text class='money'>
+        <text>￥</text>{{detailsData.fee.totalAmount}}</text>
+    </view>
+  </view>
+  <view class='repair_ctn clearfix'>
+    <view class='dl'>
+      <view class='dt'>{{langData.costMonth[lang]}}</view>
+      <view class='dd f_black'>{{detailsData.month}}{{langData.month[lang]}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.room[lang]}}</view>
+      <view class='dd f_black'>{{detailsData.fee.unitName}}</view>
+    </view>
+
+    <!-- 租金 -->
+    <block wx:if="{{detailsData.fee.feeType == 'rent'}}">
+      <view class='dl'>
+        <text class='dt'>{{langData.price[lang]}}</text>
+        <view class='dd f_black'>{{detailsData.fee.price}}{{langData.priceUnit[lang]}}</view>
+      </view>
+      <view class='dl'>
+        <text class='dt'>{{langData.area[lang]}}</text>
+        <view class='dd f_black'>{{detailsData.fee.count}}{{langData.areaUnit[lang]}}</view>
+      </view>
+    </block>
+
+    <!-- 水电费 -->
+    <block wx:if="{{detailsData.fee.feeType == 'water' || detailsData.fee.feeType == 'electric'}}">
+      <view class='dl'>
+        <text class='dt'>{{langData.prevAmmeter[lang]}}</text>
+        <view class='dd'>
+          <view class='f_black'>{{detailsData.meter.previousTime}}</view>
+        </view>
+      </view>
+      <view class='dl'>
+        <text class='dt'>{{langData.curAmmeter[lang]}}</text>
+        <view class='dd'>
+          <view class='f_black'>{{detailsData.meter.currentTime}}</view>
+        </view>
+      </view>
+      <view class='dl'>
+        <text class='dt'>{{langData.prevReading[lang]}}</text>
+        <view class='dd'>
+          <!-- <view class='f_28 f_cyan f_udl'>查看详情 >></view> -->
+          <view class='f_black'>{{detailsData.meter.previousReading}}{{detailsData.fee.feeType == 'water'?"方":"度"}}</view>
+        </view>
+      </view>
+      <view class='dl'>
+        <text class='dt'>{{langData.curReading[lang]}}</text>
+        <view class='dd'>
+          <!-- <view class='f_28 f_cyan f_udl'>查看详情 >></view> -->
+          <view class='f_black'>{{detailsData.meter.currentReading}}{{detailsData.fee.feeType == 'water'?langData.fangText[lang]:langData.duText[lang]}}</view>
+        </view>
+      </view>
+      <view class='dl' wx:if="{{detailsData.meter.sharedFee}}">
+        <text class='dt'>{{langData.curShareFee[lang]}}</text>
+        <view class='dd'>
+          <view class='f_black'>{{detailsData.meter.sharedFee}}{{detailsData.fee.feeType == 'water'?langData.fangText[lang]:langData.duText[lang]}}</view>
+        </view>
+      </view>
+      <view class='dl'>
+        <text class='dt'>{{langData.realityCount[lang]}}</text>
+        <view class='dd f_black'>{{detailsData.meter.count}}{{detailsData.fee.feeType == 'water'?langData.fangText[lang]:langData.duText[lang]}}</view>
+      </view>
+      <view class='dl'>
+        <text class='dt'>{{langData.price[lang]}}</text>
+        <view class='dd f_black'>￥{{detailsData.fee.price}}</view>
+      </view>
+    </block>
+
+  </view>
+</view>
+
+<!-- <view class='yd_title02'><view class='txt'>没有更多了</view></view> -->

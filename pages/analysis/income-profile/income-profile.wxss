@@ -1,0 +1,18 @@
+
+.order_month_top{height:90rpx; background:#f7f7f7;border-bottom:1rpx solid #dddddd; padding:0 10rpx 0 20rpx;}
+.order_month_top .month_btn{float:right; width:90rpx; height:90rpx;  text-align: center; }
+.order_month_top .month_btn .ico_month{width:50rpx; height:50rpx; background-position:-400rpx -60rpx;margin-top:20rpx;}
+.order_month_top .info{line-height:90rpx;}
+.order_month_top .info .tit{display:inline-block; color:#555555; font-size:30rpx; margin-right:20rpx;}
+
+
+.data_mdl{background:#ffffff; padding:30rpx 0 0; margin-bottom:30rpx;}
+.data_mdl .data_title{text-align: center; color:#94c8eb; font-size:32rpx; line-height:60rpx; }
+.data_mdl .data_title::after,
+.data_mdl .data_title::before{content:'————'; display:inline-block;  font-size:20rpx; line-height:60rpx; vertical-align: top;}
+.data_mdl .data_title text{display:inline-block; margin:0 20rpx;  vertical-align: top;}
+.label_list{text-align: center; margin-top:40rpx;}
+.label_list .label{width:170rpx; height:56rpx; box-sizing:border-box; border:2rpx solid #55b0bd; border-radius:28rpx; display:inline-block; color:#55b0bd; font-size:26rpx; text-align:center; line-height:54rpx; margin:0 30rpx; }
+.label_list .label.act{background:#55b0bd; border-color:#55b0bd; color:#fff; font-weight: bold;}
+
+

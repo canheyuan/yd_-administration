@@ -1,0 +1,27 @@
+
+<!-- 选项卡切换 -->
+<view class='tag_box tag_fixed'>
+  <view class='tag_list'>
+    <view 
+      class='tag_item {{tagIndex==index?"act":""}}' 
+      wx:for="{{tagList}}" wx:key="{{index}}"
+      bindtap="tagChangeFn" data-index="{{index}}"
+    >{{item.name}}</view>
+  </view>
+</view>
+
+<!-- 有效合同 -->
+<view hidden="{{tagIndex!=0}}">
+  <contract-list 
+    wx:if="{{tagList[0].isShow}}"
+    contract-type="1" reach-data="{{reachData[0]}}"
+  ></contract-list>
+</view>
+
+<!-- 历史合同 -->
+<view hidden="{{tagIndex!=1}}">
+  <contract-list 
+    wx:if="{{tagList[1].isShow}}"
+    contract-type="2" reach-data="{{reachData[1]}}"
+  ></contract-list>
+</view>

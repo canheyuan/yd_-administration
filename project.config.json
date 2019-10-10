@@ -1,0 +1,62 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.0",
+	"appid": "wx03f270c6defddaf6",
+	"projectname": "%E5%9B%AD%E5%8F%AE-%E7%AE%A1%E7%90%86%E7%AB%AF",
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
+			"list": [
+				{
+					"id": -1,
+					"name": "开发板",
+					"pathName": "pages/index/index",
+					"query": "config=dev"
+				},
+				{
+					"id": -1,
+					"name": "演示版",
+					"pathName": "pages/index/index",
+					"query": "config=demo"
+				},
+				{
+					"id": 2,
+					"name": "pages/coupon/scan-error/scan-error",
+					"pathName": "pages/coupon/scan-error/scan-error",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

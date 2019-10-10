@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "",
+    "usingComponents": {
+        "login-tip": "/components/login-tip/login-tip",
+        "tab": "/components/tab/tab"
+    }
+}

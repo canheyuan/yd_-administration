@@ -1,0 +1,12 @@
+<view class='coupon_result'>
+  <image class='img' src='{{domainUrl}}/images/coupon/coupon_success.png' mode='widthFix'></image>
+  <text class='h3'>{{langData.verifySuccessTip[lang]}}</text>
+
+  <view class='p'>
+    <text>{{detailData.couponName}}
+    {{detailData.discountTxt}}
+    {{langData.verifyTime[lang]}}：{{detailData.useTime}}</text>
+  </view>
+
+  <navigator  class='btm_btn blue_btn' url='/pages/index/index' open-type='switchTab'>{{langData.public.backIndexBtn[lang]}}</navigator>
+</view>

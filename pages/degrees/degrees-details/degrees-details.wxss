@@ -1,0 +1,136 @@
+page{background: #f7f7f7; padding-bottom: 110rpx;}
+
+/* 顶部企业信息 */
+.cost_details_top{height:230rpx; box-sizing: border-box; padding:34rpx 40rpx 0 50rpx; color:#fff;  background:url(https://www.5iparks.com/static/wuye/images/degrees/degrees_top_bg.jpg) #1b9cd4 no-repeat top center; background-size:100%;}
+.cost_details_top .h3{font-size:48rpx; font-weight: 600; margin-bottom:10rpx;}
+.cost_details_top .month{font-size:40rpx; margin-top: 4rpx; float: right;}
+.cost_details_top .p{font-size:32rpx; line-height:46rpx;}
+.cost_details_top .p.per{color: #c8e9f1;}
+.cost_details_top .p icon{width:32rpx; height:32rpx; margin-right:10rpx;}
+.cost_details_top .p .ico_fz{background:url(https://www.5iparks.com/static/wuye/images/icon/ico_building.png) no-repeat top center; background-size:32rpx 32rpx;}
+.cost_details_top .p .ico_per{background:url(https://www.5iparks.com/static/wuye/images/icon/ico_loc.png) no-repeat top center; background-size:32rpx 32rpx;}
+
+/* 立即修改 */
+.ylb_txt{font-size:26rpx; color:#888; padding:30rpx 24rpx 16rpx; line-height:40rpx;}
+.ylb_txt text{font-size:26rpx; color:#2f9cac; text-decoration: underline;}
+.ylb_txt icon{width:40rpx; height:40rpx; background-position:0 -160rpx; margin-right:10rpx; vertical-align: top;}
+
+/* 抄表 */
+.transcribe_box{}
+.this_month{padding: 0 32rpx; background: #fff;}
+
+.this_month .electricity{padding: 24rpx 0 32rpx; border-bottom: 4rpx solid #f7f7f7;}
+.this_month .water{padding: 24rpx 0 32rpx;}
+
+.this_month .reading{padding-top: 18rpx; float: left;}
+.this_month .reading .title{color:#888; font-size:26rpx; font-weight: 500; padding-bottom: 28rpx;}
+.this_month .reading .updata_ctn{height:68rpx; position:relative; float: left;}
+.this_month .reading .input{width: 380rpx; height:68rpx; line-height:68rpx; font-size:68rpx; font-weight: 500; color:#333;}
+.this_month .reading .placeholder{line-height:68rpx; font-size:54rpx; font-weight: normal; color:#c2c2c2;}
+.this_month .reading .lable_ico{width:64rpx; height:64rpx; margin-right: 30rpx; float: left; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_electricity.png) no-repeat top center; background-size: 100%;}
+.this_month .water .reading .lable_ico{width:64rpx; height:64rpx; margin-right: 30rpx; float: left; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_water.png) no-repeat top center; background-size: 100%;}
+.this_month .other .reading .lable_ico{width:64rpx; height:64rpx; margin-right: 30rpx; float: left; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_other.png) no-repeat top center; background-size: 100%;}
+.this_month .reading .ico_reset{width:40rpx; height:40rpx; background-position:-200rpx -160rpx; background-color:#b5b5b5; border-radius:100%; position:absolute; top:50%; z-index:9; margin-top:-20rpx; right:10rpx; }
+
+.this_month .pic{width:164rpx; height:164rpx; float:right; position:relative;}
+.this_month .pic .img{width:100%; height:100%;}
+.this_month .pic .add_btn{width:100%; height:100%; box-sizing: border-box; border:1rpx solid #e5e5e5;  text-align: center; padding-top:32rpx; background:#fafafa;}
+.this_month .pic .add_btn .ico_add{width:64rpx; height:64rpx; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_add_pic.png) no-repeat top center; background-size: 100%;}
+.this_month .pic .add_btn text{display:block; color:#c2c2c2; font-size:24rpx;}
+.this_month .pic .close_btn{position:absolute; top:-10rpx; right:-10rpx; width:40rpx; height:40rpx; background-color:#ff3c00; border-radius:100%; background-position:-200rpx -160rpx;}
+
+.record_time{height: 60rpx; padding: 14rpx 30rpx 0; border-top: 1rpx solid #e2e2e2; background: #fff;}
+
+
+
+/* 上月读数 */
+.repair_list{margin-top: 32rpx; background: #fff; position: relative;}
+.repair_list .hdr_line{height: 58rpx; padding: 22rpx 32rpx 0 16rpx; border-bottom: 1rpx solid #e2e2e2;}
+.repair_list .yd_title01{float: left;}
+.repair_list .status{color: #a5a5a5; font-size: 28rpx; float: right;}
+.repair_list .repair_ctn{padding: 20rpx 32rpx; }
+.repair_ctn .electricity{width: 50%; border-right: 1rpx solid #e2e2e2; float: left;}
+.repair_ctn .water{width: 45%; float: right;}
+.repair_ctn .dl{font-size: 30rpx; line-height: 70rpx; clear: both;}
+.repair_ctn .dl:after {visibility:hidden; display:block; font-size:0; content: " "; clear:both; height:0;}
+.repair_ctn .dl .dt{color: #888; width: 120rpx; float: left;}
+.repair_ctn .dl .dd{color: #333; padding-left: 40rpx; float: left;}
+
+/* 底部按钮 */
+.yd_title02{margin-top: 32rpx;}
+.btn_box_btm{width: 100%; box-shadow: 0 -7rpx 24rpx rgba(0,0,0,.1); position: fixed; bottom: 0; z-index: 99;}
+.light_blue_btn_btm{width: 50%; box-shadow: none; float: left;}
+.blue_btn_btm{width: 50%; box-shadow: none; float: right;}
+
+
+/* ------------------  新改版样式 -------------------- */
+.degrees_box{background:#fff; margin-bottom:30rpx; }
+.degrees_box .degrees_item{border-bottom:10rpx solid #efefef; padding:0 30rpx;}
+.degrees_box .degrees_item:last-child{border-bottom:none;}
+/* 读数 */
+.degrees_box .reading_box{padding:20rpx 0;}
+.degrees_box .reading{padding-top: 10rpx; float: left;}
+.degrees_box .reading .title{color:#888; font-size:26rpx; font-weight: 500; padding-bottom: 28rpx; line-height:40rpx;}
+.degrees_box .reading .title text{font-size:30rpx; color:#1094a7; font-weight:bold; margin-right:15rpx; line-height:40rpx; display: inline-block;}
+.degrees_box .reading .updata_ctn{height:68rpx; position:relative; float: left;}
+.degrees_box .reading .input{width: 380rpx; height:68rpx; line-height:68rpx; font-size:50rpx; font-weight: 500; color:#333;}
+.degrees_box .reading .placeholder{line-height:68rpx; font-size:54rpx; font-weight: normal; color:#c2c2c2;}
+.degrees_box .reading .lable_ico{width:64rpx; height:64rpx; margin-right: 30rpx; float: left; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_electricity.png) no-repeat top center; background-size: 100%;}
+.degrees_box .water .reading .lable_ico{width:64rpx; height:64rpx; margin-right: 30rpx; float: left; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_water.png) no-repeat top center; background-size: 100%;}
+.degrees_box .reading .ico_reset{width:40rpx; height:40rpx; background-position:-200rpx -160rpx; background-color:#b5b5b5; border-radius:100%; position:absolute; top:50%; z-index:9; margin-top:-20rpx; right:10rpx; }
+
+/* 图片 */
+.degrees_box .pic{width:164rpx; height:164rpx; float:right; position:relative;}
+.degrees_box .pic .img{width:100%; height:100%;}
+.degrees_box .pic .add_btn{width:100%; height:100%; box-sizing: border-box; border:1rpx solid #e5e5e5;  text-align: center; padding-top:32rpx; background:#fafafa;}
+.degrees_box .pic .add_btn .ico_add{width:64rpx; height:64rpx; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_add_pic.png) no-repeat top center; background-size: 100%;}
+.degrees_box .pic .add_btn text{display:block; color:#c2c2c2; font-size:24rpx;}
+.degrees_box .pic .close_btn{position:absolute; top:-10rpx; right:-10rpx; width:40rpx; height:40rpx; background-color:#ff3c00; border-radius:100%; background-position:-200rpx -160rpx;}
+
+/* 更多 */
+.degrees_box .btm_box{border-top:1rpx solid #e5e5e5;  height:50rpx; padding:15rpx 0; font-size:26rpx; color:#9d9d9d; }
+.degrees_box .btm_box .txt{line-height:50rpx;}
+.degrees_box .btm_box .more_btn{display:inline-block; width:110rpx; text-align:center; line-height:48rpx; height:46rpx; border:2rpx solid #9d9d9d;border-radius:25rpx; float:right;}
+.degrees_box .btm_box .more_btn .ico_down{width:30rpx; height:30rpx; background-position: -150rpx -120rpx; vertical-align: middle; transform:rotate(180deg);}
+.degrees_box .btm_box .more_btn.y_btn{border:2rpx solid #f7ba00; color:#f7ba00; }
+.degrees_box .btm_box .more_btn.y_btn .ico_down{background-position: -420rpx -120rpx; transform:rotate(0);}
+
+/* 读数异常补充 */
+.degrees_box .abnormal{ border-top: 1rpx solid #e5e5e5;margin-bottom:30rpx;}
+.degrees_box .abnormal .ylb_txt{font-size:26rpx; color:#de6a1c; padding:20rpx 0; line-height:40rpx;}
+.degrees_box .abnormal .additional{font-size: 0; line-height: 0;}
+.degrees_box .abnormal .additional .input{display:inline-block; width: 100%; font-size:32rpx; height:100rpx; line-height:100rpx; background:#fafafa; border: 2rpx solid #f7d8c8; color:#333; border-radius: 12rpx; box-sizing:border-box; padding:0 24rpx; text-align: left;}
+.degrees_box .abnormal .additional .placeholder{font-size:32rpx; line-height:100rpx; color:#c2c2c2;}
+
+/* 备注 */
+.degrees_box .remark{border-top:1rpx solid #e5e5e5;  padding:20rpx 0;}
+.degrees_box .remark_tit{font-size:26rpx; color:#333; margin-bottom:20rpx;}
+.degrees_box .remark .pl_textarea{color:#ccc;}
+.degrees_box .remark .textarea{background:#fafafa; border:1rpx solid #e5e5e5; height:150rpx; padding:10rpx 20rpx; border-radius:10rpx; box-sizing:border-box; color:#333; font-size:26rpx; width:100%;}
+.degrees_box .remark .remark_txt{background:#fafafa; padding:10rpx 20rpx; border-radius:10rpx; box-sizing:border-box; color:#333; font-size:26rpx; width:100%;}
+
+/* 上月数据 */
+.prev_month_data{padding:30rpx 0; border-top:1rpx solid #e5e5e5; overflow:hidden;}
+.prev_month_data .li{font-size:30rpx; float:left; width:50%; box-sizing:border-box;line-height:40rpx;  color:#333;}
+.prev_month_data .li:nth-child(2),
+.prev_month_data .li:nth-child(4){border-left:2rpx solid #e5e5e5; padding-left:30rpx;}
+.prev_month_data .li:nth-child(1),
+.prev_month_data .li:nth-child(2){padding-bottom:30rpx;}
+.prev_month_data .li text{color:#888888; display: inline-block; width:160rpx;}
+.prev_month_data .li .picBtn{color:#2f9cac; text-decoration: underline; display: inline-block; font-size:28rpx;}
+
+.submit_time{font-size:24rpx; color:#999; height:80rpx; line-height:80rpx; border-top:1rpx solid #e5e5e5;}
+.submit_time .ico_time{width:30rpx; height:30rpx; background-position: -120rpx -120rpx; vertical-align: middle; margin-right:10rpx;}
+
+
+
+
+
+
+
+
+
+
+
+
+

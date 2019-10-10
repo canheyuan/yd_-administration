@@ -1,0 +1,39 @@
+
+<!-- 数据未加载时显示的默认列表 -->
+<default-list wx:if="{{!listInfo.isFinish}}"></default-list>
+
+<block wx:if="{{listInfo.isFinish}}">
+<view class='repair_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <navigator 
+        wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}"
+        class='li' url='{{item.gotoUrl}}'
+    >
+        <view class='li_r'>
+            <view class="floor">{{item.unitName}}</view>
+            <view class='status {{tagIndex==0?"":"done"}}'>{{item.statusName}}</view>
+        </view>
+        <view class='li_l'>
+            <view class='yd_title01'>{{item.entName}}</view>
+            <view class='title'>
+                <icon class='icon_jbc'></icon>
+                <text class='month'>{{item.feePeriod +  langData.monthText[lang] + item.feeNames}}</text>
+            </view>
+            <view class='ico_txt'>
+                <icon class='icons ico_clock'></icon>
+                {{langData.enteringTime[lang]}}：{{item.dateTime?item.dateTime: langData.noEnteringTip[lang]}}
+            </view>
+        </view>
+    </navigator>
+    <!-- 底部提示文字 -->
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+        <view class='txt'>{{listInfo.tipTxt}}</view>
+    </view>  
+
+</view>
+
+<!-- 暂无状态 -->
+<list-nothing 
+    c-name="degrees" 
+    wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
+></list-nothing>
+</block>

@@ -1,0 +1,33 @@
+
+<picker class='order_month_top' mode="date" fields='year' bindchange="changeDateFn" end="{{yearNow}}">
+    <view class='month_btn'><icon class='icons ico_month'></icon></view>
+    <view class='info'>
+      <text class='tit'>{{yearName}}</text>
+    </view>
+</picker>
+
+<view class="data_mdl">
+    <view class="label_list" style="margin-bottom:80rpx;">
+        <view 
+        wx:for="{{monthTag}}" wx:key="monthTag{{index}}" 
+        class="label {{index==monthTagIndex?'act':''}}"
+        bindtap="changeChartsFn" data-num='{{item.num}}' data-index="{{index}}"
+        >{{item.title}}</view>
+    </view>
+    <view class="data_box" style="height:500rpx;">
+        <canvas 
+            canvas-id="incomeCharts"
+            class="canvas" style="width:100%; height:100%;"
+            bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend"
+        ></canvas>
+    </view>
+</view>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+<import src="/wxParse/wxParse.wxml"/>
+<!-- 幻灯片 -->
+<view class='venue_slide_box'>
+  <image 
+    wx:if="{{!veneuDetails.chamber.imageList}}" 
+    src='{{domainUrl}}/images/default/df_vbd_pic.jpg' class="slide_img"
+  ></image>
+
+  <block wx:if="{{veneuDetails.chamber.imageList.length > 0}}">
+    <swiper class='venue_slide' indicator-dots="true" autoplay="true" interval="3000" duration="500" indicator-color="#ffffff" indicator-active-color="#4e8bff">
+      <block wx:for="{{veneuDetails.chamber.imageList}}" wx:key="{{index}}">
+        <swiper-item>
+          <image  
+            src='{{item?item:domainUrl+"/images/default/df_vbd_pic.jpg"}}' class="slide_img"
+            binderror='errorImgFn' 
+            data-obj="veneuDetails.chamber.imgList[{{index}}]"
+            data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
+          ></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </block>
+</view>
+
+<!-- 场地预定详细信息 -->
+<view class='venue_details_box box_shadow'>
+  <view class='title'>{{veneuDetails.chamber.chamberName}}</view>
+  <view class=''>
+    <view class='ico_txt'><icon class='icons ico_dz'></icon>{{veneuDetails.chamber.address}}</view>
+    <view class='ico_txt'><icon class='icons ico_per'></icon>{{langData.accommodate[lang] + veneuDetails.chamber.capacity + langData.person[lang]}}</view>
+  </view>
+  <view class='label_list'>
+    <text wx:for="{{veneuDetails.chamber.serviceTagList}}" wx:key="{{index}}">{{item}}</text>
+  </view>
+</view>
+
+<view class='repair_list clearfix'>
+  <view class='hdr_line'>
+    <view class='yd_title01'>{{veneuDetails.order.entName}}</view>
+    <view class='status {{veneuDetails.statusClass}}'>{{veneuDetails.statusName}}</view>
+  </view>
+  <view class='repair_ctn clearfix'>
+    <view class='dl'>
+      <view class='dt'>{{langData.public.contact[lang]}}</view>
+      <view class='dd'>{{veneuDetails.order.contact}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
+      <view class='dd'>{{veneuDetails.order.phone}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.reserveTime[lang]}}</view>
+      <view class='dd'>{{veneuDetails.order.veneuTime}}</view>
+    </view>
+    <view class='dl'>
+      <view class='dt'>{{langData.sumMoney[lang]}}</view>
+      <view class='dd' style='color:#ff6000;'>￥{{veneuDetails.order.amount}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class='repair_list clearfix'>
+  <view class='hdr_line'>
+    <view class='yd_title01'>备注信息</view>
+  </view>
+  <view class='repair_ctn clearfix'>
+    <textarea class='textarea' placeholder="请简短描述问题" placeholder-style="color:#c2c2c2;" name="description"  />
+  </view>
+</view> -->
+
+<!-- 订单号时间 -->
+<view class='order_time clearfix'>
+  <!-- <view class='ico_txt'><image src='{{domainUrl}}/images/icon/ico_order_num.png'></image>订单号：</view>
+  <view class='ico_txt order_num'>GY201806297665XY未定义</view> -->
+  <view class='ico_txt'>
+    <image src='{{domainUrl}}/images/icon/ico_clock.png'></image>
+    {{langData.reserveTime[lang]}}：{{veneuDetails.order.createTime}}
+  </view>
+  <!-- 已接单后才有此时间 -->
+  <view wx:if="{{veneuDetails.order.status==2}}" class='ico_txt noicon'>{{langData.passTime[lang]}}：</view>
+</view>
+
+<!-- 底部按钮 -->
+<view class='btn_box_btm' wx:if="{{veneuDetails.order.status == 1}}">
+  <view 
+    class='blue_btn_btm' 
+    bindtap='openPop'data-operation="agree" data-tip="{{langData.popTip1[lang]}}" 
+  >{{langData.public.agreeBtn[lang]}}</view>
+  <view 
+    class='light_blue_btn_btm' 
+    bindtap='openPop' data-operation="reject" data-tip="{{langData.popTip2[lang]}}"
+  >{{langData.public.rejectBtn[lang]}}</view>
+</view>
+
+<!-- 确认弹窗 -->
+<view class='mask_bg pop_show' hidden='{{isPopHide}}'>
+  <view class='mask_bg_ctn'>
+    <view class='pop_mdl'>
+      <view class='alert' style="padding:50rpx 0;">{{popTipTitle}}</view>
+      <view class='btm_btn clearfix'>
+        <view class='btn' bindtap="cancelFn">{{langData.public.callOffBtn[lang]}}</view>
+        <view class='btn' bindtap='affirmFn'>{{langData.public.confirmBtn[lang]}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,64 @@
+
+<view class="data_head" style="background-image:url({{domainUrl}}/images/data_bg.jpg);">
+
+  <view class="data_area">
+    <view class="num">{{parkSummaryData.totalArea}}</view>
+    <view class="p">{{langData.area[lang]}}(m²)</view>
+  </view>
+
+  <view class="data_list">
+    <view class="item">
+      <view class="num">{{parkSummaryData.buildingCount}}</view>
+      <view class="p"><icon class="icons ico_build"></icon> {{langData.floorNum[lang]}}</view>
+    </view>
+    <view class="item">
+      <view class="num">{{parkSummaryData.entCount}}</view>
+      <view class="p"><icon class="icons ico_company"></icon> {{langData.companyNum[lang]}}</view>
+    </view>
+  </view>
+
+</view>
+
+
+<view class="data_mdl">
+  <view class="data_title"><text>{{langData.income[lang]}}</text></view>
+  <view class="label_list" style="margin-bottom:80rpx;">
+    <view 
+      wx:for="{{monthTag}}" wx:key="monthTag{{index}}" 
+      class="label {{index==monthTagIndex?'act':''}}"
+      bindtap="changeChartsFn" data-num='{{item.num}}' data-index="{{index}}"
+    >{{item.title}}</view>
+  </view>
+  <view class="data_box" style="height:500rpx;">
+    <canvas 
+        canvas-id="incomeCharts"
+        class="canvas" style="width:100%; height:100%;"
+        bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend"
+    ></canvas>
+  </view>
+  <navigator url="/pages/analysis/income-profile/income-profile" class="more_btn" hover-class="hover">{{langData.moreIncome[lang]}}</navigator>
+</view>
+
+<view class="data_mdl">
+  <view class="data_title"><text>{{langData.rentalRatio[lang]}}</text></view>
+  <view class="data_box" style="height:600rpx;">
+    <canvas 
+        canvas-id="rentCharts"
+        class="canvas" style="width:100%; height:100%;"
+        bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend"
+    ></canvas>
+  </view>
+</view>
+
+<view class="data_mdl">
+  <view class="data_title"><text>{{langData.leaseStatus[lang]}}</text></view>
+  <view class="data_box" style="height:600rpx;">
+    <canvas 
+        canvas-id="rentStatusCharts"
+        class="canvas" style="width:100%; height:100%;"
+        bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend"
+    ></canvas>
+  </view>
+</view>
+
+
