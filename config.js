@@ -11,6 +11,8 @@ module.exports = {
         report: false,  //报表
     },
 
+    mtjAppKey: 'cee2ecfa32',    //百度统计appKey
+
     //不同小程序传参
     appApi: {
         channel: '',  //园叮不传，小招传cmb

@@ -34,23 +34,23 @@ Page({
                         type: 'company',
                         bindName: 'getDegreesList',//点击事件名称
                         tagList: [{ 
-                                name: res.tagName1[lang], 
-                                buildFloorName: res.chooseFloor[lang],
-                                type: 1, dateMonth: '', buildingId: '', floorId: '', reach: 1
-                             },
-                            { 
-                                name:res.tagName2[lang],
-                                buildFloorName: res.chooseFloor[lang],
-                                type: 2, dateMonth: '', buildingId: '', floorId: '', reach: 1
-                            }]
+                            name: res.tagName1[lang], 
+                            buildFloorName: res.chooseFloor[lang],
+                            type: 1, dateMonth: '', buildingId: '', floorId: '', show:true, reach: 1
+                            },
+                        { 
+                            name:res.tagName2[lang],
+                            buildFloorName: res.chooseFloor[lang],
+                            type: 2, dateMonth: '', buildingId: '', floorId: '', show: false, reach: 1
+                        }]
                     },
                     {
                         value: res.selectName2[lang],
                         type: 'public',
                         bindName: 'getDegreesList2', //点击事件名称
                         tagList: [
-                            { name: res.tagName1[lang], type: 'N', dateMonth: '', reach: 1 },
-                            { name: res.tagName2[lang], type: 'Y', dateMonth: '', reach: 1 }
+                            { name: res.tagName1[lang], type: 'N', dateMonth: '', show: false, reach: 1 },
+                            { name: res.tagName2[lang], type: 'Y', dateMonth: '', show: false, reach: 1 }
                         ]
                     }
                 ]
@@ -64,6 +64,19 @@ Page({
         this.setData({ nowMonth: month });
 
         this.getBuildingList();
+    },
+
+    onShow(){
+
+    },
+
+    //下拉刷新
+    onPullDownRefresh: function (e) {
+        var reachObj = 'selectTag[' + this.data.selectTagIndex + '].tagList[' + this.data.tagIndex + '].reach';
+        this.setData({
+            [reachObj]: Math.random()+1
+        });
+        wx.stopPullDownRefresh();
     },
 
     //获取楼宇列表信息
@@ -160,24 +173,30 @@ Page({
         })
     },
 
+    //改变下拉框内容
+    selectChangeFn(e) {
+        var index = e.currentTarget.dataset.index;
+        var obj = 'selectTag[' + index + '].tagList[' + this.data.tagIndex + '].show'
+        this.setData({
+            [obj]:true,
+            selectTagIndex: index,
+            selectHide: !this.data.selectHide
+        });
+    },
+
     //选项卡切换
     tagChangeFn(e) {
         var index = e.currentTarget.dataset.index;
-        this.setData({ tagIndex: index });
+        var obj = 'selectTag[' + this.data.selectTagIndex + '].tagList[' + index + '].show'
+        this.setData({ 
+            [obj]: true,
+            tagIndex: index 
+        });
     },
 
     //关闭打开下拉列表
     selectHideFn(e) {
         this.setData({ selectHide: !this.data.selectHide });
-    },
-
-    //改变下拉框内容
-    selectChangeFn(e) {
-        var index = e.currentTarget.dataset.index;
-        this.setData({
-            selectTagIndex: index,
-            selectHide: !this.data.selectHide
-        });
     },
 
     //切换月份

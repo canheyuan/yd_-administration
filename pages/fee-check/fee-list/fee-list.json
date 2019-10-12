@@ -1,7 +1,8 @@
 {
+    "enablePullDownRefresh": true,
     "navigationBarTitleText": "待缴查询",
     "usingComponents": {
-        "list-nothing": "/components/result-nothing/result-nothing",
+        "reach-load": "/components/reach-load/reach-load",
         "fee-list": "/components/fee-list/fee-list"
     }
 }

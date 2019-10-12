@@ -1,4 +1,4 @@
-<view class='reach_load'>
+<view class='reach_load' style="margin-top:{{mTop}}rpx;">
     <view class="la-ball-pulse la-2x">
         <view></view><view></view><view></view>
     </view>

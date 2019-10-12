@@ -1,5 +1,5 @@
 page{background-color: #f7f7f7; padding-bottom: 40rpx; padding-top:80rpx;}
-
+.fee_box{background:#f7f7f7;}
 /* 选项卡切换 */
 .tag_box{position: relative; border-top:none;}
 .tag_box .tag_list{margin: 0 90rpx;}

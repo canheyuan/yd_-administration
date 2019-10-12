@@ -1,7 +1,7 @@
 page{background: #f7f7f7; padding-bottom: 110rpx;}
 
 /* 顶部企业信息 */
-.cost_details_top{height:230rpx; box-sizing: border-box; padding:34rpx 40rpx 0 50rpx; color:#fff;  background:url(https://www.5iparks.com/static/wuye/images/degrees/degrees_top_bg.jpg) #1b9cd4 no-repeat top center; background-size:100%;}
+.cost_details_top{ box-sizing: border-box; padding:30rpx 40rpx 30rpx 50rpx; color:#fff;  background:url(https://www.5iparks.com/static/wuye/images/degrees/degrees_top_bg.jpg) #1b9cd4 no-repeat top center; background-size:100% 100%;}
 .cost_details_top .h3{font-size:48rpx; font-weight: 600; margin-bottom:10rpx;}
 .cost_details_top .month{font-size:40rpx; margin-top: 4rpx; float: right;}
 .cost_details_top .p{font-size:32rpx; line-height:46rpx;}

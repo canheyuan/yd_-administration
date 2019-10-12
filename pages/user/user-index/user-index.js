@@ -92,72 +92,55 @@ Page({
         //重置所有刷新状态
         app.resetAllReach();
     },
-
+    
     //修改头像
-    changeHeadImgFn(e) {
+    changeHeadImgFn(e){
         var langData = this.data.langData;
         var lang = this.data.lang;
         var _this = this;
-        wx.chooseImage({
-            count: 1, // 默认9
-            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
-                console.log('选图：', res);
-                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        //选择图片   
+        app.chooseImg({
+            sizeType: ['compressed'],
+            success: (res) => {
                 var tempFilePaths = res.tempFilePaths;
+                //上传图片文件
+                app.uploadFile({
+                    imgUrl: tempFilePaths[0],
+                    entityType: 'user',
+                    success: (res) => {
+                        var changeImg = res.filePath;
+                        var changeImg2 = res.urlPath;
 
-                wx.uploadFile({
-                    url: app.globalData.jkUrl + '/manage/uploadImage', //仅为示例，非真实的接口地址
-                    filePath: tempFilePaths[0],
-                    name: 'file',
-                    header: {
-                        '5ipark-sid': app.globalData.sessionId
+                        app.requestFn({
+                            isLoading:false,
+                            //loadTitle: langData.public.editTip[lang],
+                            url: `/manage/userInfo/update`,
+                            header: 'application/x-www-form-urlencoded',
+                            data: {
+                                "headImgs": changeImg
+                            },
+                            method: 'POST',
+                            success: (res) => {
+                                console.log("修改头像成功：", res.data);
+                                //获取缓存，改变缓存里的信息，然后重新设置缓存
+                                var loginInfo = wx.getStorageSync('userInfo');
+                                loginInfo.userInfo['headImgs'] = changeImg2;
+                                wx.setStorageSync('userInfo', loginInfo); //设置缓存用户信息
+                                app.globalData.userInfo = loginInfo;  //获取用户信息
+                                _this.setData({ ["userInfo.headImgs"]: changeImg2 });
+                                wx.showToast({ title: langData.public.editSuccess[lang], icon: "success", duration: 2000 });
+                                app.globalData.userIndexReach = true;
+                                app.globalData.indexReach = true;
+                                _this.setUserImg(changeImg2);
+                            }
+                        });
                     },
-                    formData: {
-                        'entityId': '',
-                        'entityType': 'user',
-                        'appCode': ''
-                    },
-                    success(res) {
-                        console.log('头像：', res)
-                        var datas = JSON.parse(res.data);
-                        if (datas.code == 0) {
-                            const changeImg = datas.data.filePath;
-                            const changeImg2 = datas.data.urlPath;
-
-                            app.requestFn({
-                                loadTitle: langData.public.editTip[lang],
-                                url: `/manage/userInfo/update`,
-                                header: 'application/x-www-form-urlencoded',
-                                data: {
-                                    "headImgs": changeImg
-                                },
-                                method: 'POST',
-                                success: (res) => {
-                                    console.log("修改头像成功：", res.data);
-                                    //获取缓存，改变缓存里的信息，然后重新设置缓存
-                                    var loginInfo = wx.getStorageSync('userInfo');
-                                    loginInfo.userInfo['headImgs'] = changeImg2;
-                                    wx.setStorageSync('userInfo', loginInfo); //设置缓存用户信息
-                                    app.globalData.userInfo = loginInfo;  //获取用户信息
-                                    _this.setData({ ["userInfo.headImgs"]: changeImg2 });
-                                    wx.showToast({ title: langData.public.editSuccess[lang], icon: "success", duration: 2000 });
-                                    app.globalData.userIndexReach = true;
-                                    app.globalData.indexReach = true;
-                                    _this.setUserImg(changeImg2);
-                                }
-                            });
-                        }
-
-                    }, fail(err) {
-                        console.log(err);
-                    }
                 })
 
             }
         })
     },
+
 
     //修改IM用户信息
     setUserImg(img) {

@@ -7,43 +7,30 @@ Page({
         tagList: null,
         tagIndex: 0,
 
-        reach: [1, 1],
-
-        // nowMonth:"",
-        // dateMonth:"",
-
         langData: null,  //语言数据
         lang: '',    //语言类型
 
     },
 
     onLoad: function (options) {
-
         //设置语言,判断是否切换语言
         app.loadLangFn(this, 'fee', (res,lang) => {
             wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
             this.setData({
                 tagList: [
-                    { name: res.tagName1[lang], type: 1 },
-                    { name: res.tagName2[lang], type: 2 }
+                    { name: res.tagName1[lang], type: 1, show: true, reach:1 },
+                    { name: res.tagName2[lang], type: 2, show: false, reach: 1 }
                 ]
             })
         });
-
-        // var date = new Date;
-        // date = date.getTime();
-        // var month = commonFn.getDate(date).substring(0, 7); //本月
-        // this.setData({ 
-        //   nowMonth: month,
-        //   dateMonth: month,
-        // });
-
     },
+    
     //选项卡切换
     tagChangeFn(e) {
         var index = e.currentTarget.dataset.index;
         this.setData({
-            tagIndex: index
+            ['tagList['+ index +'].show']:true,
+            tagIndex: index 
         });
     },
 
@@ -53,11 +40,16 @@ Page({
         //this.getFeeList(1, 2, true);  //已抄表
     },
 
+    //下拉刷新
+    onPullDownRefresh: function (e) {
+        var reachObj = 'tagList[' + this.data.tagIndex + '].reach';
+        this.setData({  [reachObj]: Math.random() + 1 });
+        wx.stopPullDownRefresh();
+    },
+
     //页面上拉触底事件的处理函数
     onReachBottom: function () {
-        var obj = 'reach[' + this.data.tagIndex + ']';
-        this.setData({
-            [obj]: Math.random()
-        })
+        var reachObj = 'tagList[' + this.data.tagIndex + '].reach';
+        this.setData({ [reachObj]: Math.random() })
     }
 })

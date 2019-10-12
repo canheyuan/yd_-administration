@@ -1,9 +1,12 @@
+<!-- 下拉刷新动画 -->
+<reach-load m-top="100"></reach-load>
+
 <!-- 选项卡切换 -->
 <view class='tag_box tag_fixed'>
   <view class='tag_list'>
     <view 
       class='tag_item {{tagIndex==index?"act":""}}' 
-      wx:for="{{tagList}}" wx:key="{{index}}"
+      wx:for="{{tagList}}" wx:key="tagList{{index}}"
       bindtap="tagChangeFn" data-index="{{index}}"
     >{{item.name}}</view>
   </view>
@@ -11,19 +14,19 @@
 </view>
 
 <!-- 未缴费 -->
-<view hidden="{{tagIndex!=0}}">
-  <fee-list order-type="1" reach-data="{{reach[0]}}"></fee-list>
+<view class="fee_box" hidden="{{tagIndex!=0}}" wx:if="{{tagList[0].show}}">
+  <fee-list order-type="1" reach-data="{{tagList[0].reach}}"></fee-list>
 </view>
 
 <!-- 已缴费 -->
-<view hidden="{{tagIndex!=1}}">
+<view class="fee_box" hidden="{{tagIndex!=1}}" wx:if="{{tagList[1].show}}">
   <!-- <view class='order_month_top'>
     <view class='month_btn'><icon class='icons ico_month'></icon></view>
     <view class='info'>
       <text class='tit'>本月</text>
     </view>
   </view> -->
-  <fee-list order-type="2" reach-data="{{reach[1]}}"></fee-list>
+  <fee-list order-type="2"  reach-data="{{tagList[1].reach}}"></fee-list>
 
 </view>
 

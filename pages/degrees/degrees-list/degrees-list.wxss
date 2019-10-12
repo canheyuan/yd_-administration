@@ -38,3 +38,5 @@ page{background-color: #f7f7f7; padding-top:174rpx; padding-bottom: 40rpx;}
 .paid_box .repair_list:first-child{margin-top: 0;}
 .paid_box .repair_list .price_box .money{color: #555;}
 .paid_box .repair_list .price_box.done .money{color:#1094a7; font-weight:500;}
+
+.degress_box{background:#f7f7f7;}

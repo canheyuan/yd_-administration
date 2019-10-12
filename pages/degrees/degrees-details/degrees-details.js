@@ -201,40 +201,18 @@ Page({
     fileImageFn(e) {
         var _this = this;
         var obj = e.currentTarget.dataset.obj;
-        wx.chooseImage({
-            count: 1, // 默认9
-            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
-                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        app.chooseImg({
+            success: (res) => {
                 var tempFilePaths = res.tempFilePaths;
-                wx.uploadFile({
-                    //url: app.globalData.jkUrl + '/manage/uploadImage', //仅为示例，非真实的接口地址
-                    url: app.globalData.jkUrl + '/manage/uploadImage', //仅为示例，非真实的接口地址
-                    filePath: tempFilePaths[0],
-                    name: 'file',
-                    header: {
-                        '5ipark-sid': app.globalData.sessionId
-                    },
-                    formData: {
-                        'entityId': '',
-                        'entityType': 'estatemeter',
-                        'appCode': ''
-                    },
-                    success(res) {
-                        var datas = JSON.parse(res.data);
-                        if (datas.code == 0) {
-                            const changeImg = datas.data.filePath;
-                            const changeImg2 = datas.data.urlPath;
-                            _this.setData({ [obj]: changeImg2 });
-
-                        }
-
-                    }, fail(err) {
-                        console.log(err);
+                app.uploadFile({
+                    imgUrl: tempFilePaths[0],
+                    entityType: 'estatemeter',
+                    success: (res) => {
+                        var changeImg = res.filePath;
+                        var changeImg2 = res.urlPath;
+                        _this.setData({ [obj]: changeImg2 });
                     }
                 })
-
             }
         })
     },

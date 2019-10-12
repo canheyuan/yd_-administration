@@ -1,3 +1,5 @@
+<!-- 下拉刷新动画 -->
+<reach-load m-top='150'></reach-load>
 
 <!-- 选项卡切换 -->
 <view class='tag_box tag_fixed'>
@@ -24,7 +26,6 @@
 
 <!-- 条件筛选 -->
 <view class="screen_mdl {{tagIndex==0?'one':''}}" hidden="{{selectTagIndex!=0}}">
-
     <picker 
         class="screen_item" mode="multiSelector" 
         range='{{buildFloorList}}'
@@ -48,7 +49,7 @@
 </view>
 
 <!-- 企业-未录入 -->
-<view hidden="{{tagIndex!=0 || selectTagIndex!=0}}">
+<view class="degress_box" hidden="{{tagIndex!=0 || selectTagIndex!=0}}" wx:if="{{selectTag[0].tagList[0].show}}">
     <degrees-list 
         degrees-type="1" list-type="company" 
         date-month='' 
@@ -59,7 +60,7 @@
 </view>
 
 <!-- 企业-已录入 -->
-<view hidden="{{tagIndex!=1 || selectTagIndex!=0}}">
+<view class="degress_box"  hidden="{{tagIndex!=1 || selectTagIndex!=0}}" wx:if="{{selectTag[0].tagList[1].show}}">
     <degrees-list 
         degrees-type="2" list-type="company" 
         date-month='{{selectTag[0].tagList[1].dateMonth}}' 
@@ -70,7 +71,7 @@
 </view>
 
 <!-- 公摊-未录入 -->
-<view hidden="{{tagIndex!=0 || selectTagIndex!=1}}" style="margin-top:-70rpx;">
+<view class="degress_box"  hidden="{{tagIndex!=0 || selectTagIndex!=1}}" wx:if="{{selectTag[1].tagList[0].show}}" style="margin-top:-70rpx;">
     <degrees-list 
         degrees-type="N" list-type="share" 
         date-month='' 
@@ -79,7 +80,7 @@
 </view>
 
 <!-- 公摊-已录入 -->
-<view hidden="{{tagIndex!=1 || selectTagIndex!=1}}">
+<view class="degress_box"  hidden="{{tagIndex!=1 || selectTagIndex!=1}}" wx:if="{{selectTag[1].tagList[1].show}}">
     <!-- 条件筛选 -->
     <view class="screen_mdl one">
         <picker 

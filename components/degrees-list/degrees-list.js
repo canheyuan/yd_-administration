@@ -27,6 +27,8 @@ Component({
             observer: function (newVal, oldVal, changedPath) {
 
                 if (this.data.isFirst) {
+                    //设置语言,判断是否切换语言
+                    app.loadLangFn(this, 'degrees');
                     this.setData({ isFirst: false });
                 }
 
@@ -51,8 +53,7 @@ Component({
 
     //组件加载完成后
     attached() {
-        //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'degrees');
+        
     },
 
     //组件的方法列表
