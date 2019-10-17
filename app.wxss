@@ -12,6 +12,8 @@ image{width:auto; height:auto;}
 .icons {display:inline-block; background:url(https://www.5iparks.com/static/wuye/images/icons.png) no-repeat; background-size:500rpx 500rpx;}
 .icons2 {display:inline-block; background:url(https://www.5iparks.com/static/wuye/images/icons2.png) no-repeat; background-size:500rpx 500rpx;}
 
+.ico_time{width:30rpx; height:30rpx; background-position: -120rpx -120rpx;}
+
 /* .icons {display:inline-block; background:url(http://192.168.0.244/wuye/images/icons.png) no-repeat; background-size:500rpx 500rpx;}
 .icons2 {display:inline-block; background:url(http://192.168.0.244/wuye/images/icons2.png) no-repeat; background-size:500rpx 500rpx;} */
 
@@ -29,9 +31,10 @@ image{width:auto; height:auto;}
 .blue_btn{height:88rpx; line-height:88rpx; text-align: center; border-radius:44px; background: linear-gradient(to right, #2fc0d5, #13b6ce); color:#fff; font-size:36rpx; box-shadow: 0 8rpx 34rpx rgba(47,192,213,.56);}
 .s_blue_btn{height:70rpx; line-height:70rpx;  text-align: center; border-radius:35px; background:#6592fe; color:#fff; font-size:30rpx;}
 .blue_bd_btn{height:56rpx; line-height:56rpx;  text-align: center; border-radius:28px; color:#2f9cac; font-size:28rpx; border: 1rpx solid #55b0bd;}
-.blue_btn_btm{height:98rpx; line-height:98rpx; text-align: center; background: linear-gradient(to right, #2fc0d5, #13b6ce); color:#fff; font-size:36rpx; box-shadow: 0 -7rpx 24rpx rgba(0,0,0,.1);}
+.blue_btn_btm{height:98rpx; line-height:98rpx; text-align: center; background: linear-gradient(to right, #2fc0d5, #13b6ce); color:#fff; font-size:36rpx; box-shadow: 0 -7rpx 24rpx rgba(0,0,0,.1); border-radius:0;}
 .light_blue_btn_btm{height:98rpx; line-height:98rpx; text-align: center; background: linear-gradient(to right, #5ce1dc, #2fd5c7); color:#fff; font-size:36rpx; box-shadow: 0 -7rpx 24rpx rgba(0,0,0,.1);}
 .disabled{background:#ccc!important; box-shadow:none!important;}
+.btn_hover{opacity:.7;}
 
 /* 通用弹窗遮罩 */
 .mask_bg{background:rgba(0,0,0,.5); height:100%; width:100%; position:fixed; top:0; left:0; display:table;z-index: 10000; opacity:0; -webkit-transition:all .3s; transition:all .3s;}

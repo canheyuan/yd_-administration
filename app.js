@@ -1,4 +1,5 @@
 const mtjwxsdk = require('./utils/mtj-wx-sdk.js');  //百度统计
+
 let appConfig = require('config.js');   //不同小程序的配置信息
 let langJson = require('lang.js');   //加载语言文件包
 var Config = require('utils/config.js').IM;
@@ -7,8 +8,8 @@ var chatIm = require('utils/chatIm.js');
 App({
 
     globalData: {
-        appVersion: '1.3.2',  //上传的版本号
-        appVersionDate: '20191011',  //版本更新的日期
+        appVersion: '1.3.3',  //上传的版本号
+        appVersionDate: '20191016',  //版本更新的日期
         apiMsgSwitch: false,  //控制接口提示信息开关,true:开，false:关
         isChatLogin: true,    //控制是否调用聊天登录,true:开启，false:关闭
         menuData:null,  //自定义首页菜单
@@ -40,6 +41,7 @@ App({
         userIndexReach: true, //我的页面
         repairReach: false,  //报修页面
         degreesReach: false, //水电录入列表
+        complaintReach:false,   //投诉建议
     }
 ,  //加载默认配置信息
 
@@ -79,7 +81,7 @@ App({
             isSessionId: true,
             isLoginTip: false,
             url: '', //前缀不用写
-            header: 'application/json',
+            header: 'application/json', //另一种（application/x-www-form-urlencoded）
             method: 'GET',
             data: {},
             dataType: 'json',
@@ -150,7 +152,7 @@ App({
         //设置语言,判断是否切换语言
         var langType = this.globalData.lang;
         if (langType != pageThis.data.lang) {
-            var newLangData = this.globalData.langData[page];
+            var newLangData = this.globalData.langData[page] ? this.globalData.langData[page]:{};
             var langPublicData = this.globalData.langData.public;
             newLangData.public = langPublicData;
             var setDatas = {
@@ -685,6 +687,24 @@ App({
                 opt.complete && opt.complete();
             }
         });
+    },
+
+    //获取formID
+    getFormIdFn(formId, callback) {
+        var openId = this.globalData.openId;
+        this.requestFn({
+            isLoading: false,
+            url: `/maFormId/add`,
+            header: 'application/x-www-form-urlencoded',
+            data: {
+                openId: openId,
+                formId: formId
+            },
+            method: 'POST',
+            complete: () => {
+                callback && callback();
+            }
+        })
     },
 
 

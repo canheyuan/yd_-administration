@@ -1,6 +1,3 @@
 {
-  "navigationBarTitleText": "报修处理",
-  "usingComponents": {
-    "serve-price-pop": "/components/serve-price-pop/serve-price-pop"
-  }
+  "navigationBarTitleText": ""
 }

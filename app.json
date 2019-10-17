@@ -6,7 +6,6 @@
     "pages/coupon/coupon-detail/coupon-detail",
     "pages/degrees/degrees-details2/degrees-details2",
     "pages/degrees/degrees-list/degrees-list",
-    "pages/complaint/complaint-detail/complaint-detail",
     "pages/venue/venue-booking-details/venue-booking-details",
     "pages/message/message-list/message-list",
     "pages/supplies/supplies-detail/supplies-detail",
@@ -34,6 +33,19 @@
     "pages/analysis/data-analysis/data-analysis",
     "pages/analysis/income-profile/income-profile"
   ],
+  "subPackages": [
+    {
+        "root": "pages/complaint/",
+        "pages": [
+            "complaint-detail/complaint-detail",
+            "complaint-list/complaint-list"
+        ]
+    }
+  ],
+  "usingComponents": {
+    "list-nothing": "/components/result-nothing/result-nothing",
+    "reach-load": "/components/reach-load/reach-load"
+},
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

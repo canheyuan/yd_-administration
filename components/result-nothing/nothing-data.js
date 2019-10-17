@@ -51,7 +51,12 @@ const page_data = {
         icon: '/images/icon/result_nothing.png',
         title: '暂无待办事项',
         des: ''
-    }
+    },
+    complaint: {
+        icon: '/images/icon/result_nothing.png',
+        title: '暂无投诉建议',
+        des: ''
+    },
 }
 
 module.exports = {

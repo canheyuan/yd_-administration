@@ -90,7 +90,7 @@
         </view>
     </view>
     <!-- 菜单栏 -->
-    <view class="menu_list" wx:if="{{menuData}}">
+    <view class="menu_list {{menuData.length>6?'list_4':''}}" wx:if="{{menuData}}">
          <block wx:for="{{menuData}}" wx:key="menuData{{index}}">
             <navigator class='a' url='{{item.url}}' wx:if="{{item.code!='coupon'}}">
                 <image class="menu_icons" src="{{item.icon}}"></image>

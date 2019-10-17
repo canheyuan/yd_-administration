@@ -34,6 +34,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 2,
 			"list": [
@@ -51,8 +55,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/coupon/scan-error/scan-error",
-					"pathName": "pages/coupon/scan-error/scan-error",
+					"name": "pages/complaint/complaint-list/complaint-list",
+					"pathName": "pages/complaint/complaint-list/complaint-list",
 					"query": "",
 					"scene": null
 				}

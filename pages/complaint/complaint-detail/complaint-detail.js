@@ -1,160 +1,121 @@
-//获取应用实例
-const app = getApp()
+
+const app = getApp();
+const commonFn = require('../../../utils/common.js'); //获取应用实例
 Page({
-  data: {
-    domainUrl: app.globalData.domainUrl,
-    loginInfo:null,
-    detailsData:null, //详情数据
-    detailsImgs:[], //详情图片地址数组
-    progressDetails:true, //详细进度是否隐藏
-    popIsShow: true, //服务价格一览表弹窗是否显示
-    infoShow:true, //报修更多内容是否隐藏
-    tipType: '', //提示弹窗类型remove、star
-    tipPopShow: true,  //是否隐藏提示弹窗
-    starScore: 0,  //评分分数
-    repairId: '', //报修id
-    servePop: false,  //服务价格一览表显示隐藏
-    repairMoney:null,
-    maintainersIndex:0,
-    maintainerPop:false, //维修人员弹窗
+    data: {
+        domainUrl: app.globalData.domainUrl,
+        detailData: null, //详情数据
+        processPopHide:true,    //处理弹窗是否隐藏
+        resultPopHide:true, //结果弹窗是否隐藏
 
-    imgPopHide: true,
-    popImgUrl: ''
-  },
+        langData: null,  //语言数据
+        lang: '',    //语言类型
+    },
 
-  onLoad: function (options) {
-    console.log("报修分配：",this.data.loginInfo);
-    this.setData({ 
-      loginInfo:app.globalData.userInfo,
-      repairId: options.id
-    });  //存储报修id
-    //this.getRepairDetail(options.id); //获取详情信息
-    this.getRepairDetail('972f8ff3d9396ec97ec9aa0eb25fb779');
+    onLoad: function (options) {
+        //设置语言,判断是否切换语言
+        app.loadLangFn(this, 'complaint', (res,lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
+            this.getRepairDetail(options.id); //获取投诉信息
+        });
+        
+    },
 
-  },
+    //获取投诉详情
+    getRepairDetail(id) {
+        var langData = this.data.langData;
+        var lang = this.data.lang;
+        app.requestFn({
+            url: `/manage/estateComplaint/detail/${id}`,
+            success: (res) => {
+                var detailData = res.data.data;
+                detailData.applyTime = detailData.applyTime?commonFn.getDate(detailData.applyTime):'';
+                detailData.processTime = detailData.processTime?commonFn.getDate(detailData.processTime):'';
+                detailData.finishTime = detailData.finishTime?commonFn.getDate(detailData.finishTime):'';
+                detailData.content = detailData.content ? detailData.content : langData.public.noDesTip[lang]
+                switch (detailData.statusInt) {
+                    case 1:
+                        detailData.statusClass = '';
+                        detailData.setFnName = 'setDisposeFn';
+                        detailData.popName = 'processPopFn';
+                        detailData.setBtnName = langData.btnName1[lang];
+                        break;
+                    case 2:
+                        detailData.statusClass = 'follow';
+                        detailData.setFnName = 'setFinishFn';
+                        detailData.popName = 'resultPopFn';
+                        detailData.setBtnName = langData.btnName2[lang];
+                        break;
+                    case 3:
+                        detailData.statusClass = 'done';
+                        break;
+                }
+                this.setData({ detailData: detailData })
+            }
+        });
+    },
 
-  //获取报修详情
-  getRepairDetail(id){
-    app.requestFn({
-      url: `/estateComplaint/detail/${id}`,
-      success: (res) => {
-        console.log('投诉处理详情：',res);
-        return;
-        var detailsData = res.data.data;
-        if (!!detailsData.maintainers){
-          detailsData.maintainers.forEach(item=>{
-            item.title = `${item.userName}  (${item.phonenumber})`;
-          });
-        }
-        this.setData({
-          detailsData: detailsData,
-          detailsImgs: detailsData.images ? detailsData.images.split(',') : [],
-        })
-        console.log("报修详情：",detailsData);
-      }
-    });
-  },
+    //预览图片
+    previewImg(e) {
+        var index = e.currentTarget.dataset.index;
+        var imgList = e.currentTarget.dataset.imgs;
+        app.previewImgFn(imgList[index], imgList)
+    },
 
-  //设置跟进
-  setFollow(){
-    var  _this = this;
-    app.requestFn({
-      url: `/manage/estateRepair/follow/${_this.data.repairId}`,
-      method: 'POST',
-      success: (res) => {
-        _this.getRepairDetail(_this.data.repairId);
-        app.globalData.repairReach = false;
-      }
-    });
-  },
+    //打开、关闭受理弹窗
+    processPopFn(){
+        this.setData({ processPopHide: !this.data.processPopHide})
+    },
 
-  //设置完成
-  setComplete(){
-    var _this = this
-    app.requestFn({
-      url: `/manage/estateRepair/complete`,
-      header:'application/x-www-form-urlencoded',
-      data: {
-        repairId: _this.data.repairId,
-        repairMoney: _this.data.repairMoney,
-      },
-      method: 'POST',
-      success: (res) => {
-        _this.getRepairDetail(_this.data.repairId);
-        _this.servePopFn();
-        app.globalData.repairReach = false;
-      }
-    });
-  },
+    //打开、关闭结果弹窗
+    resultPopFn() {
+        this.setData({ resultPopHide: !this.data.resultPopHide })
+    },
 
-  //输入报修费用文本框失去焦点时执行
-  blurInput(e){
-    var data= e.detail.value;
-    this.setData({repairMoney: data })
-  },
+    //我要处理
+    setDisposeFn(){
+        var _this = this;
+        var langData = this.data.langData;
+        var lang = this.data.lang;
+        var complaintId = this.data.detailData.complaintId; //投诉id
+        app.requestFn({
+            url: `/manage/estateComplaint/toProcess/${complaintId}`,
+            method:"POST",
+            success: (res) => {
+                _this.processPopFn();
+                wx.showToast({ title: langData.operateTip1[lang], icon: 'success', duration: 2000 });
+                app.globalData.complaintReach = true;
+                setTimeout(()=>{
+                    _this.getRepairDetail(complaintId);
+                },2000)
+            }
+        });
+    },
 
-  //服务完成弹窗开关
-  servePopFn(){
-    this.setData({
-      servePop:!this.data.servePop
-    })
-  },
+    //处理完成
+    setFinishFn(e){
+        var _this = this;
+        var langData = this.data.langData;
+        var lang = this.data.lang;
+        var complaintId = this.data.detailData.complaintId; //投诉id
+        var resultStr = e.detail.value.des ? e.detail.value.des : langData.popDes2[lang];
+        app.requestFn({
+            url: `/manage/estateComplaint/complete/${complaintId}`,
+            method: "POST",
+            header:'application/x-www-form-urlencoded',
+            data:{
+                result:resultStr
+            },
+            success: (res) => {
+                _this.resultPopFn();
+                wx.showToast({ title: langData.operateTip2[lang], icon: 'success', duration: 2000 });
+                app.globalData.complaintReach = true;
+                setTimeout(() => {
+                    _this.getRepairDetail(complaintId);
+                }, 2000)
+               
+            }
+        });
+    }
 
-  //打开关闭服务价格一览表弹窗
-  popFn() {
-    this.setData({
-      popIsShow: !this.data.popIsShow
-    })
-  },
-  
-
-
-
-  //弹出维修人员弹窗
-  maintainerPopShow() {
-    this.setData({
-      maintainerPop: !this.data.maintainerPop
-    })
-  },
-
-  //选择分配维修人员
-  chooseMaintainersFn(e){
-    var _this = this;
-    var loginName = _this.data.detailsData.maintainers[e.detail.value].loginName;
-    app.requestFn({
-      url: `/manage/estateRepair/appoint`,
-      header:'application/x-www-form-urlencoded',
-      data: {
-        "repairId": _this.data.detailsData.repairId,
-        "handler": loginName,
-        "remark": ""
-      },
-      method: 'POST',
-      success: (res) => {
-        wx.showToast({ title: '分派成功！', icon: 'success', duration: 3000 });
-        _this.maintainerPopShow();
-        setTimeout(() => {
-          _this.getRepairDetail(_this.data.detailsData.repairId);
-        }, 2000);
-      }
-    });
-  },
-
-  //图片放大
-  bigImgFn(e) {
-    console.log(e)
-    var imgUrl = e.currentTarget.dataset.big_img;
-    this.setData({
-      imgPopHide: !this.data.imgPopHide,
-      popImgUrl: imgUrl
-    });
-  },
-
-  //关闭弹窗
-  closeImgPop() {
-    this.setData({
-      imgPopHide: !this.data.imgPopHide
-    });
-  }
-  
 })

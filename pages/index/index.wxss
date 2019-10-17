@@ -53,6 +53,7 @@
 /* 菜单 */
 .menu_list {padding:20rpx 0; overflow: hidden;}
 .menu_list .a{display:block; width:33.33%; text-align: center; float:left; padding:10rpx 0; box-sizing: border-box; line-height:0;}
+.menu_list.list_4 .a{width:25%;}
 .menu_list .a .menu_icons{display:inline-block; width:140rpx; height:140rpx; background-size:1400rpx 140rpx;}
 .menu_list .a .ico01{background-position: 0 0;}
 .menu_list .a .ico02{background-position: -140rpx 0;}

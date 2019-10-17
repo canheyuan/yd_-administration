@@ -38,6 +38,7 @@ module.exports = {
         imgAccessory: { zh: '图片附件', en:'Image attachment'},
         useExplain: { zh: '使用说明', en:'Description'},
         applyTime: { zh: '申请时间', en: 'Application Time' },
+        submitTime: { zh: '提交时间', en:'Submission time'},
 
         //input  placeholder提示
         phonePl: { zh: '请填写手机号码', en: 'Please fill in your cell phone number.' },
@@ -458,6 +459,33 @@ module.exports = {
         rejectTip: { zh: '拒绝预定！', en: 'Refuse to book!' },
     },
 
+    //投诉建议
+    complaint: {
+        title: { zh: '投诉建议', en: 'Suggestions' },
+        subject: { zh: '主题', en: 'subject' },
+        subjectPl: { zh: '请填写主题', en: 'Please fill in the subject' },
+        subjectTip: { zh: '请输入主题！', en: 'Please enter the subject!' },
+        feedback: { zh: '反馈结果', en: 'Feedback' },
+        feedbackPl: { zh: '请输入您的反馈描述…', en: 'Please enter your feedback description...' },
+        feedbackTip: { zh: '请输入反馈内容！', en: 'Please enter feedback!' },
+        receiver: { zh: '受理人', en: 'Receiver' },
+        addPicBtn: { zh: '添加图片', en: 'add pictures' },
+        checkRecordBtn: { zh: '查看历史记录 >>', en: 'View history >>' },
+        status1: { zh: '待处理', en: 'Untreated' },
+        status2: { zh: '处理中', en: 'Processing' },
+        status3: { zh: '已完成', en: 'completed' },
+        applyTime: { zh: '发起时间：', en: 'Apply Time' },
+        processTime: { zh: '受理时间：', en: 'Process Time' },
+        finishTime: { zh: '完成时间：', en: 'Finish Time' },
+        popTitle1: { zh: '处理投诉', en: 'Handling complaints' },
+        popDes1: { zh: '确定处理该投诉吗？', en: 'Are you sure to handle the complaint?' },
+        popTitle2: { zh: '投诉结果', en: 'Complaints result' },
+        popDes2: { zh: '反馈的问题已解决！', en:'The feedback problem has been solved!'},
+        btnName1: { zh: '我要处理', en: 'Handle' },
+        btnName2: { zh: '处理好了', en: 'Well done' },
+        operateTip1: { zh: '已受理！', en: 'Accepted!' },
+        operateTip2: { zh: '已完成！', en: 'Completed!' }
+    },
 
     //********** 组件 **********
     cpBacklog: {

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "complaint-list": "/components/complaint-list/complaint-list"
+  }
+}
