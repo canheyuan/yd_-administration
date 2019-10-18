@@ -33,7 +33,9 @@
                 <view class='jfxm_list'>
 
                     <view class='li' wx:for="{{detailsData.fees}}" wx:key="{{index}}">
-                        <navigator  url='/pages/fee-check/project-detail/project-detail?id={{item.feeId}}' class='d_btn'>{{langData.detailBtn[lang]}}</navigator>
+                        <navigator 
+                            url='/pages/fee-check/project-detail/project-detail?id={{item.feeId}}' class='d_btn'
+                        >{{langData.detailBtn[lang]}}</navigator>
                         <view class='info'>
                             <view class='h3'>{{item.unitName}}{{item.feeName}}</view>
                             <view class='price'>{{langData.money[lang]}}：  <text>￥{{item.totalAmount}}</text></view>

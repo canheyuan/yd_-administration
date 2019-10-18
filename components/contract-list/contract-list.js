@@ -14,7 +14,7 @@ Component({
         },
 
         reachData: {
-            type: Number, //类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
+            type: Number,
             observer: function (newVal, oldVal, changedPath) {
 
                 if (this.data.isFirst) {

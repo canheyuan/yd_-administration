@@ -14,7 +14,7 @@
         <view class='feedback' wx:if="{{item.result}}">
             <text>{{langData.feedback[lang]}}：
             {{item.result}}</text>
-            <view class='time'>{{item.finishTime}}</view>
+            <view class='time'><icon class="icons ico_time"></icon>{{item.finishTime}}</view>
         </view>
     </view>
     <!-- 底部提示文字 -->
@@ -25,46 +25,3 @@
 
 <!-- 暂无状态 -->
 <list-nothing c-name="complaint" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>
-
-
-
-
-
-
-
-<view class='complaint_list' wx:if="{{false}}">
-    <view class='li box_shadow' wx:if="{{false}}">
-        <view class='top'><icon class='icons ico_time'></icon>提交时间：2018-07-18 13:23:24</view>
-        <view class='main'>
-            <view class='title'><view class='label'>建议</view><text>这个小程序做得太好这个小程序做得太好啦！</text></view>
-            <view class='p'>想不到这么方便，解决了很多问题，这个小程序做得太好啦！我反手就给了32赞~这个小程序做得太好啦！我反手就给了32赞~！！！</view>
-        </view>
-        <view class='feedback'>
-        <text>物业反馈：
-        您的情况我们已经知晓，我们会努力做得更好的，非常感谢你的反馈！</text>
-        <view class='time'>2018-07-19 13:23:24</view>
-        </view>
-    </view>
-
-    <view class='li box_shadow'>
-         <view class='status icons s_yellow'>处理中</view>
-        <view class='top'>广州五行教育邮箱公司</view>
-        <view class='main'>
-            <view class='title'><text>这个小程序做得太好啦！这个小程序做得太好啦！</text></view>
-            <view class='p'>想不到这么方便，解决了很多问题，这个小程序做得太好啦！我反手就给了这个小程序做得太好啦！我反手就给了32赞~！！！</view>
-            <view class='p'><icon class='icons ico_time'></icon>提交时间：2018-07-18 13:23:24</view>
-        </view>
-    </view>
-    <view class='li box_shadow'>
-         <view class='status icons s_yellow'>处理中</view>
-        <view class='top'>广州五行教育邮箱公司</view>
-        <view class='main'>
-            <view class='title'><text>这个小程序做得太好啦！这个小程序做得太好啦！</text></view>
-            <view class='p'>想不到这么方便，解决了很多问题，这个小程序做得太好啦！我反手就给了这个小程序做得太好啦！我反手就给了32赞~！！！</view>
-            <view class='p'><icon class='icons ico_time'></icon>提交时间：2018-07-18 13:23:24</view>
-        </view>
-    </view>
-     
-</view>
-
-

@@ -694,7 +694,7 @@ App({
         var openId = this.globalData.openId;
         this.requestFn({
             isLoading: false,
-            url: `/maFormId/add`,
+            url: `/manage/maFormId/add`,
             header: 'application/x-www-form-urlencoded',
             data: {
                 openId: openId,
@@ -706,6 +706,5 @@ App({
             }
         })
     },
-
 
 })

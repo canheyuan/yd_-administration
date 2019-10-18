@@ -51,11 +51,6 @@ Component({
         isFirst: true,
     },
 
-    //组件加载完成后
-    attached() {
-        
-    },
-
     //组件的方法列表
     methods: {
 

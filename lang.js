@@ -97,6 +97,41 @@ module.exports = {
         backHomeBtn: { zh: '返回首页', en:'Back to home'}
     },
 
+    //暂无
+    nothingData:{
+        nothing:{
+            title: { zh: '暂无内容！', en:'No content yet!'}
+        },
+        degrees: {
+            title: { zh: '目前还没有未抄表的哦！', en: 'At present, there is no meter reading!' }
+        },
+        degrees2: {
+            title: { zh: '当前月份还没有已抄表的哦！', en: 'There is no meter reading in the current month.' }
+        },
+        contract: {
+            title: { zh: '暂无合同！', en: 'No contract yet!' }
+        },
+        fee: {
+            title: { zh: '暂无缴费信息！', en: 'No payment information yet!' }
+        },
+        repair: {
+            title: { zh: '暂无报修信息！', en: 'No repair information yet!' }
+        },
+        notice: {
+            title: { zh: '暂无公告信息！', en: 'No announcement information yet!' }
+        },
+        message: {
+            title: { zh: '暂无通知消息！', en: 'No notification yet!' }
+        },
+        backlog: {
+            title: { zh: '暂无待办事项！', en: 'No to do items!' }
+        },
+        complaint: {
+            title: { zh: '暂无投诉建议！', en: 'No complaints and suggestions!' }
+        },
+        backHomeBtn: { zh: '返回首页', en: 'Back to home' }
+    },
+
     //首页index
     index: {
         indexTitle: { zh: '园叮智慧园区', en: 'Yuanding Wisdom Park' },

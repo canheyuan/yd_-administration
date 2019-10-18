@@ -124,7 +124,7 @@
 
 <!-- 登录提示 -->
 <view hidden="{{hasUserInfo}}">
-<login-tip binduserInfo="getUserInfoFn"></login-tip>
+    <login-tip binduserInfo="getUserInfoFn"></login-tip>
 </view>
 
 <!------------------ tab栏菜单(英文版本才出现) ------------------>

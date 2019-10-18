@@ -5,7 +5,6 @@ Component({
 
     properties: {
         targetPage: String,
-
         reachData: {    
             type: Number,
             observer: function (newVal, oldVal, changedPath) {
@@ -21,7 +20,6 @@ Component({
     data: {
         domainUrl: app.globalData.domainUrl,    //图片地址前缀
         listInfo:{},
-
         langData: null,  //语言数据
         lang:''
     },

@@ -113,7 +113,6 @@ Page({
                 setTimeout(() => {
                     _this.getRepairDetail(complaintId);
                 }, 2000)
-               
             }
         });
     }
