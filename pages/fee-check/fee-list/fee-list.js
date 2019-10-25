@@ -19,7 +19,8 @@ Page({
             this.setData({
                 tagList: [
                     { name: res.tagName1[lang], type: 1, show: true, reach:1 },
-                    { name: res.tagName2[lang], type: 2, show: false, reach: 1 }
+                    { name: res.tagName2[lang], type: 2, show: false, reach: 1 },
+                    { name: res.tagName3[lang], type: 3, show: false, reach: 1 }
                 ]
             })
         });

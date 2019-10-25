@@ -2,7 +2,7 @@ page{background-color: #f7f7f7; padding-bottom: 40rpx; padding-top:80rpx;}
 .fee_box{background:#f7f7f7;}
 /* 选项卡切换 */
 .tag_box{position: relative; border-top:none;}
-.tag_box .tag_list{margin: 0 90rpx;}
+.tag_box .tag_list{margin: 0 40rpx;}
 /* 搜索按钮 */
 .tag_box .tab_search{padding: 20rpx; position: absolute; top:-2rpx; right:24rpx;}
 .tag_box .tab_search .icon{width: 34rpx; height: 34rpx;}

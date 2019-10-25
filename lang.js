@@ -312,8 +312,9 @@ module.exports = {
     //待缴查询
     fee: {
         title: { zh: '待缴查询', en:'Pending inquiries'},
-        tagName1: { zh: '待缴费企业', en: 'Unpaid Enterprises' },
-        tagName2: { zh: '已缴费企业', en: 'Payable Enterprises' },
+        tagName1: { zh: '待审核', en: 'Unaudited' },
+        tagName2: { zh: '待缴费', en: 'Unpaid' },
+        tagName3: { zh: '已缴费', en: 'Paid' },
         statusName1: { zh: '未缴纳', en: 'Unpaid' },
         statusName2: { zh: '已缴纳', en: 'Paid' },
         statusName3: { zh: '已开票', en: 'Invoiced' },

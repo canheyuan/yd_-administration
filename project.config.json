@@ -55,8 +55,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/complaint/complaint-list/complaint-list",
-					"pathName": "pages/complaint/complaint-list/complaint-list",
+					"name": "pages/fee-check/fee-list/fee-list",
+					"pathName": "pages/fee-check/fee-list/fee-list",
 					"query": "",
 					"scene": null
 				}
