@@ -4,28 +4,38 @@
 
 <block wx:if="{{listInfo.isFinish}}">
 <view class='fee_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
-    <navigator 
-        wx:for="{{listInfo.list}}" wx:key="fee{{index}}"
-        class='li clearfix' url="/pages/fee-check/fee-detail/fee-detail?id={{item.billId}}"
-    >
-        <view class="right">
-            <view class='status {{item.statusClass}}'>{{item.statusName}}</view>
-            <view class='price_box'>
-                <view class='money'><text>￥</text>{{item.totalAmount}} </view>
+    <view class="li" wx:for="{{listInfo.list}}" wx:key="fee{{index}}">
+        <navigator 
+            class='top clearfix' url="/pages/fee-check/fee-detail/fee-detail?id={{item.billId}}"
+        >
+            <view class="right {{item.statusClass}}">
+                <view class='status'>{{item.statusName}}</view>
+                <view class='price_box'>
+                    <view class='money'><text>￥</text>{{item.totalAmount}} </view>
+                </view>
             </view>
+            <veiw class="left">
+                <view class='yd_title01'>{{item.entName}}</view>
+                <view class='title'>
+                    <icon class='icon_jbc'></icon>
+                    <text class='month'>{{item.month}}{{langData.monthText[lang]}}</text>
+                </view>
+            </veiw>
+        </navigator>
+        <view class="btm" wx:if="{{item.status==0 || item.status==1 || item.status==2}}">
+            <view class="btn btn_blue" hover-class="hover" wx:if="{{item.status==0}}">重新生成</view>
+            <view class="btn btn_orange" hover-class="hover" wx:if="{{item.status==0}}">忽略异常</view>
+            <view class="btn btn_red" hover-class="hover" wx:if="{{item.status==1}}">审核拒绝</view>
+            <view class="btn btn_green" hover-class="hover" wx:if="{{item.status==1}}">审核通过</view>
+            <view class="btn btn_green" hover-class="hover" wx:if="{{item.status==2}}" style="width:200rpx;">上传支付凭证</view>
+            <view class="txt" wx:if="{{item.status==2}}">企业未查阅</view>
         </view>
-        <veiw class="left">
-            <view class='yd_title01'>{{item.entName}}</view>
-            <view class='title'>
-                <icon class='icon_jbc'></icon><text class='month'>{{item.month}}{{langData.monthText[lang]}}</text>
-            </view>
-        </veiw>
-    </navigator>
+    </view>
 
     <!-- 底部提示文字 -->
     <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
         <view class='txt'>{{listInfo.tipTxt}}</view>
-    </view>  
+    </view>
 
 </view>
 

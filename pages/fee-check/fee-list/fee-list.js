@@ -4,6 +4,7 @@ Page({
     //页面的初始数据
     data: {
         domainUrl: app.globalData.domainUrl,
+        nowMonth:'',
         tagList: null,
         tagIndex: 0,
 
@@ -13,17 +14,23 @@ Page({
     },
 
     onLoad: function (options) {
+
+        var date = new Date;
+        date = date.getTime();
+        var month = commonFn.getDate(date).substring(0, 7); //本月
+        this.setData({ nowMonth: month });
+
         //设置语言,判断是否切换语言
         app.loadLangFn(this, 'fee', (res,lang) => {
             wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
             this.setData({
                 tagList: [
-                    { name: res.tagName1[lang], type: 1, show: true, reach:1 },
-                    { name: res.tagName2[lang], type: 2, show: false, reach: 1 },
-                    { name: res.tagName3[lang], type: 3, show: false, reach: 1 }
+                    { name: res.tagName1[lang], type: 3, show: true, dateMonth: '', reach:1 },
+                    { name: res.tagName2[lang], type: 1, show: false, dateMonth: '', reach: 1 },
+                    { name: res.tagName3[lang], type: 2, show: false, dateMonth: '', reach: 1 }
                 ]
             })
-        });
+        })
     },
     
     //选项卡切换
@@ -36,9 +43,18 @@ Page({
     },
 
     //切换月份
+    // changeMonthFn(e) {
+    //     this.setData({ dateMonth: e.detail.value });
+    // },
+
+    //切换月份
     changeMonthFn(e) {
-        this.setData({ dateMonth: e.detail.value });
-        //this.getFeeList(1, 2, true);  //已抄表
+        var dateMonthObj = 'tagList[' + this.data.tagIndex + '].dateMonth';
+        var reachObj = 'tagList[' + this.data.tagIndex + '].reach';
+        this.setData({
+            [dateMonthObj]: e.detail.value,
+            [reachObj]: Math.random() + 1
+        });
     },
 
     //下拉刷新

@@ -1,17 +1,16 @@
 page{background-color:#f7f7f7; padding-bottom: 110rpx;}
 
 /* 顶部企业信息 */
-.cost_details_top{height:230rpx; box-sizing: border-box; padding:34rpx 40rpx 0 50rpx; color:#fff;  background:url(https://www.5iparks.com/static/wuye/images/fee-check/top_bg.jpg) #1b9cd4 no-repeat top center; background-size:100%;}
-.cost_details_top .h3{font-size:48rpx; font-weight: 600; margin-bottom:10rpx;}
+.cost_details_top{ box-sizing: border-box; padding:30rpx 40rpx 30rpx 50rpx; color:#fff;  background:url(https://www.5iparks.com/static/wuye/images/fee-check/top_bg.jpg) #1b9cd4 no-repeat top center; background-size:100% 100%;}
+.cost_details_top .h3{font-size:48rpx; font-weight: 600; margin-bottom:20rpx;}
 .cost_details_top .month{font-size:40rpx; margin-top: 4rpx; float: right;}
-.cost_details_top .p{font-size:32rpx; line-height:46rpx;}
-.cost_details_top .p.per{color: #f7dcc5;}
-.cost_details_top .p icon{width:32rpx; height:32rpx; margin-right:10rpx;}
-.cost_details_top .p .ico_fz{background:url(https://www.5iparks.com/static/wuye/images/icon/ico_building.png) no-repeat top center; background-size:32rpx 32rpx;}
-.cost_details_top .p .ico_per{background:url(https://www.5iparks.com/static/wuye/images/icon/ico_loc.png) no-repeat top center; background-size:32rpx 32rpx;}
+.cost_details_top .p{font-size:32rpx; line-height:40rpx;}
+.cost_details_top .p.per{color: #f7dcc5; margin-top:15rpx;}
+.cost_details_top .p icon{width:30rpx; height:30rpx; margin-right:10rpx; position:relative; top:5rpx;}
+.cost_details_top .p .ico_fz{background-position: -28rpx -470rpx;}
+.cost_details_top .p .ico_per{background-position: -60rpx -470rpx;}
 
 /* 应缴费用 */
-.fee_table{}
 .fee_table .info{padding:24rpx 32rpx 20rpx; float:right;}
 .fee_table .yingjiao{font-size:30rpx; color:#888; padding-right:10rpx;}
 .fee_table .qian{color:#ff6000; font-size:48rpx; line-height: 50rpx; font-weight: 500;}
@@ -24,7 +23,7 @@ page{background-color:#f7f7f7; padding-bottom: 110rpx;}
 .repair_list .yd_title01{float: left;}
 .repair_list .status{color: #f28d09; font-size: 28rpx; float: right;}
 .repair_list .status.overdue{color: #d63a31;}
-.repair_list .status.done{color: #a5a5a5; width: 126rpx; height: 126rpx; position: absolute; top: -10rpx; right: 6rpx; background:url(https://www.5iparks.com/static/wuye/images/stamp_done.png) no-repeat top left; background-size: 126rpx;}
+.repair_list .status.done{color: #a5a5a5; width: 126rpx; height: 126rpx; position: absolute; top: -10rpx; right: 6rpx; background:url(https://www.5iparks.com/static/wuye/images/stamp_done.png) no-repeat top left; background-size: 126rpx; font-size:0;}
 .repair_list .repair_ctn{padding: 20rpx 32rpx; }
 .repair_ctn .electricity{width: 50%; border-right: 1rpx solid #e2e2e2; float: left;}
 .repair_ctn .water{width: 45%; float: right;}
@@ -41,4 +40,9 @@ page{background-color:#f7f7f7; padding-bottom: 110rpx;}
 
 /* 底部按钮 */
 .yd_title02{margin-top: 32rpx;}
-.blue_btn_btm{width: 100%; position: fixed; bottom: 0;}
+.btn_box_btm{width: 100%; box-shadow: 0 -7rpx 24rpx rgba(0,0,0,.1); position: fixed; bottom: 0; z-index: 99; display:flex; height:98rpx;}
+.btn_box_btm .btn{height:98rpx; line-height:98rpx; text-align: center; color:#fff; font-size:36rpx; display:block; width:100%;}
+.btn_box_btm .btn.red{background:#d63a31;}
+.btn_box_btm .btn.orange{background:#f28d09;}
+.btn_box_btm .btn.blue{background:#2f9cac;}
+.btn_box_btm .btn.green{background:#1ab394;}

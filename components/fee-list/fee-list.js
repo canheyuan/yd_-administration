@@ -13,6 +13,10 @@ Component({
             }
         },
 
+        month:{
+            type: String,
+        },
+
         reachData: {
             type: Number, //类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
             observer: function (newVal, oldVal, changedPath) {
@@ -75,8 +79,8 @@ Component({
             listFn.listPage({
                 url: '/manage/bill/list',
                 data: {
-                    period: '',     //收费周期 yyyy-MM
-                    type: _this.data.orderType   //类型，0所有 1待缴费 2已缴费，默认1
+                    period: _this.properties.month,     //收费周期 yyyy-MM
+                    type: _this.properties.orderType   //类型，0所有 1待缴费 2已缴费 3待审核，默认3
                 },
                 isReach: isReach,
                 page: _this,
@@ -93,18 +97,39 @@ Component({
                     var listItem = listItem;
                     if (listItem) {
                         listItem.month = listItem.feePeriod.substring(5, 7);
+                        //状态status: 0异常 1未审核 2未缴费 3已缴费 4已开票 5支付中 6退款 9已取消
                         switch (listItem.status) {
-                            case 2:
+                            case 0:
+                                listItem.statusName = langData.statusName0[lang];
+                                listItem.statusClass = '';
+                                break;
+                            case 1:
                                 listItem.statusName = langData.statusName1[lang];
                                 listItem.statusClass = '';
                                 break;
-                            case 3:
+                            case 2:
                                 listItem.statusName = langData.statusName2[lang];
-                                listItem.statusClass = 'done';
+                                listItem.statusClass = 'blue';
+                                break;
+                            case 3:
+                                listItem.statusName = langData.statusName3[lang];
+                                listItem.statusClass = 'green';
                                 break;
                             case 4:
-                                listItem.statusName = langData.statusName3[lang];
+                                listItem.statusName = langData.statusName4[lang];
                                 listItem.statusClass = 'done';
+                                break;
+                            case 5:
+                                listItem.statusName = langData.statusName5[lang];
+                                listItem.statusClass = '';
+                                break;
+                            case 6:
+                                listItem.statusName = langData.statusName6[lang];
+                                listItem.statusClass = '';
+                                break;
+                            case 9:
+                                listItem.statusName = langData.statusName9[lang];
+                                listItem.statusClass = '';
                                 break;
                         }
                     }

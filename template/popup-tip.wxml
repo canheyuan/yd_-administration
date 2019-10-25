@@ -1,0 +1,17 @@
+
+<!-- 提示弹窗 -->
+<template name="popup-tip">
+<view class='mask_bg pop_show' hidden='{{hide}}'>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{title}}</view>
+            <text class='alert'>{{des}}</text>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap="{{callOffFn}}">{{callOffBtnName}}</view>
+                <view class='btn' bindtap='{{confirmFn}}'>{{confirmBtnName}}</view>
+            </view>
+            <view class='close_btn icons' bindtap="{{callOffFn}}" ></view>
+        </view>
+    </view>
+</view>
+</template>

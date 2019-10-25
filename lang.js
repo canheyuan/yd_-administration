@@ -39,6 +39,7 @@ module.exports = {
         useExplain: { zh: '使用说明', en:'Description'},
         applyTime: { zh: '申请时间', en: 'Application Time' },
         submitTime: { zh: '提交时间', en:'Submission time'},
+        chooseMonth: { zh: '选择月份', en: '' },
 
         //input  placeholder提示
         phonePl: { zh: '请填写手机号码', en: 'Please fill in your cell phone number.' },
@@ -315,11 +316,15 @@ module.exports = {
         tagName1: { zh: '待审核', en: 'Unaudited' },
         tagName2: { zh: '待缴费', en: 'Unpaid' },
         tagName3: { zh: '已缴费', en: 'Paid' },
-        statusName1: { zh: '未缴纳', en: 'Unpaid' },
-        statusName2: { zh: '已缴纳', en: 'Paid' },
-        statusName3: { zh: '已开票', en: 'Invoiced' },
+        statusName0: { zh: '账单异常', en: 'Abnormal' },
+        statusName1: { zh: '未审核', en: 'Unaudited' },
+        statusName2: { zh: '未缴费', en: 'Unpaid' },
+        statusName3: { zh: '已缴费', en: 'Paid' },
+        statusName4: { zh: '已开票', en: 'Invoiced' },
+        statusName5: { zh: '支付中', en: 'In payment' },
+        statusName6: { zh: '退款', en: 'Refund' },
+        statusName9: { zh: '已取消', en: 'Cancelled' },
         monthText: { zh: '月份应缴费用', en: 'Payable in' },
-
         //详情
         month: { zh: '月份', en: 'Month' },
         costCompany: { zh: '已缴纳企业', en: 'Payable Enterprises' },

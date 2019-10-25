@@ -9,7 +9,7 @@ image{width:auto; height:auto;}
 .clearfix{zoom:1;}
 
 /* 小图标背景 */
-.icons {display:inline-block; background:url(https://www.5iparks.com/static/wuye/images/icons.png) no-repeat; background-size:500rpx 500rpx;}
+.icons {display:inline-block; background:url(https://www.5iparks.com/static/wuye/images/icons.png?v=2) no-repeat; background-size:500rpx 500rpx;}
 .icons2 {display:inline-block; background:url(https://www.5iparks.com/static/wuye/images/icons2.png) no-repeat; background-size:500rpx 500rpx;}
 
 .ico_time{width:30rpx; height:30rpx; background-position: -120rpx -120rpx;}

@@ -1,4 +1,4 @@
-page{background-color: #f7f7f7; padding-bottom: 40rpx; padding-top:80rpx;}
+page{background-color: #f7f7f7; padding-bottom: 40rpx; padding-top:160rpx;}
 .fee_box{background:#f7f7f7;}
 /* 选项卡切换 */
 .tag_box{position: relative; border-top:none;}
@@ -7,35 +7,14 @@ page{background-color: #f7f7f7; padding-bottom: 40rpx; padding-top:80rpx;}
 .tag_box .tab_search{padding: 20rpx; position: absolute; top:-2rpx; right:24rpx;}
 .tag_box .tab_search .icon{width: 34rpx; height: 34rpx;}
 
-/* 内容列表 */
-.repair_list{padding: 26rpx 0 32rpx; margin-top: 32rpx; background: #fff;}
-.repair_list .yd_title01{margin-left: 16rpx; float: left;}
-.repair_list .status{color: #f28d09; font-size: 28rpx; margin-right: 32rpx; float: right;}
-.repair_list .status.epd{color: #d63a31;}
-.repair_list .status.done{color: #2f9cac;}
-.repair_list .repair_ctn{padding: 0 32rpx; clear: left; position: relative;}
-.repair_list .repair_ctn .title{color: #333; font-size: 32rpx; font-weight: 500; padding: 26rpx 0 10rpx;}
-.repair_list .repair_ctn .title .icon_jbc{width: 36rpx; height: 36rpx; background:url(https://www.5iparks.com/static/wuye/images/icon/ico_fee.png) no-repeat 0 2rpx; background-size: 36rpx auto; float: left; padding-top: 8rpx; margin-right: 8rpx;}
-.repair_list .repair_ctn .title .month{font-weight: 500;}
-.repair_list .repair_ctn .title .expired{color: #9d9d9d; font-size: 28rpx; line-height: 36rpx; font-weight: normal;}
-.repair_list .repair_ctn .text{color: #777; font-size: 28rpx; line-height: 36rpx; float: left;}
-.repair_list .repair_ctn .time_msg{font-size:24rpx; color:#9d9d9d; padding-top: 20rpx; clear: left;}
-.repair_list .repair_ctn .ico_txt{float: left;}
+.screen_mdl{height:90rpx; background:#f7f7f7; border-bottom:2rpx solid #e5e5e5; display:flex; display:-webkit-flex;  position:fixed; top:82rpx; left:0; width:100%; z-index:9;}
+.screen_mdl .screen_item{ flex-flow:row nowrap; -webkit-flex-flow:row nowrap; display:block; width:100%; text-align: center; height:90rpx; line-height:90rpx; position:relative; padding:0 30rpx;}
+.screen_mdl .screen_item::before{content:''; position:absolute; left:0; top:25rpx; width:2rpx; height:40rpx; background:#cbcbcb;}
+.screen_mdl .screen_item:first-child::before{display:none;}
+.screen_mdl .screen_item .icons{display:inline-block; width:40rpx; height:40rpx; vertical-align: middle; margin-right:10rpx; position:relative;top:-4rpx;}
+.screen_mdl .screen_item .ico_floor{background-position: -160rpx -210rpx;}
+.screen_mdl .screen_item .ico_month{background-position: -120rpx -210rpx;}
+.screen_mdl .screen_item .text{display:inline-block; line-height:90rpx; vertical-align: top; color:#2f9cac; font-size:26rpx;}
+.screen_mdl.one .screen_item{text-align: right;}
+.screen_mdl.one .screen_item:nth-child(2){display:none; }
 
-.repair_list .price_box{font-size:32rpx; color:#555; padding: 4rpx 0 0 10rpx; margin-right: 32rpx; text-align: right; float: right; clear: right;}
-.repair_list .price_box .money{color: #ff6000; font-weight: 500;}
-.repair_list .price_box .money text{font-size: 70%;}
-.repair_list .price_box .overdue{color:#888 ;font-size: 24rpx; padding-top: 4rpx;}
-
-/* 已缴纳内容列表 */
-.order_month_top{height:90rpx; background:#f7f7f7;border-bottom:1rpx solid #dddddd; padding:0 10rpx 0 20rpx;}
-.order_month_top .month_btn{float:right; width:90rpx; height:90rpx;  text-align: center; }
-.order_month_top .month_btn .ico_month{width:50rpx; height:50rpx; background-position:-400rpx -60rpx;margin-top:20rpx;}
-.order_month_top .info{line-height:90rpx;}
-.order_month_top .info .tit{display:inline-block; color:#555555; font-size:30rpx; margin-right:20rpx;}
-.order_month_top .info .txt{display:inline-block; color:#888888; font-size:26rpx;}
-.order_month_top .info .orange{display:inline-block; color:#ff6000; font-size:28rpx; margin-right:30rpx;}
-.order_month_top .info .green{display:inline-block; color:#30a807; font-size:28rpx;}
-.paid_box{}
-.paid_box .repair_list:first-child{margin-top: 0;}
-.paid_box .repair_list .price_box .money{color: #555;}

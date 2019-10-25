@@ -1,5 +1,5 @@
 <!-- 下拉刷新动画 -->
-<reach-load m-top="100"></reach-load>
+<reach-load m-top="170"></reach-load>
 
 <!-- 选项卡切换 -->
 <view class='tag_box tag_fixed'>
@@ -13,19 +13,24 @@
     <!-- <view class='tab_search'><image class='icon' mode='widthFix' src='{{domainUrl}}/images/icon/ico_search.png'></image></view> -->
 </view>
 
+<!-- 条件筛选 -->
+<view class="screen_mdl one">
+    <picker 
+        class="screen_item" mode="date" 
+        value="tagList[tagIndex].dateMonth}}" 
+        fields="month" end="{{nowMonth}}"  
+        bindchange="changeMonthFn"
+    >
+        <icon class="icons ico_month"></icon>
+        <text class="text">{{!tagList[tagIndex].dateMonth?langData.public.chooseMonth[lang]:tagList[tagIndex].dateMonth}}</text>
+    </picker>
+</view>
+
 <!-- 未缴费 -->
-<view class="fee_box" hidden="{{tagIndex!=0}}" wx:if="{{tagList[0].show}}">
-    <fee-list order-type="1" reach-data="{{tagList[0].reach}}"></fee-list>
+<view 
+    class="fee_box" 
+    wx:for="{{tagList}}" wx:key="list{{index}}"
+    hidden="{{tagIndex!=index}}" wx:if="{{tagList[index].show}}"
+>
+    <fee-list order-type="{{item.type}}" month="{{item.dateMonth}}" reach-data="{{tagList[index].reach}}"></fee-list>
 </view>
-
-<!-- 已缴费 -->
-<view class="fee_box" hidden="{{tagIndex!=1}}" wx:if="{{tagList[1].show}}">
-    <!-- <view class='order_month_top'>
-        <view class='month_btn'><icon class='icons ico_month'></icon></view>
-        <view class='info'>
-        <text class='tit'>本月</text>
-        </view>
-    </view> -->
-    <fee-list order-type="2"  reach-data="{{tagList[1].reach}}"></fee-list>
-</view>
-

@@ -1,16 +1,18 @@
+<!-- <import src="../../../template/reach-loading.wxml"/>
+<template name="reach-loading"></template> -->
 <!-- 顶部企业信息 -->
 <view class='cost_details_top'>
-    <view class='month'>{{detailsData.month + langData.month[lang]}}</view>
-    <view class='h3'>{{detailsData.status>2?langData.costCompany[lang]:langData.noCostCompany[lang]}}</view>
-    <view class='p'><icon class='icons ico_fz'></icon>{{detailsData.entName}}</view>
-    <view class='p per'><icon class='icons ico_per'></icon>{{detailsData.entRoom}}</view>
+    <view class='month'>{{detailData.month + langData.month[lang]}}</view>
+    <view class='h3'>{{detailData.status>2?langData.costCompany[lang]:langData.noCostCompany[lang]}}</view>
+    <view class='p'><icon class='icons ico_fz'></icon>{{detailData.entName}}</view>
+    <view class='p per'><icon class='icons ico_per'></icon>{{detailData.entRoom}}</view>
 </view>
 
 <!--应缴费用-->
 <view class='fee_table clearfix'>
     <view class='info'>
         <text class='yingjiao'>{{langData.feeCost[lang]}}:</text>
-        <text class='qian {{detailsData.status == 2?"":"done"}}'><text class='fuhao'>￥</text>{{detailsData.totalAmount}}</text>
+        <text class='qian'><text class='fuhao'>￥</text>{{detailData.totalAmount}}</text>
     </view>
 </view>
 
@@ -18,21 +20,21 @@
 <view class='repair_list clearfix' style='margin-top:0;'>
     <view class='hdr_line'>
         <view class='yd_title01'>{{langData.costDetail[lang]}}</view>
-        <view class='status'wx:if='{{detailsData.status == 2}}'>{{langData.statusName1[lang]}}</view>
-        <view class='status done' wx:if='{{detailsData.status > 2}}'></view><!-- 已完成状态 -->
+        <view class='status'wx:if='{{detailData.status != 3}}'>{{langData.statusName}}</view>
+        <view class='status done' wx:if='{{detailData.status == 3}}'></view><!-- 已完成状态 -->
         <!-- <view class='status overdue' wx:if='{{false}}'>已逾期10天</view> --><!-- 已逾期状态 -->
     </view>
     <view class='repair_ctn clearfix'>
         <view class='dl'>
             <view class='dt'>{{langData.costMonth[lang]}}</view>
-            <view class='dd f_black'>{{detailsData.month + langData.month2[lang]}}</view>
+            <view class='dd f_black'>{{detailData.month + langData.month2[lang]}}</view>
         </view>
         <view class='dl'>
             <view class='dt'>{{langData.costProject[lang]}}</view>
             <view class='dd'>
                 <view class='jfxm_list'>
 
-                    <view class='li' wx:for="{{detailsData.fees}}" wx:key="{{index}}">
+                    <view class='li' wx:for="{{detailData.fees}}" wx:key="{{index}}">
                         <navigator 
                             url='/pages/fee-check/project-detail/project-detail?id={{item.feeId}}' class='d_btn'
                         >{{langData.detailBtn[lang]}}</navigator>
@@ -41,7 +43,7 @@
                             <view class='price'>{{langData.money[lang]}}：  <text>￥{{item.totalAmount}}</text></view>
                         </view>
                     </view>
-                
+
                 </view>
             </view>
         </view>
@@ -49,7 +51,7 @@
         <view class='dt'>截止时间</view>
         <view class='dd f_black'>2018-07-05</view>
         </view> -->
-        <!-- <view class='dl' wx:for="{{detailsData.fees}}">
+        <!-- <view class='dl' wx:for="{{detailData.fees}}">
         <view class='dt'>{{item.feeName}}</view>
         <view class='dd f_orange'><text>¥</text>{{item.totalAmount}}</view>
         <navigator wx:if="{{item.feeType!='rent'}}" class='f_28 f_cyan f_udl' url='/pages/fee-check/project-detail/project-detail?id={{item.feeId}}'>查看详情 >></navigator>
@@ -66,24 +68,53 @@
     <view class='repair_ctn clearfix'>
         <view class='dl'>
             <view class='dt'>{{langData.public.contact[lang]}}</view>
-            <view class='dd f_black'>{{detailsData.entContract}}</view>
+            <view class='dd f_black'>{{detailData.entContract}}</view>
         </view>
         <view class='dl'>
             <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
-            <view class='dd f_black'>{{detailsData.entPhone}}</view>
+            <view class='dd f_black'>{{detailData.entPhone}}</view>
         </view>
     </view>
 </view>
 
 <!-- 订单号时间 -->
 <!-- 已完成状态才有此模块 -->
-<view class='order_time clearfix' wx:if="{{detailsData.status > 2}}">
+<view class='order_time clearfix' wx:if="{{detailData.status > 2}}">
     <view class='ico_txt'>
-        <image src='{{domainUrl}}/images/icon/ico_clock.png'></image>{{langData.costTime[lang]}}：{{detailsData.payTime}}
+        <image src='{{domainUrl}}/images/icon/ico_clock.png'></image>{{langData.costTime[lang]}}：{{detailData.payTime}}
     </view>
 </view>
 
-<!-- 底部按钮 -->
-<!-- <view class='yd_title02'><view class='txt'>没有更多了</view></view> -->
-<!-- 已完成状态“无需”此模块 -->
-<!-- <view class='blue_btn_btm'>提醒缴费</view> -->
+<!-- 提示弹窗 -->
+<view class='mask_bg pop_show' hidden='{{!popData.show}}'>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{popData.title}}</view>
+            <text class='alert'>{{popData.des}}</text>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap="{{popData.callOffFnName}}">{{langData.public.callOffBtn[lang]}}</view>
+                <view class='btn' bindtap='{{popData.confirmFnName}}'>{{langData.public.confirmBtn[lang]}}</view>
+            </view>
+            <view class='close_btn icons' bindtap="{{popData.callOffFnName}}" ></view>
+        </view>
+    </view>
+</view>
+
+
+<!-- 提交前，或提交后点修改时才有此按钮 -->
+<!-- 账单异常 -->
+<view class='btn_box_btm' wx:if="{{detailData.status==0}}">
+    <view class='btn green' bindtap="openTipPop" data-type="ignore">忽略异常</view>
+    <view class='btn blue' bindtap="openTipPop" data-type="generate">重新生成</view>
+</view>
+<!-- 待审核 -->
+<view class='btn_box_btm' wx:if="{{detailData.status==1}}">
+    <view class='btn red' bindtap="openTipPop" data-type="reject">审核拒绝</view>
+    <view class='btn green' bindtap="openTipPop" data-type="approve">审核通过</view>
+</view>
+<!-- 待缴费 -->
+<view class='btn_box_btm' wx:if="{{detailData.status==2}}">
+    <!-- <view class='btn green' bindtap="openTipPop" data-type="">上传支付凭证</view> -->
+    <view class='btn blue' bindtap="openTipPop" data-type="">确认缴费</view>
+</view>
+
