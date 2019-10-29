@@ -137,15 +137,6 @@ module.exports = {
     index: {
         indexTitle: { zh: '园叮智慧园区', en: 'Yuanding Wisdom Park' },
         noticeImg: { zh: 'notice_tit.png', en: 'notice_tit_en.png' },
-        // menu:{
-        //     repair: { zh: '报修处理', en: '' },
-        //     scanCode: { zh: '扫码核销', en: '' },
-        //     contract: { zh: '合同查看', en: '' },
-        //     degrees: { zh: '水电度数', en: '' },
-        //     fee: { zh: '待缴查询', en: '' },
-        //     onlineRepair: { zh: '在线报修', en: '' },
-        //     report: { zh: '数据分析', en: '' }
-        // },
         backlogTitle: { zh: '待办事项', en: 'Backlog' },
         unreadTitle: { zh: '未读消息', en: 'Unread message' },
         feeTitle: { zh: '待缴企业', en: 'Enterprises to be paid' },
@@ -310,9 +301,9 @@ module.exports = {
         specialClause: { zh: '特别条款', en: 'Special provisions' },
     },
 
-    //待缴查询
+    //账单管理
     fee: {
-        title: { zh: '待缴查询', en:'Pending inquiries'},
+        title: { zh: '账单管理', en:'Pending inquiries'},
         tagName1: { zh: '待审核', en: 'Unaudited' },
         tagName2: { zh: '待缴费', en: 'Unpaid' },
         tagName3: { zh: '已缴费', en: 'Paid' },
@@ -338,6 +329,33 @@ module.exports = {
         money: { zh: '金额', en: 'Amount of money' },
         companyContact: { zh: '企业联系人', en: 'Corporate Contacts' },
         costTime: { zh: '缴费时间', en: 'Payment time' },
+
+        approveTitle: { zh: '审核通过', en: '' },
+        approveDes: { zh: '确定通过该账单吗？', en: '' },
+        approveTip: { zh: '已通过', en: '' },
+        approveBtn: { zh: '审核通过', en: '' },
+        rejectTitle: { zh: '审核拒绝', en: '' },
+        rejectDes: { zh: '确定拒绝该账单吗？', en: '' },
+        rejectTip: { zh: '已拒绝', en: '' },
+        rejectBtn: { zh: '审核拒绝', en: '' },
+        ignoreTitle: { zh: '忽略异常账单', en: '' },
+        ignoreDes: { zh: '确定忽略该账单的异常吗？', en: '' },
+        ignoreTip: { zh: '已忽略', en: '' },
+        ignoreBtn: { zh: '忽略异常', en: '' },
+        generateTitle: { zh: '重新生成账单', en: '' },
+        generateDes: { zh: '确定重新生成该账单吗？', en: '' },
+        generateTip: { zh: '已重新生成', en: '' },
+        generateBtn: { zh: '重新生成', en: '' },
+        affirmTip: { zh: '已确认缴费', en: '' },
+        affirmBtn: { zh: '确认缴费', en: '' },
+        affirmTitle: { zh: '确认缴费', en: '' },
+        payDateTitle:{ zh: '支付时间：', en: '' },
+        payImgTitle:{zh:'上传支付凭证',en:''},
+        payImgBtn:{zh:'上传凭证',en:''},
+        payDateTip: { zh: '请选择支付时间', en: '' },
+        payImgTip: { zh: '请上传支付凭证', en: '' },
+        timeChooseTip: { zh: '请选择时间', en: '' },
+        
         //缴费详情
         particulars: { zh: '明细', en: 'Detailed' },
         cost: { zh: '费用', en: 'Cost' },

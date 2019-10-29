@@ -1,5 +1,5 @@
 module.exports = {
-
+    jkUrl: 'https://www.5iparks.com/api',              //接口正式版
     //模块开关    
     moduleSwitch: {
         lang:false,

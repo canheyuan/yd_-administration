@@ -32,6 +32,14 @@ Page({
             })
         })
     },
+
+    onShow() {
+        var tagList = this.data.tagList;
+        tagList.forEach(item => {
+            item.reach = Math.random() + 1
+        })
+        this.setData({ tagList: tagList });
+    },
     
     //选项卡切换
     tagChangeFn(e) {

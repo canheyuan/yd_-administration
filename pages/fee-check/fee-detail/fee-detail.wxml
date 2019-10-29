@@ -16,15 +16,15 @@
     </view>
 </view>
 
-<!-- 上月读数 -->
-<view class='repair_list clearfix' style='margin-top:0;'>
-    <view class='hdr_line'>
+<!-- 缴费明细 -->
+<view class='fee_detail clearfix' style='margin-top:0;'>
+    <view class='fee_head'>
         <view class='yd_title01'>{{langData.costDetail[lang]}}</view>
-        <view class='status'wx:if='{{detailData.status != 3}}'>{{langData.statusName}}</view>
+        <view class='status'wx:if='{{detailData.status != 3}}'>{{detailData.statusName}}</view>
         <view class='status done' wx:if='{{detailData.status == 3}}'></view><!-- 已完成状态 -->
         <!-- <view class='status overdue' wx:if='{{false}}'>已逾期10天</view> --><!-- 已逾期状态 -->
     </view>
-    <view class='repair_ctn clearfix'>
+    <view class='fee_ctn clearfix'>
         <view class='dl'>
             <view class='dt'>{{langData.costMonth[lang]}}</view>
             <view class='dd f_black'>{{detailData.month + langData.month2[lang]}}</view>
@@ -61,11 +61,11 @@
 </view>
 
 <!--企业联系人-->
-<view class='repair_list clearfix'>
-    <view class='hdr_line'>
+<view class='fee_detail clearfix'>
+    <view class='fee_head'>
         <view class='yd_title01'>{{langData.companyContact[lang]}}</view>
     </view>
-    <view class='repair_ctn clearfix'>
+    <view class='fee_ctn clearfix'>
         <view class='dl'>
             <view class='dt'>{{langData.public.contact[lang]}}</view>
             <view class='dd f_black'>{{detailData.entContract}}</view>
@@ -85,6 +85,24 @@
     </view>
 </view>
 
+<!-- 提交前，或提交后点修改时才有此按钮 -->
+<!-- 账单异常 -->
+<view class='btn_box_btm' wx:if="{{detailData.status==0}}">
+    <view class='btn green' bindtap="openTipPop" data-type="ignore">{{langData.ignoreBtn[lang]}}</view>
+    <view class='btn blue' bindtap="openTipPop" data-type="generate">{{langData.generateBtn[lang]}}</view>
+</view>
+<!-- 待审核 -->
+<view class='btn_box_btm' wx:if="{{detailData.status==1}}">
+    <view class='btn red' bindtap="openTipPop" data-type="reject">{{langData.rejectBtn[lang]}}</view>
+    <view class='btn green' bindtap="openTipPop" data-type="approve">{{langData.approveBtn[lang]}}</view>
+</view>
+<!-- 待缴费 -->
+<view class='btn_box_btm' wx:if="{{detailData.status==2}}">
+    <!-- <view class='btn green' bindtap="openTipPop" data-type="">上传支付凭证</view> -->
+    <view class='btn blue' bindtap="payPopFn">{{langData.affirmTip[lang]}}</view>
+</view>
+
+
 <!-- 提示弹窗 -->
 <view class='mask_bg pop_show' hidden='{{!popData.show}}'>
     <view class='mask_bg_ctn'>
@@ -100,21 +118,49 @@
     </view>
 </view>
 
+<!-- 确认缴费弹窗 -->
+<view class='mask_bg pop_show' hidden="{{!payPopShow}}">
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{langData.affirmTitle[lang]}}</view>
+            <view class='fee_ctn pay_pop'>
+                <view class='dl clearfix'>
+                    <view class='dt' style="width:210rpx;">{{langData.payDateTitle[lang]}}</view>
+                    <view class='dd'>
+                        <picker 
+                            class="date_btn" mode="date" value="" 
+                            bindchange="changeDate"
+                        >
+                            <text class="text">{{payDate?payDate:langData.timeChooseTip[lang]}}</text>
+                        </picker>
+                    </view>
+                </view>
+                <view class='dl clearfix'>
+                    <view class='dt' style="width:210rpx;">{{langData.payImgTitle[lang]}}</view>
+                    <view class='dd'>
+                        <view class="pay_img_box">
+                            <view wx:if="{{!payImgUrl}}" class='add_btn' bindtap="chooseImg">
+                                <icon class='icons ico_add'></icon>
+                                <text>{{langData.payImgBtn[lang]}}</text>
+                            </view>
+                            <image 
+                                wx:if="{{payImgUrl}}" class="pay_img" src="{{payImgUrl}}"
+                                bindtap="previewImgFn" data-img="{{payImgUrl}}"
+                            ></image>
+                        </view>
+                    </view>
+                </view>
+                
+                <view 
+                    class="s_blue_btn" style="width:300rpx; display:inline-block; margin-top:30rpx;"
+                    bindtap="affirmPayFn"
+                >{{langData.affirmBtn[lang]}}</view>
+            </view>
+            
+            <view class='close_btn icons' bindtap="payPopFn" ></view>
+        </view>
+    </view>
+</view>
 
-<!-- 提交前，或提交后点修改时才有此按钮 -->
-<!-- 账单异常 -->
-<view class='btn_box_btm' wx:if="{{detailData.status==0}}">
-    <view class='btn green' bindtap="openTipPop" data-type="ignore">忽略异常</view>
-    <view class='btn blue' bindtap="openTipPop" data-type="generate">重新生成</view>
-</view>
-<!-- 待审核 -->
-<view class='btn_box_btm' wx:if="{{detailData.status==1}}">
-    <view class='btn red' bindtap="openTipPop" data-type="reject">审核拒绝</view>
-    <view class='btn green' bindtap="openTipPop" data-type="approve">审核通过</view>
-</view>
-<!-- 待缴费 -->
-<view class='btn_box_btm' wx:if="{{detailData.status==2}}">
-    <!-- <view class='btn green' bindtap="openTipPop" data-type="">上传支付凭证</view> -->
-    <view class='btn blue' bindtap="openTipPop" data-type="">确认缴费</view>
-</view>
+
 

@@ -31,7 +31,6 @@ App({
         //domainUrl: 'http://192.168.0.244/wuye',           //图片本地机
         domainUrl: 'https://www.5iparks.com/static/wuye',   //图片正式机
         domainUrlDev: 'http://192.168.0.244/wuye',          //图片本地机
-        jkUrl: 'https://www.5iparks.com/api',              //接口正式版
         jkDevUrl: 'http://192.168.0.244:8080/api',          //接口开发板
 
         //判断页面是否刷新参数
@@ -49,8 +48,8 @@ App({
 
         //在globalData加入功能开关
         this.globalData.appApi = appConfig.appApi
-        this.globalData.moduleSwitch = appConfig.moduleSwitch;
-
+        this.globalData.moduleSwitch = appConfig.moduleSwitch
+        this.globalData.jkUrl = appConfig.jkUrl
         //获取语言
         this.globalData.langData = langJson;
         if (this.globalData.moduleSwitch.lang) {
@@ -616,7 +615,7 @@ App({
             sourceType: opt.sourceType,
             success: (res) => {
                 console.log('选择图片：', res);
-                var imgList = res.tempFilePaths
+                var imgList = res.tempFilePaths;    //图片列表，一般上传的图片：imgList[0]
                 opt.success && opt.success(res);
             },
             fail: () => {
@@ -648,6 +647,10 @@ App({
         var _this = this;
         let opt = option ? option : null;
         let opt_default = {
+            isLoading:false,
+            isCloseLoad:true,  //
+            loadTitle:'上传图片中..',
+            ignoreCheck:''  ,   //等于1：不限制上传文件大小
             imgUrl: '',  //上传的图片地址
             fileName: 'file',
             entityType: 'estaterepair',
@@ -657,6 +660,7 @@ App({
             complete: null   //调用接口完回调函数
         };
         opt = opt ? Object.assign(opt_default, opt) : opt_default;
+        if (opt.isLoading) { wx.showLoading({ title: opt.loadTitle, mask: true }); }
         wx.uploadFile({
             url: this.globalData.jkUrl + '/manage/uploadImage',
             filePath: opt.imgUrl,
@@ -667,13 +671,17 @@ App({
             formData: {
                 'entityId': '',
                 'entityType': opt.entityType,
-                'appCode': ''
+                'appCode': '',
+                'ignoreCheck': opt.ignoreCheck
             },
             success(res) {
                 var datas = JSON.parse(res.data);
                 console.log('通用上传图片返回字段：', datas);
                 if (datas.code == 0) {
                     opt.success && opt.success(datas.data);
+                    // 返回的图片结果
+                    // var changeImg = res.filePath;    //相对路径
+                    // var changeImg2 = res.urlPath;    //绝对路径
                 } else if (datas.code == 802) {    //图片违规
                     wx.showToast({ title: '图片存在违规信息，请重新上传！', icon: 'none', duration: 3000 });
                     opt.violation && opt.violation(opt.imgUrl);
@@ -684,6 +692,7 @@ App({
                 opt.fail && opt.fail();
             },
             complete: () => {
+                if (opt.isCloseLoad) { wx.hideLoading();}
                 opt.complete && opt.complete();
             }
         });
