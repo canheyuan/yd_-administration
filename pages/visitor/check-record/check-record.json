@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "入园核销记录",
+    "usingComponents": {
+      "list-nothing": "/components/result-nothing/result-nothing",
+      "default-list": "/components/default-list/default-list"
+    }
+}

@@ -4,6 +4,7 @@ Page({
     //页面的初始数据
     data: {
         domainUrl: app.globalData.domainUrl,
+        moduleSwitch:null,  //功能权限
         loginInfo: null, //登录信息
         topParkName:'', //顶部园区名称
         indexData: null, //首页信息
@@ -17,12 +18,38 @@ Page({
         tabMsgNum: 0,   //自定义底部菜单栏消息数
 
         langData: null, //
-        lang: ''
+        lang: '',
+        parkCodePop:false,   //入园码核实提示弹窗
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         
+    },
+
+    onShow() {
+        app.chatData.pageThis = this;
+        app.chatData.chatPage = 'index';
+        this.setData({ moduleSwitch: app.globalData.moduleSwitch })
+        //是否刷新
+        if (app.globalData.indexReach) {
+            app.globalData.indexReach = false;
+            if (app.globalData.sessionId) {
+                this.reach();
+            } else {
+                //隐藏提示登录弹窗
+                var timer = setInterval(() => {
+                    if (app.globalData.sessionId) {
+                        clearInterval(timer);
+                        this.reach();
+                    }
+                }, 300);
+            }
+        } else {
+            if (app.globalData.isLogin) {
+                this.getIndexData();    //首页信息
+            }
+        }
     },
 
     //加载菜单
@@ -45,30 +72,7 @@ Page({
         wx.stopPullDownRefresh();
     },
 
-    onShow() {
-        app.chatData.pageThis = this;
-        app.chatData.chatPage = 'index';
-
-        //是否刷新
-        if (app.globalData.indexReach) {
-            app.globalData.indexReach = false;
-            if (app.globalData.sessionId) {
-                this.reach();
-            }else{
-                //隐藏提示登录弹窗
-                var timer = setInterval(() => {
-                    if (app.globalData.sessionId) {
-                        clearInterval(timer);
-                        this.reach();
-                    }
-                }, 300);
-            }
-        } else {
-            if (app.globalData.isLogin) {
-                this.getIndexData();    //首页信息
-            }
-        }
-    },
+    
 
     //加载
     reach() {
@@ -88,11 +92,11 @@ Page({
             }
         }
 
-        if (!app.globalData.isLogin) {
+        if (!app.globalData.isLogin) {  //弹出提示登录弹窗
             this.setData({ 
                 hasUserInfo: false,
                 topParkName: parkName
-            }); //弹出提示登录弹窗
+            }); 
             wx.hideTabBar();  //未登录隐藏tab栏
         } else {
             if(this.data.lang == 'zh'){
@@ -130,41 +134,42 @@ Page({
 
     //打开扫码界面
     scanCodeFn() {
+        var _this = this
         wx.scanCode({
             onlyFromCamera: false,
             success(res) {
                 console.log('扫码后返回的参数：', res);
+                //var scanType = res.type
                 var code = res.result;
-
-                wx.request({
-                    url: app.globalData.jkUrl + `/manage/userCoupon/detail/${code}`,
-                    method: 'GET',
-                    header: {
-                        "5ipark-sid": app.globalData.sessionId,
-                        '5ipark-channel': app.globalData.appApi.channel,
-                        "5ipark-aid": app.globalData.appApi.aid
-                    },
-                    success: (res) => {
-                        var dCode = res.data.code;
-                        var goUrl = '';
-                        switch (dCode) {
-                            case 0:
-                                goUrl = `/pages/coupon/coupon-detail/coupon-detail?id=${code}`;
-                                break;
-                            case 403:
-                                goUrl = `/pages/coupon/scan-error/scan-error?page=coupon403`;
-                                break;
-                            default:
-                                goUrl = `/pages/coupon/scan-error/scan-error?page=coupon404`;
-                                break;
-                        }
-                        wx.navigateTo({ url: goUrl });
-                    }
-                })
-
+                _this.checkCouponFn(code)
             }
-        });
+        })
     },
+
+    //核实优惠券
+    checkCouponFn(code){
+        app.requestFn({
+            url : `/manage/userCoupon/detail/${code}`,
+            successOther:(res)=>{
+                var dCode = res.data.code;
+                var goUrl = '';
+                switch (dCode) {
+                    case 0:
+                        goUrl = `/pages/coupon/coupon-detail/coupon-detail?id=${code}`;
+                        break;
+                    case 403:
+                        goUrl = `/pages/coupon/scan-error/scan-error?page=coupon403`;
+                        break;
+                    default:
+                        goUrl = `/pages/coupon/scan-error/scan-error?page=coupon404`;
+                        break;
+                }
+                wx.navigateTo({ url: goUrl });
+            }
+        })
+    },
+
+    
 
     //获取首页信息
     getIndexData() {

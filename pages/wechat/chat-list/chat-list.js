@@ -98,7 +98,7 @@ Page({
                     that.setData({ isNoData: false })
                     wx.hideLoading();
                 } else if (sessionList.length > 0) {
-
+                    
                     var userId = sessionList.map((item, index) => {
                         return item.To_Account
                     })

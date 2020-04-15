@@ -46,7 +46,7 @@
                 <view class='lable'>{{langData.unreadTitle[lang]}}</view>
                 <view class='number red'>{{indexData.msgNum?indexData.msgNum:0}}</view>
             </navigator>
-            <navigator class='li' url="/pages/fee-check/fee-list/fee-list" hover-class='none'>
+            <navigator class='li' url="/pages/fee-check/fee-list/fee-list" hover-class='none' wx:if="{{moduleSwitch.feeCheck}}">
                 <view class='lable'>{{langData.feeTitle[lang]}}</view>
                 <view class='number cyan'>{{indexData.financeBillCt?indexData.financeBillCt:0}}</view>
             </navigator>
@@ -127,7 +127,23 @@
     <login-tip binduserInfo="getUserInfoFn"></login-tip>
 </view>
 
+<!-- 入园核销失败弹窗 -->
+<view class='mask_bg pop_show' wx:if='{{parkCodePop}}'>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>无法核实</view>
+            <view class='alert' style="font-size:30rpx; padding:40rpx 0;"><text>该入园码已超时，请刷新后重试</text></view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap='outLoginFn'>{{langData.public.confirmBtn[lang]}}</view>
+            </view>
+            <!-- <view class='close_btn icons' bindtap="outPopFn"></view> -->
+        </view>
+    </view>
+</view>
+
+
 <!------------------ tab栏菜单(英文版本才出现) ------------------>
 <view wx:if="{{lang=='en'}}" class="tab_box">
     <tab index='0' msg-num="{{tabMsgNum}}" lang-change='{{lang}}'></tab>
 </view>
+

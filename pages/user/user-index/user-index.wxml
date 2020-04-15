@@ -72,6 +72,15 @@
                 <text class='txt'>{{langData.verifyRecord[lang]}}</text>
             </view>
         </navigator>
+         <navigator class='dl clearfix' url='/pages/visitor/check-record/check-record'>
+            <view class='dt' style='width:60rpx;'>
+                <image src='{{domainUrl}}/images/icon/ico_coupon.png' class='img' mode='widthFix'></image>
+            </view>
+            <view class='dd'>
+                <view class='icons ico_arrow'></view>
+                <text class='txt'>{{langData.verifyRecord2[lang]}}</text>
+            </view>
+        </navigator>
     </view>
 
     

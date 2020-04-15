@@ -31,9 +31,9 @@
                 ></image>
                 <view class="msg_text" wx:if="{{item.type=='text'}}">{{item.content}}</view>
                 <image 
-                class="msg_img" wx:if="{{item.type=='image'}}" 
-                src="{{item.content}}" mode="widthFix"
-                bindtap="previewImgFn" data-img='{{item.content}}'
+                    class="msg_img" wx:if="{{item.type=='image'}}" 
+                    src="{{item.content}}" mode="widthFix"
+                    bindtap="previewImgFn" data-img='{{item.content}}'
                 ></image>
             </view>
         </view>

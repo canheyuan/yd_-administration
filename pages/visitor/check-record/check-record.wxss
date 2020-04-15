@@ -1,0 +1,12 @@
+page{background:#f7f7f7;}
+
+.record_list .li{background:#fff; padding:30rpx; margin-top:30rpx;}
+.record_list .li .top{overflow: hidden;}
+.record_list .li .time{font-size:26rpx; color:#999; float:right; margin-left:30rpx; line-height:40rpx;}
+.record_list .li .h3{font-size:30rpx; color:#333; font-weight:bold; line-height:40rpx; overflow: hidden;}
+.record_list .li .p{font-size:26rpx; color:#666; }
+
+
+
+
+

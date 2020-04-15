@@ -31,7 +31,7 @@
 .btn_edit .img{width: 100%; height: auto;}
 
 .persn_box .ul{display: flex; flex-flow: row wrap; justify-content: space-between; margin-top: 32rpx; clear: both; }
-.persn_box .ul .li{box-sizing: border-box; flex: 0 0 33.33333%; font-size: 26rpx; line-height: 28rpx; text-align: center; border-right: 2rpx solid #e8e8e8;}
+.persn_box .ul .li{box-sizing: border-box; width:33.3%; flex:1; font-size: 26rpx; line-height: 28rpx; text-align: center; border-right: 2rpx solid #e8e8e8;}
 .persn_box .ul .li:last-child{border-right: none;}
 .persn_box .ul .li .lable{color: #8d8d8d;}
 .persn_box .ul .li .number{color: #8d8d8d; font-size: 56rpx; font-weight: 500; line-height: 60rpx; margin-top: 16rpx;}

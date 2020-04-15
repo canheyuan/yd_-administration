@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
-	"appid": "wx03f270c6defddaf6",
+	"appid": "wxd13fd304f87c487d",
 	"projectname": "%E5%9B%AD%E5%8F%AE-%E7%AE%A1%E7%90%86%E7%AB%AF",
 	"isGameTourist": false,
 	"simulatorType": "wechat",
@@ -55,8 +55,29 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/fee-check/fee-detail/fee-detail",
-					"pathName": "pages/fee-check/fee-detail/fee-detail",
+					"name": "优惠券扫码成功页",
+					"pathName": "pages/coupon/exchange-result/exchange-result",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/coupon/coupon-detail/coupon-detail",
+					"pathName": "pages/coupon/coupon-detail/coupon-detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "入园核销记录",
+					"pathName": "pages/visitor/check-record/check-record",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/index/index",
+					"pathName": "pages/visitor/check-record/check-record",
 					"query": "",
 					"scene": null
 				}

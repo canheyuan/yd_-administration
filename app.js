@@ -8,8 +8,8 @@ var chatIm = require('utils/chatIm.js');
 App({
 
     globalData: {
-        appVersion: '1.3.3',  //上传的版本号
-        appVersionDate: '20191016',  //版本更新的日期
+        appVersion: '1.3.5',  //上传的版本号
+        appVersionDate: '20191128',  //版本更新的日期
         apiMsgSwitch: false,  //控制接口提示信息开关,true:开，false:关
         isChatLogin: true,    //控制是否调用聊天登录,true:开启，false:关闭
         menuData:null,  //自定义首页菜单
@@ -31,6 +31,7 @@ App({
         //domainUrl: 'http://192.168.0.244/wuye',           //图片本地机
         domainUrl: 'https://www.5iparks.com/static/wuye',   //图片正式机
         domainUrlDev: 'http://192.168.0.244/wuye',          //图片本地机
+        jkUrl: 'https://www.5iparks.com/api',              //接口正式版
         jkDevUrl: 'http://192.168.0.244:8080/api',          //接口开发板
 
         //判断页面是否刷新参数
@@ -49,7 +50,10 @@ App({
         //在globalData加入功能开关
         this.globalData.appApi = appConfig.appApi
         this.globalData.moduleSwitch = appConfig.moduleSwitch
-        this.globalData.jkUrl = appConfig.jkUrl
+        if (appConfig.jkUrl){
+            this.globalData.jkUrl = appConfig.jkUrl
+        }
+        
         //获取语言
         this.globalData.langData = langJson;
         if (this.globalData.moduleSwitch.lang) {
@@ -481,6 +485,11 @@ App({
         //做缓存
         var msgStorage = wx.getStorageSync('msgStorage') ? wx.getStorageSync('msgStorage') : [];
         newMsgList.forEach((item, i) => {
+            if (item.fromAccount == this.chatData.fromUser.id) {
+                //如果接收的信息是自己的，就忽略掉
+                return
+            }
+            
             var isMsg = false;  //当前账号是否有未读消息
             msgStorage.forEach(item2 => {
                 if (item2.fromAccount == item.fromAccount) {

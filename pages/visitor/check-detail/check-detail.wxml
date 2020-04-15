@@ -1,0 +1,25 @@
+
+
+<view class="rysh_mdl">
+    <view class="invite_info">
+		<view class="dl">
+			<view class="dt">访客姓名</view>
+			<view class="dd">尛璨</view>
+		</view>
+		<view class="dl">
+			<view class="dt">访客手机</view>
+			<view class="dd">15956236236</view>
+		</view>
+		<view class="dl">
+			<view class="dt">身份证号</view>
+			<view class="dd">44050715***2563</view>
+		</view>
+		<view class="dl">
+			<view class="dt">访问企业</view>
+			<view class="dd">广州五行教育有限公司</view>
+		</view>
+	</view>
+	<view class="fkdj_btn">
+		<view class="blue_btn">确定入园</view>
+	</view>
+</view>

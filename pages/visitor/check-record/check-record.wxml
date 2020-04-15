@@ -1,0 +1,23 @@
+
+<!-- 数据未加载时显示的默认列表 -->
+<default-list wx:if="{{!listInfo.isFinish}}"></default-list>
+
+<!-- 优惠券列表 -->
+<block wx:if="{{listInfo.isFinish}}">
+<view class='record_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <view wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}" class="li box_shadow">
+        <view class="yd_title01" style="margin-bottom:20rpx;">广州五行教育有限公司</view>
+        <view class="top">
+            <view class="time">2018-10-23 10:20</view>
+            <view class="h3">尛璨</view>
+        </view>
+        
+    </view>
+
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>  
+</view>
+
+
+<!-- 暂无状态 -->
+<list-nothing c-name="coupon_list" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>
+</block>

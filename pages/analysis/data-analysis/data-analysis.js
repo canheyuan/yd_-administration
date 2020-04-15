@@ -106,7 +106,6 @@ Page({
                 format: function (val) {
                     return val
                 },
-
             },
             xAxis: {
                 title: langData.monthText[lang],
@@ -136,15 +135,13 @@ Page({
                 color: item.bgColor,
                 data: item.count,
                 format: function (val) {
-                    return `${item.statusName}(${val * 100}%)`;
+                    return `${item.statusName}(${Math.ceil(val * 100)}%)`;
                 }
             }
         })
-
         new Charts({
             canvasId: 'rentCharts',
             type: 'pie',
-
             series: seriesList,
             width: 375,
             height: 280,

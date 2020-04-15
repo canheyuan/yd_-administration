@@ -50,7 +50,7 @@ Page({
 
         //设置title
         wx.setNavigationBarTitle({ title: app.chatData.toUser.nick });
-
+        
         chatIm.getMsgFn(function (res) {
             //阅读消息后清除未读消息缓存
             var msgStorage = wx.getStorageSync('msgStorage') ? wx.getStorageSync('msgStorage') : [];
